@@ -7,4 +7,3 @@ function miAutoload($claseDesconocida){
 }
 spl_autoload_register("miAutoload");
 ?>
-
