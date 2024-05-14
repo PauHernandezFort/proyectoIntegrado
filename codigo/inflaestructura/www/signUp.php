@@ -7,7 +7,7 @@ $loginMessage = $security->doLogin();
 <!DOCTYPE html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Login</title>
+<title>Sign Up</title>
 <link rel="stylesheet" type="text/css" href="form/view.css" media="all">
 <script type="text/javascript" src="form/view.js"></script>
 
@@ -17,10 +17,10 @@ $loginMessage = $security->doLogin();
 	<img id="top" src="form/top.png" alt="">
 	<div id="form_container">
 
-		<h1><a>sing up</a></h1>
+		<h1><a>Sign Up</a></h1>
 		<form class="appnitro" method="post" action="">
 					<div class="form_description">
-			<h2>sing up</h2>
+			<h2>Sign Up</h2>
 			<h4><?=$loginMessage?></h4>
 			<p></p>
 		</div>
