@@ -25,13 +25,10 @@ class Power extends Connection {
     public function __toString() {
         return "Nombre del poder: " . $this->nombrePoder . ", Daño: " . $this->daño . ", Coste: " . $this->coste;
 
-<<<<<<< HEAD
 }
 
     
-=======
     }
->>>>>>> 5e7f148703cd37c5a4b30dd05841fa22caed81c7
 
     public function getNombre() {
         return $this->nombrePoder;
