@@ -8,6 +8,10 @@ $loginMessage = $security->doLogin();
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Login</title>
+<link href="logo.jpeg" rel="icon" type="image/x-icon">
+    <link href="logo.jpeg" rel="icon" type="image/png">
+    <link href="logo.jpeg" rel="apple-touch-icon" sizes="180x180">
+    <meta name="theme-color" content="#343a40"> 
 </head>
 <body>
     <h2>Iniciar sesión</h2>
