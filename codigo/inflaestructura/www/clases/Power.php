@@ -24,20 +24,9 @@ class Power extends Connection {
     public function __toString() {
         return "Nombre del poder: " . $this->nombrePoder . ", Daño: " . $this->daño . ", Coste: " . $this->coste;
 
-<<<<<<< HEAD
-    $row = $result->fetch_array(MYSQLI_ASSOC);
-    $this->nombrePoder = $row['nombrePoder'];
-    $this->daño = $row['daño'];
-    $this->coste = $row['coste'];
-x
-}
-
-    public function getNombre(){
-=======
     }
 
     public function getNombre() {
->>>>>>> f4d1aba8a84976994e01db3f2cdb70a5f324f868
         return $this->nombrePoder;
     }
 
