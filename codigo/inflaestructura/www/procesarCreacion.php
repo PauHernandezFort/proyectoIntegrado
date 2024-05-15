@@ -18,7 +18,7 @@
     $sql3 = "INSERT INTO `PersonajePoder`(`nombrePersonaje`, `nombrePoder`) VALUES ('$nombre','$poder2')";
     $result = $result = mysqli_query($conn, $sql3);
     $sql4 = "INSERT INTO `PersonajePoder`(`nombrePersonaje`, `nombrePoder`) VALUES ('$nombre','$poder3')";
-    $result = $result = mysqli_query($conn, $sql4);
+    $result = mysqli_query($conn, $sql4);
 
     header("location: home.php");
 ?>

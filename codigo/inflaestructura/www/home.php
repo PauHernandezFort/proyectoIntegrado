@@ -1,6 +1,14 @@
 <?php
+require_once 'autoloader.php';
 $correo = $usuario = $_COOKIE['correo'];
 echo $correo;
+$conexion = new Connection;
+$conn = $conexion->getConn();
+$sql = "SELECT `nombre` FROM `Personaje` where `correocuenta` = '$correo'";
+$result = mysqli_query($conn, $sql);
+$lineas= mysqli_num_rows($result);
+echo $lineas;
+
 ?>
 
 <!DOCTYPE html>
@@ -71,7 +79,6 @@ echo $correo;
                   <li><a class="dropdown-item" href="#">Modificar Personaje</a></li>
                   <li><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
                   <li><a class="dropdown-item" href="#">Eliminar Cuenta</a></li>
-                  <li><a class="dropdown-item" href="createPersonaje.php">Crear Personaje</a></li>
                 </ul>
               </li>
               <li class="nav-item">
@@ -92,5 +99,23 @@ echo $correo;
     <a href="" class="fixed-button-right">
         <button class="btn btn-success">EMPEZAR BATALLA</button>
     </a>
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+    let correo = <?php echo json_encode($correo); ?>;
+    let lineas = <?php echo json_encode($lineas); ?>;
+    if (correo === 'admin.com') {
+        let dropdownMenu = document.querySelector('.dropdown-menu');
+        let createPowerItem = document.createElement('li');
+        createPowerItem.innerHTML = '<a class="dropdown-item" href="createPower.php">Crear Poderes</a>';
+        dropdownMenu.appendChild(createPowerItem);
+    }
+    if (lineas === 0) {
+        let botonPelea = document.querySelector('.fixed-button-right');
+        botonPelea.innerText = 'CREAR PERSONAJE';
+        botonPelea.setAttribute('href', 'createPersonaje.php');
+        botonPelea.classList.add('btn', 'btn-success');
+    }
+});
+</script>
 </body>
 </html>
