@@ -1,9 +1,9 @@
 <?php
-class Security extends Conexion
+class Security extends Connection
 {
     private $loginPage = "login.php";
     private $homePage = "home.php";
-    private $registerPage="singUp.php";
+    private $registerPage="signUp.php";
     public function __construct()
     {
         parent::__construct();
@@ -17,7 +17,7 @@ class Security extends Conexion
         }
     }
 
-public function singUp(){
+public function signUp(){
      if (count($_POST) > 0) {
          $name = $_POST["userName"]; 
          $password = $_POST["userPassword"];
