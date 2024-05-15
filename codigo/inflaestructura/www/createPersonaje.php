@@ -1,7 +1,7 @@
 <?php 
 require_once 'autoloader.php';
 
-$poderes = array("Poder 1", "Poder 2", "Poder 3","poder 4");
+$poderes = array("Poder1", "Poder2", "Poder3","poder4");
 
 if(isset($_COOKIE['correo'])) {
     $usuario = $_COOKIE['correo'];
@@ -43,7 +43,7 @@ if(isset($_COOKIE['correo'])) {
     <button type="button" onclick="incrementar('vida')">+</button>
     <button type="button" onclick="decrementar('vida')">-</button><br><br>
     
-    <label for="poder1">Poder 1:</label>
+    <label for="poder1">Poder1:</label>
     <select id="poder1" name="poder1">
     </select><br><br>
     
