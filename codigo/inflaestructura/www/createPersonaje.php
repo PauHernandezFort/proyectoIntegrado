@@ -11,7 +11,7 @@ if(isset($_COOKIE['correo'])) {
 }
 ?>
 
-<!DOCTYPE html>
+<!DOCTYPE html >
 <html lang="es">
 <head>
 <meta charset="UTF-8">
