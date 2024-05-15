@@ -17,7 +17,7 @@ class Power extends Connection{
     $this->nombrePoder = $row['nombrePoder'];
     $this->daño = $row['daño'];
     $this->coste = $row['coste'];
-
+x
 }
 
     public function getNombre(){
