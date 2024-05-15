@@ -1,7 +1,7 @@
 <?php 
 require_once 'autoloader.php';
 
-$poderes = array("Poder 1", "Poder 2", "Poder 3");
+$poderes = array("Poder 1", "Poder 2", "Poder 3","poder 4");
 
 if(isset($_COOKIE['correo'])) {
     $usuario = $_COOKIE['correo'];
