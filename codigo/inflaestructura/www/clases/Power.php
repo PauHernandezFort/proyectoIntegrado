@@ -28,7 +28,6 @@ class Power extends Connection {
 
 
     
-    }
 
     public function getNombre() {
         return $this->nombrePoder;
