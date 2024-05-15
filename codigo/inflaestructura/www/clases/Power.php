@@ -12,6 +12,7 @@ class Power extends Connection {
         $query = "SELECT * FROM Poder WHERE nombrePoder = '$nombrePoder'";
         $result = mysqli_query($conn, $query);
         $row = $result->fetch_array(MYSQLI_ASSOC);
+       
         if ($row) {
             $this->nombrePoder = $row['nombrePoder'];
             $this->daño = $row['daño'];
@@ -24,22 +25,29 @@ class Power extends Connection {
     public function __toString() {
         return "Nombre del poder: " . $this->nombrePoder . ", Daño: " . $this->daño . ", Coste: " . $this->coste;
 
-    }
+}
+
+    
+    
 
     public function getNombre() {
         return $this->nombrePoder;
     }
-
-    public function setDaño($daño) {
-        $this->daño = $daño;
+    public function setNombre($nombrePoder) {
+        return $this->nombrePoder;
     }
-
     public function getDaño() {
         return $this->daño;
     }
-
+    public function setDaño($daño) {
+        $this->daño = $daño;
+    }
     public function getCoste() {
         return $this->coste;
     }
+    public function setCoste($coste) {
+        return $this->coste;
+    }
 }
+
 ?>

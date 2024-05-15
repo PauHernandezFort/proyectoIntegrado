@@ -3,7 +3,7 @@ class Security extends Connection
 {
     private $loginPage = "login.php";
     private $homePage = "home.php";
-    private $registerPage="singUp.php";
+    private $registerPage="signUp.php";
     public function __construct()
     {
         parent::__construct();
@@ -17,17 +17,19 @@ class Security extends Connection
         }
     }
 
-public function singUp(){
-     if (count($_POST) > 0) {
-         $name = $_POST["userName"]; 
-         $password = $_POST["userPassword"];
-         $email = $_POST["email"];
-         $securePassword= password_hash($password, PASSWORD_DEFAULT);
-         $sql = "INSERT INTO `Cuenta`(`correo`, `contraseña`, `nombre`) VALUES ('$email','$securePassword','$name')";
-         $result = $this->conn->query($sql);
- 
-     }
-     }
+
+    public function singUp(){
+        if (count($_POST) > 0) {
+            $mail = $_POST["email"]; 
+            $password = $_POST["userPassword"];
+            $nombre = $_POST["userName"];
+            $securePassword= password_hash($password, PASSWORD_DEFAULT);
+            $sql = "INSERT INTO Cuenta(correo, contraseña, nombre) VALUES ('$mail','$securePassword','$nombre')";
+            $result = $this->conn->query($sql);
+            header("Location: login.php ");
+        }
+    }
+    
 
      public function doLogin()
      {
@@ -35,6 +37,15 @@ public function singUp(){
              $user = $this->getUser($_POST["email"]);
              $_SESSION["loggedIn"] = $this->checkUser($user, $_POST["userPassword"]) ? $user["correo"] : false;
              if ($_SESSION["loggedIn"]) {
+                if (isset($_COOKIE["correo"])) {
+                    setcookie("correo", "", time() - 3600, "/");
+                }
+                $nombreCookie= "correo";
+                $valor=$user["correo"];
+                $tiempo= time()+ 3600;
+                $ruta = "/";
+                setcookie($nombreCookie,$valor,$tiempo,$ruta);
+
                  header("Location: " . $this->homePage);
              } else {
                  echo"Incorrect email or Password";
