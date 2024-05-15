@@ -28,7 +28,7 @@ class Power extends Connection {
 }
 
     
-    }
+    
 
     public function getNombre() {
         return $this->nombrePoder;
@@ -49,4 +49,5 @@ class Power extends Connection {
         return $this->coste;
     }
 }
+
 ?>
