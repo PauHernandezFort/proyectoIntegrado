@@ -36,6 +36,12 @@ class Security extends Connection
              $user = $this->getUser($_POST["email"]);
              $_SESSION["loggedIn"] = $this->checkUser($user, $_POST["userPassword"]) ? $user["correo"] : false;
              if ($_SESSION["loggedIn"]) {
+                $nombreCookie= "correo";
+                $valor=$user["correo"];
+                $tiempo= time()+ 3600;
+                $ruta = "/";
+                setcookie($nombreCookie,$valor,$tiempo,$ruta);
+
                  header("Location: " . $this->homePage);
              } else {
                  echo"Incorrect email or Password";
