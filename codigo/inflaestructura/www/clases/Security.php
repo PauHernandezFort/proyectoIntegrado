@@ -17,17 +17,18 @@ class Security extends Connection
         }
     }
 
-public function signUp(){
-     if (count($_POST) > 0) {
-         $name = $_POST["userName"]; 
-         $password = $_POST["userPassword"];
-         $email = $_POST["email"];
-         $securePassword= password_hash($password, PASSWORD_DEFAULT);
-         $sql = "INSERT INTO `Cuenta`(`correo`, `contraseña`, `nombre`) VALUES ('$email','$securePassword','$name')";
-         $result = $this->conn->query($sql);
- 
-     }
-     }
+
+    public function singUp(){
+        if (count($_POST) > 0) {
+            $mail = $_POST["email"]; 
+            $password = $_POST["userPassword"];
+            $nombre = $_POST["userName"];
+            $securePassword= password_hash($password, PASSWORD_DEFAULT);
+            $sql = "INSERT INTO Cuenta(correo, contraseña, nombre) VALUES ('$mail','$securePassword','$nombre')";
+            $result = $this->conn->query($sql);
+        }
+    }
+    
 
      public function doLogin()
      {
