@@ -78,11 +78,8 @@ class Power extends Connection {
     }
     
     
-    public function updatePower($nombre, $poder, $coste, $descripcion) {
-        
-        
-    
-        $query = "UPDATE Poder SET nombrePoder='$nombre', poder='$poder', coste='$coste',descripcion='$descripcion' WHERE nombrePoder=$nombre";
+    public function updatePower($nombre, $daño, $coste, $descripcion) {
+        $query = "UPDATE Poder SET `nombrePoder`='$nombre', `daño`='$daño', `coste`='$coste',`descripcion`='$descripcion' WHERE `nombrePoder`='$nombre'";
         $resultado = $this->conn->query($query);
     
         if (!$resultado) {

@@ -1,6 +1,6 @@
 <?php
 require_once 'autoloader.php';
-$correo = $usuario = $_COOKIE['correo'];
+$correo = $_COOKIE['correo'];
 $conexion = new Connection;
 $conn = $conexion->getConn();
 $sql = "SELECT `nombre` FROM `Personaje` where `correocuenta` = '$correo'";
@@ -73,6 +73,10 @@ document.addEventListener("DOMContentLoaded", function() {
         let createPowerItem = document.createElement('li');
         createPowerItem.innerHTML = '<a class="dropdown-item" href="createPower.php">Crear Poderes</a>';
         dropdownMenu.appendChild(createPowerItem);
+        let editPowerItem = document.createElement('li');
+        editPowerItem.innerHTML = '<a class="dropdown-item" href="editPower.php">Editar poder</a>';
+        dropdownMenu.appendChild(editPowerItem);
+
     }
     if (lineas === 0) {
         let botonPelea = document.querySelector('.fixed-button-right');

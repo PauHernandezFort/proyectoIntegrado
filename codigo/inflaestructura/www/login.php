@@ -1,3 +1,10 @@
+<?php
+require_once "autoloader.php";
+$security = new Security();
+$loginMessage = $security->doLogin();
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -54,7 +61,7 @@
 <body>
     <div id="form_container">
         <h2 class="form_description">Iniciar sesión</h2>
-        <form action="home.php" method="post">
+        <form action="" method="post">
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input name="email" type="text" class="form-control" maxlength="255" value="">
