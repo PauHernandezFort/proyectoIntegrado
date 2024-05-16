@@ -1,7 +1,6 @@
 <?php
 require_once 'autoloader.php';
 $correo = $usuario = $_COOKIE['correo'];
-echo $correo;
 $conexion = new Connection;
 $conn = $conexion->getConn();
 $sql = "SELECT `nombre` FROM `Personaje` where `correocuenta` = '$correo'";
@@ -22,48 +21,13 @@ echo $lineas;
     
     <title>Home</title>
     <style>
-        .fixed-button-left {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 1000;
-        }
-
-        .fixed-button-right {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-
-        h1 {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 3em;
-            text-align: center;
-            margin-top: 20px;
-            color: white;
-        }
-
-        body {
-            background-image: url('fondo.jpeg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: top center;
-            margin: 0; 
-            padding-top: 56px; 
-        }
-        
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-        }
+      
 
     </style>
     <link href="logo.jpeg" rel="icon" type="image/x-icon">
     <link href="logo.jpeg" rel="apple-touch-icon" sizes="180x180">
     <link href="logo.jpeg" rel="icon" type="image/png">
+    <link href="home.css" rel="stylesheet">
     <meta name="theme-color" content="#343a40">
 </head>
 <body>
@@ -77,8 +41,8 @@ echo $lineas;
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ajustes</a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="#">Modificar Personaje</a></li>
-                  <li><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
-                  <li><a class="dropdown-item" href="#">Eliminar Cuenta</a></li>
+                  <li><a class="dropdown-item" href="login.php">Cerrar Sesion</a></li>
+                  <li><a class="dropdown-item" href="confirmacion.php">Eliminar Cuenta</a></li>
                 </ul>
               </li>
               <li class="nav-item">

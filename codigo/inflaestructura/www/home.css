@@ -1,0 +1,37 @@
+.fixed-button-left {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.fixed-button-right {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+h1 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 3em;
+    text-align: center;
+    margin-top: 20px;
+    color: white;
+}
+
+body {
+    background-image: url('fondo.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    margin: 0; 
+    padding-top: 56px; 
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
