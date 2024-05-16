@@ -9,13 +9,11 @@
     <link href="logo.jpeg" rel="apple-touch-icon" sizes="180x180">
     <link href="logo.jpeg" rel="icon" type="image/png">
     <meta name="theme-color" content="#343a40">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
-        @font-face {
-            font-family: 'Press Start 2P';
-            src: url('ruta/a/la/fuente/PressStart2P-Regular.ttf') format('truetype'); /* Reemplaza 'ruta/a/la/fuente' por la ruta real de la fuente */
-        }
-
+       
         body {
+            font-family: 'Press Start 2P', cursive;
             background-image: url('singUp.png');
             background-size: cover;
             background-repeat: no-repeat;
