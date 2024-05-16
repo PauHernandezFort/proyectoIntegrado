@@ -1,11 +1,12 @@
 <?php 
 require_once 'autoloader.php';
 
-$poderes = array("Poder1", "Poder2", "Poder3","poder4");
+$poderes = new Power("Poder1");
+$array = $poderes->getAllPowers();
+
 
 if(isset($_COOKIE['correo'])) {
     $usuario = $_COOKIE['correo'];
-    echo "El valor de la cookie 'usuario' es: " . $usuario;
 } else {
     echo "Error inesperado, vuelve a iniciar sesión";
 }
@@ -63,7 +64,7 @@ if(isset($_COOKIE['correo'])) {
 </form>
 
 <script>
-var poderes = <?php echo json_encode($poderes); ?>;
+var poderes = <?php echo json_encode($array); ?>;
 
 window.onload = agregarPoderes;
 
