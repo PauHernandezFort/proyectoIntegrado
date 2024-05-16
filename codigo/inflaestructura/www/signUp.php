@@ -16,15 +16,58 @@ $security->singUp();
     <link href="logo.jpeg" rel="apple-touch-icon" sizes="180x180">
     <link href="logo.jpeg" rel="icon" type="image/png">
     <meta name="theme-color" content="#343a40">
+    <style>
+
+
+body {
+    background-image: url('45922.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#form_container {
+    width: 300px; /* Ancho deseado del formulario */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Color de fondo del formulario con transparencia */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra */
+}
+
+.form_description {
+    text-align: center;
+}
+
+.element input {
+    width: 100%; /* Los campos de entrada ocupan todo el ancho disponible */
+}
+
+.buttons {
+    text-align: center;
+}
+
+.button_text {
+    margin: 10px auto; /* Botón centrado horizontalmente con un pequeño margen superior e inferior */
+}
+
+
+
+
+    </style>
 </head>
 
 <body id="main_body">
     <img id="top" src="form/top.png" alt="">
     <div id="form_container">
-        <h1><a>sing up</a></h1>
+        <h1><a>sign up</a></h1>
         <form class="appnitro" method="post" action="">
             <div class="form_description">
-                <h2>sing up</h2>
+              
                 <p></p>
             </div>
             <ul>
