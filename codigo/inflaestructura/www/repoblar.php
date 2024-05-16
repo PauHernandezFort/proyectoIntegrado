@@ -24,7 +24,7 @@ function importar($conexion) {
                     break;
             }
 
-            fclose($gestor);
+            fclose($gestor);//preuba
         } else {
             echo "Fallo al abrir el fichero: $fichero";
         }

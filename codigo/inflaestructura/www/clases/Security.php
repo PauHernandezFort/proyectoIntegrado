@@ -26,6 +26,7 @@ class Security extends Connection
             $securePassword= password_hash($password, PASSWORD_DEFAULT);
             $sql = "INSERT INTO Cuenta(correo, contraseña, nombre) VALUES ('$mail','$securePassword','$nombre')";
             $result = $this->conn->query($sql);
+            header("Location: login.php ");
         }
     }
     
@@ -36,6 +37,15 @@ class Security extends Connection
              $user = $this->getUser($_POST["email"]);
              $_SESSION["loggedIn"] = $this->checkUser($user, $_POST["userPassword"]) ? $user["correo"] : false;
              if ($_SESSION["loggedIn"]) {
+                if (isset($_COOKIE["correo"])) {
+                    setcookie("correo", "", time() - 3600, "/");
+                }
+                $nombreCookie= "correo";
+                $valor=$user["correo"];
+                $tiempo= time()+ 3600;
+                $ruta = "/";
+                setcookie($nombreCookie,$valor,$tiempo,$ruta);
+
                  header("Location: " . $this->homePage);
              } else {
                  echo"Incorrect email or Password";
