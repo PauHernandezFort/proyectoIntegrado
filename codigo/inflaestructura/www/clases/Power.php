@@ -4,6 +4,7 @@ class Power extends Connection {
     private $nombrePoder;
     private $daño;
     private $coste;
+    private $descripcion;
 
     public function __construct($nombrePoder) {
         parent::__construct();
@@ -17,13 +18,14 @@ class Power extends Connection {
             $this->nombrePoder = $row['nombrePoder'];
             $this->daño = $row['daño'];
             $this->coste = $row['coste'];
+            $this->descripcion = $row["descripcion"];
         } else {
             echo "No rows found for $nombrePoder";
         }
     }
 
     public function __toString() {
-        return "Nombre del poder: " . $this->nombrePoder . ", Daño: " . $this->daño . ", Coste: " . $this->coste;
+        return "Nombre del poder: " . $this->nombrePoder . ", Daño: " . $this->daño . ", Coste: " . $this->coste . ", Descrpcion:" . $this->descripcion;
 
 }
 
@@ -48,6 +50,14 @@ class Power extends Connection {
     public function setCoste($coste) {
         return $this->coste;
     }
+    public function getDescripcion() {
+        return $this->descripcion;
+    }
+    public function setDescripicion($descripcion) {
+        return $this->descripcion;
+    }
+
+   
 }
 
 ?>
