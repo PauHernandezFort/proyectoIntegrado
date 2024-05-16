@@ -62,11 +62,11 @@ function importarPersonajes($gestor, $conexion) {
 
 function importarPoderes($gestor, $conexion) {
     while (($element = fgetcsv($gestor)) !== false) {
-        $query = "INSERT INTO Poder (nombrePoder, daño, coste) VALUES (?, ?, ?)";
+        $query = "INSERT INTO Poder (nombrePoder, daño, coste, descripcion) VALUES (?, ?, ?, ?)";
         $statement = $conexion->getConn()->prepare($query);
 
         if ($statement !== false) {
-            $statement->bind_param("sii", $element[0], $element[1], $element[2]);
+            $statement->bind_param("siis", $element[0], $element[1], $element[2], $element[3]);
             $statement->execute();
         }
     }

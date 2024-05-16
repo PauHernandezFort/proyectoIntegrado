@@ -87,7 +87,7 @@ class Power extends Connection {
             if($datos !== false){
                 echo "<tr>";
                
-                echo "<td><strong>Nombre:</strong> $datos[0]  <strong>Daño:</strong> $datos[1]  <strong>Coste:</strong> $datos[2] </td>"; 
+                echo "<td><strong>Nombre:</strong> $datos[0] <strong>Daño:</strong> $datos[1] <strong>Coste:</strong> $datos[2] <strong>Descripcion:</strong> $datos[3]</td>"; 
                 echo "</tr>";
             }
 
