@@ -113,14 +113,9 @@ class Power extends Connection {
             $arrNombre[] = $row['nombrePoder']; 
         }
 
-        for($x = 0; $x <count($arrNombre); $x ++){
-            
-        }
-
-        var_dump($arrNombre[2]); 
-        //tengo que hacer un for que recorra el array de nombres y los vaya pasando por el new power
         
-        $output = ";";
+        
+        $output = "";
         
         foreach ($powers as $power){
             $output .= "<div class='card' style='width: 18rem;'>
@@ -135,7 +130,7 @@ class Power extends Connection {
                         </div>
                         </div>";
         }
-        
+        return $output;
        
     }
     
