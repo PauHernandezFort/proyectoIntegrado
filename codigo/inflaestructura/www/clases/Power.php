@@ -20,7 +20,7 @@ class Power extends Connection {
             $this->coste = $row['coste'];
             $this->descripcion = $row["descripcion"];
         } else {
-            echo "No rows found for $nombrePoder";
+          //  echo "No rows found for $nombrePoder";
         }
     }
 
@@ -76,6 +76,31 @@ class Power extends Connection {
         return $array;
         
     }
+
+
+    public function drawList(){
+        $poderes = fopen("poderes.csv", "r") or die("Unable to open file!");
+        echo "<table>"; 
+        while (!feof($poderes)){
+            $datos = fgetcsv($poderes);
+
+            if($datos !== false){
+                echo "<tr>";
+               
+                echo "<td><strong>Nombre:</strong> $datos[0]  <strong>Daño:</strong> $datos[1]  <strong>Coste:</strong> $datos[2] </td>"; 
+                echo "</tr>";
+            }
+
+
+    }
+    echo "</table>"; 
+    fclose($poderes); 
+
+}
+
+
+
+
 
 }
 
