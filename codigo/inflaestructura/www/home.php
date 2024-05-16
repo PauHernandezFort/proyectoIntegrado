@@ -45,7 +45,7 @@ echo $lineas;
         }
 
         body {
-            background-image: url('fondo.jpg');
+            background-image: url('fondo.jpeg');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: top center;
