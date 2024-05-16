@@ -20,7 +20,7 @@ $security->singUp();
 
 
 body {
-    background-image: url('45922.jpg');
+    background-image: url('singUp.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top center;
@@ -32,11 +32,11 @@ body {
 }
 
 #form_container {
-    width: 300px; /* Ancho deseado del formulario */
+    width: 300px;
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.8); /* Color de fondo del formulario con transparencia */
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra */
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px; 
+    
 }
 
 .form_description {
@@ -44,7 +44,7 @@ body {
 }
 
 .element input {
-    width: 100%; /* Los campos de entrada ocupan todo el ancho disponible */
+    width: 100%; 
 }
 
 .buttons {
@@ -52,7 +52,7 @@ body {
 }
 
 .button_text {
-    margin: 10px auto; /* Botón centrado horizontalmente con un pequeño margen superior e inferior */
+    margin: 10px auto; 
 }
 
 
