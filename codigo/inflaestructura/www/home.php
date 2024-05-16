@@ -1,7 +1,6 @@
 <?php
 require_once 'autoloader.php';
 $correo = $usuario = $_COOKIE['correo'];
-echo $correo;
 $conexion = new Connection;
 $conn = $conexion->getConn();
 $sql = "SELECT `nombre` FROM `Personaje` where `correocuenta` = '$correo'";
@@ -77,8 +76,8 @@ echo $lineas;
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ajustes</a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="#">Modificar Personaje</a></li>
-                  <li><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
-                  <li><a class="dropdown-item" href="#">Eliminar Cuenta</a></li>
+                  <li><a class="dropdown-item" href="login.php">Cerrar Sesion</a></li>
+                  <li><a class="dropdown-item" href="confirmacion.php">Eliminar Cuenta</a></li>
                 </ul>
               </li>
               <li class="nav-item">
