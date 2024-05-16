@@ -27,8 +27,9 @@ echo $lineas;
     <link href="logo.jpeg" rel="icon" type="image/x-icon">
     <link href="logo.jpeg" rel="apple-touch-icon" sizes="180x180">
     <link href="logo.jpeg" rel="icon" type="image/png">
-    <link href="home.css" rel="stylesheet">
     <meta name="theme-color" content="#343a40">
+    <link href="home.css" rel="stylesheet">
+    
 </head>
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
