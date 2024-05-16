@@ -79,29 +79,59 @@ class Power extends Connection {
 
 
     public function drawList(){
-        $poderes = fopen("poderes.csv", "r") or die("Unable to open file!");
-        echo "<table>"; 
-        while (!feof($poderes)){
-            $datos = fgetcsv($poderes);
+        $query = "SELECT * FROM Poder";
+        $result = mysqli_query($this->conn, $query);
+        $powers = []; 
+        $arrNombre = [];
+        
+        while ($row = mysqli_fetch_assoc($result)){
+            $powers[] = $row;
+            $arrNombre[] = $row['nombrePoder']; 
+        }
 
-            if($datos !== false){
-                echo "<tr>";
-               
-                echo "<td><strong>Nombre:</strong> $datos[0] <strong>Daño:</strong> $datos[1] <strong>Coste:</strong> $datos[2] <strong>Descripcion:</strong> $datos[3]</td>"; 
-                echo "</tr>";
-            }
+        for($x = 0; $x <count($arrNombre); $x ++){
+            
+        }
 
-
+        var_dump($arrNombre[2]); 
+        //tengo que hacer un for que recorra el array de nombres y los vaya pasando por el new power
+        
+        $output = ";";
+        
+        foreach ($powers as $power){
+            $output .= "<div class='card' style='width: 18rem;'>
+                        <div class='card-body'>
+                        <h5 class='card-title'>" . $power['nombrePoder'] . "</h5>
+                        <p class='card-text'>" . $power['descripcion'] . "</p>
+                        <div class='card-footer text-body-secondary'>
+                        <p class='card-text'>Daño: " . $power['daño'] . "</p>
+                        <p class='card-text'>Coste: " . $power['coste'] . "</p>
+                        </div>
+                        <a href='#' class='btn btn-primary'>Go somewhere</a>
+                        </div>
+                        </div>";
+        }
+        
+       
     }
-    echo "</table>"; 
-    fclose($poderes); 
-
+    
+    
+    
+    
+            
 }
 
 
 
 
 
-}
+
+
+
+
+
+
+
+
 
 ?>
