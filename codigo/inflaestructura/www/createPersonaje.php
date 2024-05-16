@@ -64,7 +64,7 @@ if(isset($_COOKIE['correo'])) {
     <select id="poder3" name="poder3">
     </select><br><br>
     
-    <input type="submit" value="Crear">
+    <input type="submit" value="Crear Personaje">
 </form>
 
 <script>

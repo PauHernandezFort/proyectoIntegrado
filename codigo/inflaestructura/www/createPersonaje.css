@@ -62,9 +62,11 @@ button {
     border-radius: 3px;
     color: #fff;
     cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
 }
 
 input[type="submit"]:hover,
 button:hover {
     background: #0056b3;
+    
 }
