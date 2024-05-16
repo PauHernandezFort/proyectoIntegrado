@@ -57,7 +57,13 @@ class Power extends Connection {
                 $poderes[] = $row;
             }
         }
-        return $poderes;
+        $array=[];
+       
+         for ($i=0; $i < count($poderes) ; $i++) { 
+            $array[$i]= $poderes[$i]['nombrePoder'];
+         }
+        
+        return $array;
         
     }
 
