@@ -16,7 +16,7 @@ require_once "autoloader.php";
     <div id="form_container">
     
         <h1><a>Nueva Tarea</a></h1>
-        <form class="appnitro" method="post" action="home.php">
+        <form class="appnitro" method="post" action="procesarPoder.php">
             <div class="form_description">
                 <h2>Nueva Tarea</h2>
                 <p>Introduce los datos de la tarea</p>
