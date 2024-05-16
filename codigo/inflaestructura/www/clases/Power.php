@@ -83,7 +83,7 @@ class Power extends Connection {
         echo "<table>"; 
         while (!feof($poderes)){
             $datos = fgetcsv($poderes);
-            $output=";"
+            $output=";";
             if($datos !== false){
             $output.="<div class='card'style='width: 18rem;''>
             <div class='card-body'>

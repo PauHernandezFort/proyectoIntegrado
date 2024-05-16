@@ -19,17 +19,21 @@ if(isset($_COOKIE['correo'])) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Crear Personaje</title>
 <link href="logo.jpeg" rel="icon" type="image/x-icon">
-    <link href="logo.jpeg" rel="apple-touch-icon" sizes="180x180">
-    <link href="logo.jpeg" rel="icon" type="image/png">
-    <meta name="theme-color" content="#343a40">
+<link href="logo.jpeg" rel="icon" type="image/png">
+<link href="logo.jpeg" rel="apple-touch-icon" sizes="180x180">
+<meta name="theme-color" content="#343a40">
+<link href="createPersonaje.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
 
+
+
+<form action="procesarCreacion.php" method="POST" onsubmit="return validarFormulario()">
 <h2>Crear Personaje</h2>
 <h3> Puntos disponibles: </h3>
 <h3 id="puntos">100</h3>
 
-<form action="procesarCreacion.php" method="POST" onsubmit="return validarFormulario()">
     <label for="nombre">Nombre:</label>
     <input type="text" id="nombre" name="nombre" required><br><br>
     
