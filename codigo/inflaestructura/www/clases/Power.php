@@ -76,7 +76,31 @@ class Power extends Connection {
         return $array;
         
     }
-
+    
+    
+    public function updatePower($nombre, $poder, $coste, $descripcion) {
+        
+        
+    
+        $query = "UPDATE Poder SET nombrePoder='$nombre', poder='$poder', coste='$coste',descripcion='$descripcion' WHERE nombrePoder=$nombre";
+        $resultado = $this->conn->query($query);
+    
+        if (!$resultado) {
+            
+          
+            die("Error en la consulta: " . $this->conn->error);
+        } 
+    }
+    public function findName($nombre) {
+        $query = "SELECT * FROM Poder WHERE nombrePoder = $nombre";
+        $resultado = $this->conn->query($query);
+        if ($resultado && $resultado->num_rows > 0) {
+            $row = $resultado->fetch_object();
+            return $row;
+        } else {
+            return null; 
+    }
+}
 
     public function drawList(){
         $query = "SELECT * FROM Poder";
