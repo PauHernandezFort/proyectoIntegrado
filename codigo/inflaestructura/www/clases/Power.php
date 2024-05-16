@@ -83,12 +83,19 @@ class Power extends Connection {
         echo "<table>"; 
         while (!feof($poderes)){
             $datos = fgetcsv($poderes);
-
+            $output=";"
             if($datos !== false){
-                echo "<tr>";
-               
-                echo "<td><strong>Nombre:</strong> $datos[0]  <strong>Daño:</strong> $datos[1]  <strong>Coste:</strong> $datos[2] </td>"; 
-                echo "</tr>";
+            $output.="<div class='card'style='width: 18rem;''>
+            <div class='card-body'>
+              <h5 class='card-title'>$datos[0]</h5>
+              <p class='card-text'>$datos[4]</p>
+              <div class='card-footer text-body-secondary'>
+              <p class='card-text'> $datos[1]</p>
+            </div>
+              <a href='#' class='btn btn-primary'>Go somewhere</a>
+            </div>
+          </div>";
+              
             }
 
 
