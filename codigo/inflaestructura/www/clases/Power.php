@@ -47,7 +47,6 @@ class Power extends Connection {
     public function setCoste($coste) {
         return $this->coste;
     }
-<<<<<<< HEAD
     public function getDescripcion() {
         return $this->descripcion;
     }
@@ -56,7 +55,6 @@ class Power extends Connection {
     }
 
    
-=======
     
     function getAllPowers(){
         $query = "SELECT nombrePoder FROM Poder";
@@ -79,7 +77,6 @@ class Power extends Connection {
         
     }
 
->>>>>>> 31841ab64b6d10f6a0b8dde16db354966b64e4ed
 }
 
 ?>
