@@ -21,5 +21,5 @@
     $result = mysqli_query($conn, $sql4);
 
     header("location: home.php");
-    //hola
+  
 ?>
