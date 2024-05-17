@@ -1,7 +1,7 @@
 <?php
 require_once 'autoloader.php';
 $correo = $usuario = $_COOKIE['correo'];
-$conexion = new Connection;
+$conexion = new Connection();
 $conn = $conexion->getConn();
 $sql = "SELECT `nombre` FROM `Personaje` where `correocuenta` = '$correo'";
 $result = mysqli_query($conn, $sql);
@@ -58,7 +58,7 @@ echo $lineas;
     </header>
 
     <a href="" class="fixed-button-left">
-        <button class="btn btn-primary">MODIFICAR PODERES</button>
+        <button class="btn btn-primary">MODIFICAR PERSONAJE</button>
     </a>
 
     <a href="" class="fixed-button-right">
