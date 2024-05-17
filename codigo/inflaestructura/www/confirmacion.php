@@ -38,4 +38,31 @@ if ($secure == 1) {
         <input type="submit" value="Ingresar">
     </form>
 </body>
+<<<<<<< HEAD
 </html>
+
+<?php
+require_once 'autoloader.php';
+$correo = $usuario = $_COOKIE['correo'];
+$conexion = new Connection;
+$conn = $conexion->getConn();
+$sql = "SELECT `contraseña` FROM `Cuenta` where `correo` = '$correo'";
+$result = mysqli_query($conn, $sql);
+$array = $result->fetch_array();
+$contraseña = $array[0];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $respuesta= $_POST['contraseña'];
+    echo $respuesta;
+    $secure = password_hash($respuesta, PASSWORD_DEFAULT);
+    echo $secure;
+if ($secure == $contraseña){
+
+    header("location: eliminarCuenta.php");
+}else{
+    echo"contraseña incorrecta";
+}
+    }
+?>
+=======
+</html>
+>>>>>>> 4f66b13e036ab100fe4742ce70669094fe5f0430

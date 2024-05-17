@@ -1,12 +1,20 @@
 <?php
 require_once 'autoloader.php';
-$correo = $_COOKIE['correo'];
-$conexion = new Connection;
-$conn = $conexion->getConn();
-$sql = "SELECT `nombre` FROM `Personaje` where `correocuenta` = '$correo'";
-$result = mysqli_query($conn, $sql);
-$lineas= mysqli_num_rows($result);
+if (isset($_COOKIE['correo'])) {
+    $correo = $usuario = $_COOKIE['correo'];
+    $conexion = new Connection;
+    $conn = $conexion->getConn();
+    $sql = "SELECT `nombre` FROM `Personaje` WHERE `correocuenta` = '$correo'";
+    $result = mysqli_query($conn, $sql);
+    $lineas = mysqli_num_rows($result);
+} else {
+   
+    $correo = '';
+    $lineas = 0;
+}
+
 echo $lineas;
+
 
 ?>
 
