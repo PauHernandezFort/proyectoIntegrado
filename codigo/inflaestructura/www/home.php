@@ -66,7 +66,7 @@ echo $lineas;
     </header>
 
     <a href="" class="fixed-button-left">
-        <button class="btn btn-primary">MODIFICAR PODERES</button>
+        <button class="btn btn-primary">MODIFICAR PERSONAJE</button>
     </a>
 
     <a href="" class="fixed-button-right">
