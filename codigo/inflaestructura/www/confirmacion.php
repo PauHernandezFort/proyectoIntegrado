@@ -20,21 +20,19 @@ $array = $result->fetch_array();
 $contraseña_bd = $array['contraseña'];
 
 $secure = 0;
-
+$error="";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $contraseña_usuario = $_POST['contraseña'];
 
     if (password_verify($contraseña_usuario, $contraseña_bd)) {
-        $secure = 1;
+            header("Location: eliminarCuenta.php");
+            exit; 
+        
     } else {
-        echo "<p class='error'>Contraseña incorrecta. Inténtalo de nuevo.</p>";
+       $error = "Contraseña incorrecta. Inténtalo de nuevo.";
     }
 }
 
-if ($secure == 1) {
-    header("Location: eliminarCuenta.php");
-    exit; 
-}
 ?>
 
 <!DOCTYPE html>
@@ -121,9 +119,16 @@ input[type="submit"]:hover {
         <h2>Ingresar Contraseña para Confirmar</h2>
         <form action="" method="POST">
             <label for="contraseña">Contraseña:</label>
+            <h3 id="error"></h3>
             <input type="password" id="contraseña" name="contraseña" required><br><br>
             <input type="submit" value="Ingresar">
         </form>
     </div>
+    <script>    
+   let error = <?php echo json_encode($error); ?>;
+   let text = document.getElementById('error');
+   text.innerHTML = error;
+   text.style.color = 'red';
+</script>
 </body>
 </html>

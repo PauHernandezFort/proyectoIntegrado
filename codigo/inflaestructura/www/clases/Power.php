@@ -99,6 +99,17 @@ class Power extends Connection {
     }
 }
 
+    public function deletepower($nombre){
+        $nombre = $this->conn = real_escape_string($nombre);
+        $query = "DELETE FROM Poder WHERE nombrePoder = '$nombre'";
+        $resultado = $this->conn->query($query);
+        if (!$resultado) {
+            die("Error en la consulta: " . $this->conn->error);
+        }
+        
+
+    }
+
     public function drawList(){
         $query = "SELECT * FROM Poder";
         $result = mysqli_query($this->conn, $query);
