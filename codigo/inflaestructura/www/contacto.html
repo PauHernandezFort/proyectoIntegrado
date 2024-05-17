@@ -10,55 +10,65 @@
     <link href="logo.jpeg" rel="icon" type="image/png">
     <link href="logo.jpeg" rel="apple-touch-icon" sizes="180x180">
     <meta name="theme-color" content="#343a40"> 
-
-    
-    
     <style>
-        body {
-            font-family: 'Press Start 2P', cursive;
-            background-color: #f8f9fa; 
-            color: #343a40;
-        }
-        h1 {
-            font-size: 2.5em;
-            text-align: center;
-            margin-top: 20px;
-            color: #dc3545;
-        }
-        .navbar {
-            background-color: #343a40;
-        }
-        .navbar-brand img {
-            width: 40px;
-            border-radius: 50%;
-        }
-        .container {
-            padding-top: 20px;
-            padding-bottom: 20px;
-        }
-        footer {
-            background-color: #343a40;
-            color: #ffffff;
-            padding: 20px 0;
-            text-align: center;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        .map-container {
-            margin-top: 20px;
-            text-align: center;
-        }
+    body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #f8f9fa; 
+    color: #343a40;
+    }
 
+    h1 {
+    font-size: 2.5em;
+    text-align: center;
+    margin-top: 20px;
+    color: #dc3545;
+    }
+
+    .navbar {
+    background-color: #343a40;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
+
+    .navbar-brand img {
+    width: 40px;
+    border-radius: 50%;
+    }
+
+    .navbar-brand h1 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #dc3545; 
+    }
+
+    .container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    }
+
+    footer {
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .map-container {
+    margin-top: 20px;
+    text-align: center;
+    }
     </style>
-</head>
+    </head>
 <body>
-    <header>
-        <h1>PoketGame</h1>
-    </header>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">      
-            <a class="navbar-brand">
+            <a class="navbar-brand" href="#">
                 <img src="logo.jpeg" alt="Avatar Logo">
+                <h1>PoketGame</h1>
             </a>
+            
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item dropdown">
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
