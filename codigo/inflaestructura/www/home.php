@@ -1,6 +1,6 @@
 <?php
 require_once 'autoloader.php';
-$correo = $usuario = $_COOKIE['correo'];
+$correo = $_COOKIE['correo'];
 $conexion = new Connection;
 $conn = $conexion->getConn();
 $sql = "SELECT `nombre` FROM `Personaje` where `correocuenta` = '$correo'";
@@ -25,12 +25,11 @@ echo $lineas;
 
     </style>
     <link href="logo.jpeg" rel="icon" type="image/x-icon">
-<link href="logo.jpeg" rel="icon" type="image/png">
-<link href="logo.jpeg" rel="apple-touch-icon" sizes="180x180">
-<meta name="theme-color" content="#343a40">
+    <link href="logo.jpeg" rel="apple-touch-icon" sizes="180x180">
+    <link href="logo.jpeg" rel="icon" type="image/png">
+    <meta name="theme-color" content="#343a40">
     <link href="home.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-
+    
 </head>
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -74,6 +73,10 @@ document.addEventListener("DOMContentLoaded", function() {
         let createPowerItem = document.createElement('li');
         createPowerItem.innerHTML = '<a class="dropdown-item" href="createPower.php">Crear Poderes</a>';
         dropdownMenu.appendChild(createPowerItem);
+        let editPowerItem = document.createElement('li');
+        editPowerItem.innerHTML = '<a class="dropdown-item" href="editPower.php">Editar poder</a>';
+        dropdownMenu.appendChild(editPowerItem);
+
     }
     if (lineas === 0) {
         let botonPelea = document.querySelector('.fixed-button-right');
