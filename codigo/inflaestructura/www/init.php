@@ -1,7 +1,7 @@
 <?php
 require_once "autoloader.php"; 
 
-$power = new Power("Escudo de Hielo"); 
+$power = new Power(""); 
 $htmlListaPoderes = $power->drawList(); 
 
 
