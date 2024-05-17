@@ -48,7 +48,7 @@
 <body id="main_body">
     <div id="form_container" class="container">
         <h1 class="text-center">Sign Up</h1>
-        <form class="appnitro" method="post" action="">
+        <form class="appnitro" method="post" action="login.php">
             <div class="form-group">
                 <label for="userName">User Name</label>
                 <input name="userName" class="form-control" type="text" maxlength="255" value="">
