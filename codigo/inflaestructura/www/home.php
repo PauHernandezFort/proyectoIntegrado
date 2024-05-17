@@ -6,6 +6,7 @@ $conn = $conexion->getConn();
 $sql = "SELECT `nombre` FROM `Personaje` where `correocuenta` = '$correo'";
 $result = mysqli_query($conn, $sql);
 $lineas= mysqli_num_rows($result);
+//hola
 echo $lineas;
 
 ?>
