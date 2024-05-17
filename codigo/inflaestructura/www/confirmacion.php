@@ -25,16 +25,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $contraseña_usuario = $_POST['contraseña'];
 
     if (password_verify($contraseña_usuario, $contraseña_bd)) {
-        $secure = 1;
+            header("Location: eliminarCuenta.php");
+            exit; 
+        
     } else {
        $error = "Contraseña incorrecta. Inténtalo de nuevo.";
     }
 }
 
-if ($secure == 1) {
-    header("Location: eliminarCuenta.php");
-    exit; 
-}
 ?>
 
 <!DOCTYPE html>
