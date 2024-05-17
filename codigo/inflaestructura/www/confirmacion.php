@@ -38,7 +38,6 @@ if ($secure == 1) {
         <input type="submit" value="Ingresar">
     </form>
 </body>
-<<<<<<< HEAD
 </html>
 
 <?php
@@ -63,6 +62,4 @@ if ($secure == $contraseña){
 }
     }
 ?>
-=======
 </html>
->>>>>>> 4f66b13e036ab100fe4742ce70669094fe5f0430
