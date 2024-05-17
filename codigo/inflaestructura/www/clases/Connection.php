@@ -7,6 +7,7 @@ class Connection
     private $password;
     private $db;    
     protected $conn;
+    //hola
     protected $configFile = "conf.csv";
 
     public function __construct()
