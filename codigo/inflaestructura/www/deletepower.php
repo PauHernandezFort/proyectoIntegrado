@@ -37,6 +37,7 @@ if(isset($_GET['nombrePoder']) && !empty($_GET['nombrePoder'])) {
         function eliminarPoder() {
             var nombrePoder = document.getElementById("nombrePoder").value;
         }
+        // no se seguir
     </script>
 </body>
 </html>
