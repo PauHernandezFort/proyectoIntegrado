@@ -1,13 +1,26 @@
 <?php
 require_once 'autoloader.php';
-$secure = 0;
-$correo = $usuario = $_COOKIE['correo'];
+
+session_start();
+
+if (!isset($_COOKIE['correo'])) {
+    echo "No estás autenticado.";
+    exit;
+}
+
+$correo = $_COOKIE['correo'];
 $conexion = new Connection;
 $conn = $conexion->getConn();
-$sql = "SELECT `contraseña` FROM `Cuenta` WHERE `correo` = '$correo'";
-$result = mysqli_query($conn, $sql);
+$sql = "SELECT `contraseña` FROM `Cuenta` WHERE `correo` = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $correo);
+$stmt->execute();
+$result = $stmt->get_result();
 $array = $result->fetch_array();
-$contraseña_bd = $array[0];
+$contraseña_bd = $array['contraseña'];
+
+$secure = 0;
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $contraseña_usuario = $_POST['contraseña'];
 
@@ -17,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Contraseña incorrecta. Inténtalo de nuevo.";
     }
 }
+
 if ($secure == 1) {
     header("Location: eliminarCuenta.php");
     exit; 
