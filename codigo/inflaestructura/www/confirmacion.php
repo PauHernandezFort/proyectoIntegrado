@@ -7,6 +7,7 @@ if (!isset($_COOKIE['correo'])) {
     echo "No estás autenticado.";
     exit;
 }
+//
 
 $correo = $_COOKIE['correo'];
 $conexion = new Connection;
