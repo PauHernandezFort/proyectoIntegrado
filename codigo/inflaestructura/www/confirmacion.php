@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $respuesta= $_POST['contraseña'];
     echo $respuesta;
     $secure = password_hash($respuesta, PASSWORD_DEFAULT);
-    echo $secure
+    echo $secure;
 if ($secure == $contraseña){
 
     header("location: eliminarCuenta.php");
