@@ -1,8 +1,13 @@
 <?php
+require_once 'autoloader.php';
 $correo = $usuario = $_COOKIE['correo'];
-echo $correo;
+$correo = $_COOKIE['correo'];
+$conexion = new Connection;
+$conn = $conexion->getConn();
+$sql = "SELECT `nombre` FROM `Personaje` where `correocuenta` = '$correo'";
+$result = mysqli_query($conn, $sql);
+$lineas= mysqli_num_rows($result);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,64 +19,28 @@ echo $correo;
     
     <title>Home</title>
     <style>
-        .fixed-button-left {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 1000;
-        }
-
-        .fixed-button-right {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-
-        h1 {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 3em;
-            text-align: center;
-            margin-top: 20px;
-            color: white;
-        }
-
-        body {
-            background-image: url('fondo.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: top center;
-            margin: 0; 
-            padding-top: 56px; 
-        }
-        
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-
+      
     </style>
     <link href="logo.jpeg" rel="icon" type="image/x-icon">
     <link href="logo.jpeg" rel="apple-touch-icon" sizes="180x180">
     <link href="logo.jpeg" rel="icon" type="image/png">
     <meta name="theme-color" content="#343a40">
+    <link href="home.css" rel="stylesheet">
+    
 </head>
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand">
-                <img src="logo.jpeg" alt="Avatar Logo" style="width:40px;" class="rounded-pill"> 
+            <a class="navbar-brand" href="home.php">
+                <img src="logo.jpeg" alt="Avatar Logo" style="width:40px;" class="rounded-pill" > 
             </a>
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ajustes</a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="#">Modificar Personaje</a></li>
-                  <li><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
-                  <li><a class="dropdown-item" href="#">Eliminar Cuenta</a></li>
-                  <li><a class="dropdown-item" href="createPersonaje.php">Crear Personaje</a></li>
+                  <li><a class="dropdown-item" href="login.php">Cerrar Sesion</a></li>
+                  <li><a class="dropdown-item" href="confirmacion.php">Eliminar Cuenta</a></li>
                 </ul>
               </li>
               <li class="nav-item">
@@ -80,17 +49,36 @@ echo $correo;
             </ul>
         </div>
     </nav>
-
     <header>
         <h1>PoketGame</h1>
     </header>
-
     <a href="" class="fixed-button-left">
         <button class="btn btn-primary">MODIFICAR PODERES</button>
     </a>
-
     <a href="" class="fixed-button-right">
         <button class="btn btn-success">EMPEZAR BATALLA</button>
     </a>
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+    let correo = <?php echo json_encode($correo); ?>;
+    let lineas = <?php echo json_encode($lineas); ?>;
+    if (correo === 'admin.com') {
+        let dropdownMenu = document.querySelector('.dropdown-menu');
+        let createPowerItem = document.createElement('li');
+        createPowerItem.innerHTML = '<a class="dropdown-item" href="createPower.php">Crear Poderes</a>';
+        dropdownMenu.appendChild(createPowerItem);
+        let editPowerItem = document.createElement('li');
+        editPowerItem.innerHTML = '<a class="dropdown-item" href="editPower.php">Editar poder</a>';
+        dropdownMenu.appendChild(editPowerItem);
+
+    }
+    if (lineas === 0) {
+        let botonPelea = document.querySelector('.fixed-button-right');
+        botonPelea.innerText = 'CREAR PERSONAJE';
+        botonPelea.setAttribute('href', 'createPersonaje.php');
+        botonPelea.classList.add('btn', 'btn-success');
+    }
+});
+</script>
 </body>
 </html>

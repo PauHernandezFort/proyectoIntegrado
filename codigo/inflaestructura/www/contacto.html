@@ -20,9 +20,7 @@
             color: #343a40;
         }
         h1 {
-            font-size: 2.5em;
-            text-align: center;
-            margin-top: 20px;
+            
             color: #dc3545;
         }
         .navbar {
@@ -51,26 +49,15 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>PoketGame</h1>
-    </header>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">      
-            <a class="navbar-brand">
+            <a class="navbar-brand" href="home.php">
                 <img src="logo.jpeg" alt="Avatar Logo">
             </a>
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item dropdown">
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </li>
-            </ul>
+            <a style="text-align: center; width: 100%;"><h1>PoketGame</h1></a>
         </div>
     </nav>
+    
     <div class="container">
         <h2 class="text-center">Escriba usted la opinión sobre nuestros servicios</h2>
         <form>
@@ -84,13 +71,13 @@
             </div>
             <div class="mb-3">
                 <label for="opinion">Opinión:</label><br>
-                <textarea id="opinion" name="opinion" rows="6" cols="30"></textarea><br><br>
-                <input type="submit" value="Enviar">
+                <textarea id="opinion" name="opinion" rows="6" cols="30"></textarea><br><br>  
             </div>
             <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="terminos" required>
                 <label class="form-check-label" for="terminos">Acepto los términos y condiciones</label>
             </div>
+            <input type="submit" value="Enviar">
         </form>
     </div>
     <footer class="bg-dark text-white py-5">
@@ -116,7 +103,7 @@
                 <div class="col-md-6">
                     <h5>Ubicación:</h5>
                     <div class="map-container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3080.2288896330933!2d-0.38773362452058746!3d39.464157513065395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd604f380563a1bd%3A0x7dbaaae6fd694d48!2sC%2F%20de%20Jes%C3%BAs%2C%2046007%20Valencia!5e0!3m2!1ses!2ses!4v1715766354597!5m2!1ses!2ses" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5180.779040256451!2d-0.4057564291686979!3d39.457813696284504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd604f115cb0054f%3A0x289d5c5d22559040!2sAv.%20de%20les%20Tres%20Creus%2C%20Patraix%2C%20Val%C3%A8ncia!5e0!3m2!1ses!2ses!4v1715943368161!5m2!1ses!2ses" width="400" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
