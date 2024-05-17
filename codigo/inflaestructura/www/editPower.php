@@ -1,6 +1,7 @@
 <?php
 require_once "autoloader.php";
 $power = new Power("polla");
+$array = $power->getAllPowers();
 
 if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["nombrePoder"])) {
     $power_name = $_GET["nombrePoder"];
@@ -14,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $coste = $_POST["coste"];
     $descripcion = $_POST["descripcion"];
     
-    $power->updateTarea($nombre, $daño, $coste, $descripcion);
+    $power->updatePower($nombre, $daño, $coste, $descripcion);
 
     header("Location: home.php");
     exit(); 
@@ -70,8 +71,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <h1>Editar Poder</h1>
         <form method="POST" action="">
             <div class="form-group">
-                <label for="nombrePoder">Nombre del Poder:</label>
-                <input type="text" class="form-control" id="nombrePoder" name="nombrePoder" required>
+            <label for="nombrePoder">Nombre poder:</label>
+             <select id="nombrePoder" name="nombrePoder">
+            </select><br><br>
             </div>
             <div class="form-group">
                 <label for="daño">Daño:</label>
@@ -88,5 +90,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <button type="submit" class="btn btn-primary">Actualizar Poder</button>
         </form>
     </div>
+    <script>
+var poderes = <?php echo json_encode($array); ?>;
+
+window.onload = agregarPoderes;
+
+function agregarPoderes() {
+    for (var i = 0; i < poderes.length; i++) {
+        var option = document.createElement("option");
+        option.text = poderes[i];
+        option.value = poderes[i];
+        var selectPoder1 = document.getElementById("nombrePoder");
+        selectPoder1.add(option.cloneNode(true));
+   
+    }
+}
+
+
+</script>
 </body>
 </html>
