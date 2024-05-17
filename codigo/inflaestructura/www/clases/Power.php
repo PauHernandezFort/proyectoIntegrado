@@ -105,8 +105,10 @@ class Power extends Connection {
         $resultado = $this->conn->query($query);
         if (!$resultado) {
             die("Error en la consulta: " . $this->conn->error);
+        }else{
+            return true;
         }
-        
+
 
     }
 
