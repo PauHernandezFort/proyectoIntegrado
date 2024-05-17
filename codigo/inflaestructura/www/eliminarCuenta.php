@@ -28,12 +28,6 @@ $stmt->bind_param("s", $correo);
 $stmt->execute();
 $stmt->close();
 
-$sql = "DELETE FROM `Poder` WHERE `nombrePoder` = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $correo);
-$stmt->execute();
-$stmt->close();
-
 $conn->commit();
 setcookie('correo', '', time() - 3600, '/');
 
