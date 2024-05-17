@@ -23,6 +23,5 @@ if ($gestor !== false) {
     echo "Failed to open file.";
 }
 
-
-
+//buenas
 ?>

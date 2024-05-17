@@ -1,16 +1,15 @@
 <?php
 require_once 'autoloader.php';
 $correo = $usuario = $_COOKIE['correo'];
-$conexion = new Connection();
+$correo = $_COOKIE['correo'];
+$conexion = new Connection;
 $conn = $conexion->getConn();
 $sql = "SELECT `nombre` FROM `Personaje` where `correocuenta` = '$correo'";
 $result = mysqli_query($conn, $sql);
 $lineas= mysqli_num_rows($result);
 //hola
 echo $lineas;
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +22,6 @@ echo $lineas;
     <title>Home</title>
     <style>
       
-
     </style>
     <link href="logo.jpeg" rel="icon" type="image/x-icon">
     <link href="logo.jpeg" rel="apple-touch-icon" sizes="180x180">
@@ -53,15 +51,12 @@ echo $lineas;
             </ul>
         </div>
     </nav>
-
     <header>
         <h1>PoketGame</h1>
     </header>
-
     <a href="" class="fixed-button-left">
-        <button class="btn btn-primary">MODIFICAR PERSONAJE</button>
+        <button class="btn btn-primary">MODIFICAR PODERES</button>
     </a>
-
     <a href="" class="fixed-button-right">
         <button class="btn btn-success">EMPEZAR BATALLA</button>
     </a>
@@ -74,6 +69,10 @@ document.addEventListener("DOMContentLoaded", function() {
         let createPowerItem = document.createElement('li');
         createPowerItem.innerHTML = '<a class="dropdown-item" href="createPower.php">Crear Poderes</a>';
         dropdownMenu.appendChild(createPowerItem);
+        let editPowerItem = document.createElement('li');
+        editPowerItem.innerHTML = '<a class="dropdown-item" href="editPower.php">Editar poder</a>';
+        dropdownMenu.appendChild(editPowerItem);
+
     }
     if (lineas === 0) {
         let botonPelea = document.querySelector('.fixed-button-right');
