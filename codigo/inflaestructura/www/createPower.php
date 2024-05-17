@@ -43,6 +43,13 @@
 </style>
 </head>
 <body id="main_body">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">      
+            <a class="navbar-brand" href="home.php">
+                <img src="logo.jpeg" alt="Avatar Logo" class="d-inline-block align-top" style="height: 40px;">
+            </a>
+        </div>
+    </nav>
     <div id="form_container">
         <h1>Nuevo Poder</h1>
         <form class="appnitro" method="post" action="procesarPoder.php">
