@@ -1,14 +1,20 @@
 <?php
 require_once 'autoloader.php';
+if (isset($_COOKIE['correo'])) {
+    $correo = $usuario = $_COOKIE['correo'];
+    $conexion = new Connection;
+    $conn = $conexion->getConn();
+    $sql = "SELECT `nombre` FROM `Personaje` WHERE `correocuenta` = '$correo'";
+    $result = mysqli_query($conn, $sql);
+    $lineas = mysqli_num_rows($result);
+} else {
+   
+    $correo = '';
+    $lineas = 0;
+}
 
-
-$correo = $usuario = $_COOKIE['correo'];
-$conexion = new Connection;
-$conn = $conexion->getConn();
-$sql = "SELECT `nombre` FROM `Personaje` where `correocuenta` = '$correo'";
-$result = mysqli_query($conn, $sql);
-$lineas= mysqli_num_rows($result);
 echo $lineas;
+
 
 ?>
 
@@ -75,6 +81,10 @@ document.addEventListener("DOMContentLoaded", function() {
         let createPowerItem = document.createElement('li');
         createPowerItem.innerHTML = '<a class="dropdown-item" href="createPower.php">Crear Poderes</a>';
         dropdownMenu.appendChild(createPowerItem);
+        let editPowerItem = document.createElement('li');
+        editPowerItem.innerHTML = '<a class="dropdown-item" href="editPower.php">Editar poder</a>';
+        dropdownMenu.appendChild(editPowerItem);
+
     }
     if (lineas === 0) {
         let botonPelea = document.querySelector('.fixed-button-right');

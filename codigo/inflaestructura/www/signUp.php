@@ -1,3 +1,10 @@
+<?php
+require_once "autoloader.php";
+$security = new Security();
+$security->singUp();
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -54,23 +61,35 @@
 <body id="main_body">
     <div id="form_container" class="container">
         <h1 class="text-center">Sign Up</h1>
-        <form class="appnitro" method="post" action="login.php">
-            <div class="form-group">
-                <label for="userName">User Name</label>
-                <input name="userName" class="form-control" type="text" maxlength="255" value="" />
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input name="email" class="form-control" type="text" maxlength="255" value="" />
-            </div>
-            <div class="form-group">
-                <label for="userPassword">User Password</label>
-                <input name="userPassword" class="form-control" type="password" maxlength="255" value="" />
-            </div>
-            <div class="buttons">
-                <input id="saveForm" class="btn btn-primary" type="submit" name="submit" value="Log In" />
-            </div>
-        </form>
+        <form class="appnitro" method="post" action="">
+					<div class="form_description">
+			<p></p>
+		</div>
+			<ul >
+
+					<li id="li_1" >
+		<label class="description" for="userName">User Name </label>
+		<div>
+			<input name="userName" class="" type="text" maxlength="255" value=""/>
+		</div>
+
+        <label class="description" for="email">Email </label>
+    <div>
+	<input name="email" class="" type="text" maxlength="255" value=""/>
+    </div>
+
+		<label class="description" for="userPassword">User Password </label>
+		<div>
+			<input name="userPassword" class="element text medium" type="password" maxlength="255" value=""/>
+		</div>
+		</li>
+
+					<li class="buttons">
+
+				<input id="saveForm" class="button_text" type="submit" name="submit" value="Log In" />
+		</li>
+			</ul>
+		</form>
     </div>
 </body>
 
