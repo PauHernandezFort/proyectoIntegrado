@@ -71,6 +71,7 @@ $loginMessage = $security->doLogin();
                 <input name="userPassword" type="password" class="form-control" maxlength="255" value="">
             </div>
             <button type="submit" name="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
+            <button type="button" name="submit" class="btn btn-primary btn-block" onclick="window.location.href='signUp.php'">Registrarse</button>
         </form>
     </div>
 </body>
