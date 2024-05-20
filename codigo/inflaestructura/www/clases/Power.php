@@ -21,6 +21,7 @@ class Power extends Connection {
             $this->descripcion = $row["descripcion"];
         } else {
           
+          //  cho "No rows found for $nombrePoder";
         }
     }
 
