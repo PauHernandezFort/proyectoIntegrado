@@ -38,7 +38,6 @@ $lineas= mysqli_num_rows($result);
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ajustes</a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Modificar Personaje</a></li>
                   <li><a class="dropdown-item" href="login.php">Cerrar Sesion</a></li>
                   <li><a class="dropdown-item" href="confirmacion.php">Eliminar Cuenta</a></li>
                 </ul>
@@ -52,8 +51,8 @@ $lineas= mysqli_num_rows($result);
     <header>
         <h1>PoketGame</h1>
     </header>
-    <a href="" class="fixed-button-left">
-        <button class="btn btn-primary">MODIFICAR PODERES</button>
+    <a href="modificarPersonaje.php" class="fixed-button-left">
+        <button class="btn btn-primary">MODIFICAR PERSONAJE</button>
     </a>
     <a href="" class="fixed-button-right">
         <button class="btn btn-success">EMPEZAR BATALLA</button>
@@ -77,6 +76,11 @@ document.addEventListener("DOMContentLoaded", function() {
         botonPelea.innerText = 'CREAR PERSONAJE';
         botonPelea.setAttribute('href', 'createPersonaje.php');
         botonPelea.classList.add('btn', 'btn-success');
+
+        let botonModificar = document.querySelector('.fixed-button-left');
+        botonModificar .innerText = 'CREAR PERSONAJE';
+        botonModificar .setAttribute('href', 'createPersonaje.php');
+        botonModificar .classList.add('btn', 'btn-primary');
     }
 });
 </script>
