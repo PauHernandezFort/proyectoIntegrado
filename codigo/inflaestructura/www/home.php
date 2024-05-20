@@ -38,7 +38,7 @@ $lineas= mysqli_num_rows($result);
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ajustes</a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Modificar Personaje</a></li>
+                  <li><a class="dropdown-item" href="modificarPersonaje.php">Modificar Personaje</a></li>
                   <li><a class="dropdown-item" href="login.php">Cerrar Sesion</a></li>
                   <li><a class="dropdown-item" href="confirmacion.php">Eliminar Cuenta</a></li>
                 </ul>
