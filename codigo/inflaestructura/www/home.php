@@ -1,15 +1,13 @@
 <?php
 require_once 'autoloader.php';
+$correo = $usuario = $_COOKIE['correo'];
 $correo = $_COOKIE['correo'];
 $conexion = new Connection;
 $conn = $conexion->getConn();
 $sql = "SELECT `nombre` FROM `Personaje` where `correocuenta` = '$correo'";
 $result = mysqli_query($conn, $sql);
 $lineas= mysqli_num_rows($result);
-echo $lineas;
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +20,6 @@ echo $lineas;
     <title>Home</title>
     <style>
       
-
     </style>
     <link href="logo.jpeg" rel="icon" type="image/x-icon">
     <link href="logo.jpeg" rel="apple-touch-icon" sizes="180x180">
@@ -34,14 +31,14 @@ echo $lineas;
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand">
-                <img src="logo.jpeg" alt="Avatar Logo" style="width:40px;" class="rounded-pill"> 
+            <a class="navbar-brand" href="home.php">
+                <img src="logo.jpeg" alt="Avatar Logo" style="width:40px;" class="rounded-pill" > 
             </a>
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ajustes</a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Modificar Personaje</a></li>
+                  <li><a class="dropdown-item" href="modificarPersonaje.php">Modificar Personaje</a></li>
                   <li><a class="dropdown-item" href="login.php">Cerrar Sesion</a></li>
                   <li><a class="dropdown-item" href="confirmacion.php">Eliminar Cuenta</a></li>
                 </ul>
@@ -52,15 +49,12 @@ echo $lineas;
             </ul>
         </div>
     </nav>
-
     <header>
         <h1>PoketGame</h1>
     </header>
-
     <a href="" class="fixed-button-left">
         <button class="btn btn-primary">MODIFICAR PODERES</button>
     </a>
-
     <a href="" class="fixed-button-right">
         <button class="btn btn-success">EMPEZAR BATALLA</button>
     </a>

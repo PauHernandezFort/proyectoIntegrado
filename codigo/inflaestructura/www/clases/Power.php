@@ -20,7 +20,7 @@ class Power extends Connection {
             $this->coste = $row['coste'];
             $this->descripcion = $row["descripcion"];
         } else {
-            echo "pdoer no encontrado: $nombrePoder";
+          //  echo "No rows found for $nombrePoder";
         }
     }
 
@@ -99,37 +99,68 @@ class Power extends Connection {
     }
 }
 
-    public function drawList(){
-        $poderes = fopen("poderes.csv", "r") or die("Unable to open file!");
-        echo "<table>"; 
-        while (!feof($poderes)){
-            $datos = fgetcsv($poderes);
-            $output=";";
-            if($datos !== false){
-            $output.="<div class='card'style='width: 18rem;''>
-            <div class='card-body'>
-              <h5 class='card-title'>$datos[0]</h5>
-              <p class='card-text'>$datos[4]</p>
-              <div class='card-footer text-body-secondary'>
-              <p class='card-text'> $datos[1]</p>
-            </div>
-              <a href='#' class='btn btn-primary'>Go somewhere</a>
-            </div>
-          </div>";
-              
-            }
+    public function deletepower($nombre){
+        $nombre = $this->conn = real_escape_string($nombre);
+        $query = "DELETE FROM Poder WHERE nombrePoder = '$nombre'";
+        $resultado = $this->conn->query($query);
+        if (!$resultado) {
+            die("Error en la consulta: " . $this->conn->error);
+        }else{
+            return true;
+        }
 
 
     }
-    echo "</table>"; 
-    fclose($poderes); 
 
+    public function drawList(){
+        $query = "SELECT * FROM Poder";
+        $result = mysqli_query($this->conn, $query);
+        $powers = []; 
+        $arrNombre = [];
+        
+        while ($row = mysqli_fetch_assoc($result)){
+            $powers[] = $row;
+            $arrNombre[] = $row['nombrePoder']; 
+        }
+
+        
+        
+        $output = "";
+        
+        foreach ($powers as $power){
+            $output .= "<div class='card' style='width: 18rem;'>
+                        <div class='card-body'>
+                        <h5 class='card-title'>" . $power['nombrePoder'] . "</h5>
+                        <p class='card-text'>" . $power['descripcion'] . "</p>
+                        <div class='card-footer text-body-secondary'>
+                        <p class='card-text'>Daño: " . $power['daño'] . "</p>
+                        <p class='card-text'>Coste: " . $power['coste'] . "</p>
+                        </div>
+                        <a href='#' class='btn btn-primary'>Go somewhere</a>
+                        </div>
+                        </div>";
+        }
+        return $output;
+       
+    }
+    
+    
+    
+    
+            
 }
 
 
 
 
 
-}
+
+
+
+
+
+
+
+
 
 ?>

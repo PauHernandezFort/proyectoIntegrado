@@ -48,7 +48,7 @@ class Security extends Connection
 
                  header("Location: " . $this->homePage);
              } else {
-                 echo"Incorrect email or Password";
+                 return"Incorrect email or Password";
              }
          } else {
              return null;
@@ -72,6 +72,7 @@ class Security extends Connection
              return false;
          }
      }
+     //
 
      private function checkPassword($securePassword, $userPassword)
      {

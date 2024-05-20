@@ -4,7 +4,6 @@ $security = new Security();
 $loginMessage = $security->doLogin();
 ?>
 
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -70,9 +69,17 @@ $loginMessage = $security->doLogin();
                 <label for="userPassword">Contraseña:</label>
                 <input name="userPassword" type="password" class="form-control" maxlength="255" value="">
             </div>
+            <h4 id="error" text-color="red"></h4>
             <button type="submit" name="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
+            <button type="button" name="submit" class="btn btn-primary btn-block" onclick="window.location.href='signUp.php'">Registrarse</button>
         </form>
     </div>
 </body>
+<script>    
+   let error = <?php echo json_encode($loginMessage); ?>;
+   let text = document.getElementById('error');
+   text.innerHTML = error;
+   text.style.color = 'red';
+</script>
 
 </html>
