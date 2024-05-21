@@ -26,7 +26,7 @@ $power = new Power("");
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="text-center mb-4">Cartas de Poder</h1>
+    <h1 class="text-center mb-4 text-white">Cartas de Poder</h1>
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <?php
             $htmlListaPoderes = $power->drawList(); 
@@ -34,11 +34,8 @@ $power = new Power("");
             ?>
         </div>
         <a href="home.php" class="fixed-button-left">
-        <button class="btn btn-primary">VOLVER</button>
+        <button class="btn btn-primary">RETURN</button>
     </a>
     </div>
 </body>
 </html>
-?>
-
-?>

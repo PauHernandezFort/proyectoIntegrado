@@ -6,6 +6,7 @@ $array = $poderes->getAllPowers();
 
 if (isset($_COOKIE['correo'])) {
     $usuario = $_COOKIE['correo'];
+    
 } else {
     echo "Error inesperado, vuelve a iniciar sesión";
     exit();
