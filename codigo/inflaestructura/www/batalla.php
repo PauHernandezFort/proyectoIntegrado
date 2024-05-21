@@ -1,11 +1,37 @@
 <?php
 
-$nombrePoder1j1 = "fumar";
-$nombrePoder2j1 = "saltar";
-$nombrePoder3j1 = "golpear";
-$nombrePoder1j2 = "morder";
-$nombrePoder2j2 = "patear";
-$nombrePoder3j2 = "empujar";
+require_once 'autoloader.php';
+
+$conexion = new Connection(); 
+$conn = $conexion->getConn(); 
+
+$query = "SELECT * FROM `PersonajePoder`"; 
+$result = mysqli_query($conn, $query); 
+
+
+$poderes = array(); 
+
+if ($result->num_rows > 0) { 
+    while ($row = mysqli_fetch_assoc($result)) {
+        $poderes[] = $row;
+    }
+}
+
+$arrayPoderes = []; 
+
+foreach($poderes as $poder){
+   array_push($arrayPoderes, $poder['nombrePoder']); 
+}
+
+
+
+
+$nombrePoder1j1 = $arrayPoderes[0];
+$nombrePoder2j1 = $arrayPoderes[1];
+$nombrePoder3j1 = $arrayPoderes[2];
+$nombrePoder1j2 = $arrayPoderes[3];
+$nombrePoder2j2 = $arrayPoderes[4];
+$nombrePoder3j2 = $arrayPoderes[5];
 
 
 $vidaj1 = 100;
@@ -23,6 +49,7 @@ $energiaj2 = 50;
     <title>Batalla</title>
     <style>
        body {
+        background-image: url('escenariobatalla1.jpg');
         margin: 0;
         padding: 0;
         display: flex;
@@ -111,20 +138,26 @@ $energiaj2 = 50;
         let turno = 1;
 
         function botonClickeado(poder, jugador) {
-            if (poder === "fumar") {
+            if (poder.trim() === "<?php echo $arrayPoderes[0]; ?>") {
                 fumar(turno, jugador);
-            } else if (poder === "saltar") {
-                // Lógica para el poder "saltar"
-            } else if (poder === "golpear") {
-                // Lógica para el poder "golpear"
-            } else if (poder === "morder") {
+                // Lógica para el poder 1
+            } else if (poder.trim() === "<?php echo $arrayPoderes[1]; ?>") {
+                fumar(turno, jugador);
+                // Lógica para el poder 2
+            } else if (poder.trim() === "<?php echo $arrayPoderes[2]; ?>") {
+                fumar(turno, jugador);
+                // Lógica para el poder 3
+            } else if (poder.trim() === "<?php echo $arrayPoderes[3]; ?>") {
                 morder(turno, jugador);
-            } else if (poder === "patear") {
-                // Lógica para el poder "patear"
-            } else if (poder === "empujar") {
-                // Lógica para el poder "empujar"
-            }
+                // Lógica para el poder 4
+            } else if (poder.trim() === "<?php echo $arrayPoderes[4]; ?>") {
+                morder(turno, jugador);
+                // Lógica para el poder 5
+            } else if (poder.trim() === "<?php echo $arrayPoderes[5]; ?>") {
+                morder(turno, jugador);
+                // Lógica para el poder 6
         }
+    }
 
         function cambiarTamaño(nuevo, jugador) {
             turno += 1;

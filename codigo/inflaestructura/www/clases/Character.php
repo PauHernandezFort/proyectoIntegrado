@@ -85,19 +85,7 @@ class Character extends Connection
         }
 
     */
-    function updateCharacter( $energia, $vida, $daño)
-    {
-        $query = "UPDATE Personaje SET `energia`='$energia',`vida`='$vida',`daño`='$daño' ";
-        $resultado = $this->conn->query($query);
-
-        if (!$resultado) {
-
-
-            die("Error en la consulta: " . $this->conn->error);
-        }
-
-
-    }
+   
  
     function getAllCharacters(){
         $query = "SELECT nombre FROM Personaje";
