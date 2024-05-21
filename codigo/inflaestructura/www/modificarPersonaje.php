@@ -1,10 +1,8 @@
 <?php
 require_once "autoloader.php";
 
-
 $poderes = new Power("Poder1");
 $array = $poderes->getAllPowers();
-
 
 if (isset($_COOKIE['correo'])) {
     $usuario = $_COOKIE['correo'];
@@ -12,7 +10,6 @@ if (isset($_COOKIE['correo'])) {
     echo "Error inesperado, vuelve a iniciar sesión";
     exit();
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +33,7 @@ if (isset($_COOKIE['correo'])) {
             background-position: center;
             background-attachment: fixed;
             margin: 0;
-            padding-top: 70px; /* Add padding to avoid content hiding behind the navbar */
+            padding-top: 70px;
         }
         .form-container {
             display: flex;
@@ -56,6 +53,11 @@ if (isset($_COOKIE['correo'])) {
             top: 0;
             width: 100%;
             z-index: 1000;
+        }
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -83,37 +85,35 @@ if (isset($_COOKIE['correo'])) {
                     <label for="daño">Daño:</label>
                     <input type="number" id="daño" name="daño" class="form-control" required>
                 </div>
-                <label for="poder1">Poder1:</label>
-            <select id="poder1" name="poder1">
-            </select><br><br>
-
-             <label for="poder2">Poder 2:</label>
-            <select id="poder2" name="poder2">
-             </select><br><br>
-
-                 <label for="poder3">Poder 3:</label>
-             <select id="poder3" name="poder3">
-                </select><br><br>
+                <div class="form-group">
+                    <label for="poder1">Poder1:</label>
+                    <select id="poder1" name="poder1" class="form-control"></select>
+                </div>
+                <div class="form-group">
+                    <label for="poder2">Poder 2:</label>
+                    <select id="poder2" name="poder2" class="form-control"></select>
+                </div>
+                <div class="form-group">
+                    <label for="poder3">Poder 3:</label>
+                    <select id="poder3" name="poder3" class="form-control"></select>
+                </div>
+                <div id="error-message" class="error-message"></div>
                 <button type="submit" class="btn btn-primary btn-block">Update Character</button>
             </form>
         </div>
     </div>
     <script>
-         var poderes = <?php echo json_encode($array); ?>;
-         window.onload = agregarPoderes;
-         function agregarPoderes() {
+        var poderes = <?php echo json_encode($array); ?>;
+        window.onload = agregarPoderes;
+        function agregarPoderes() {
             for (var i = 0; i < poderes.length; i++) {
                 var option = document.createElement("option");
                 option.text = poderes[i];
                 option.value = poderes[i];
 
-                var selectPoder1 = document.getElementById("poder1");
-                var selectPoder2 = document.getElementById("poder2");
-                var selectPoder3 = document.getElementById("poder3");
-
-                selectPoder1.add(option.cloneNode(true));
-                selectPoder2.add(option.cloneNode(true));
-                selectPoder3.add(option.cloneNode(true));
+                document.getElementById("poder1").add(option.cloneNode(true));
+                document.getElementById("poder2").add(option.cloneNode(true));
+                document.getElementById("poder3").add(option.cloneNode(true));
             }
         }
         function validarFormulario() {
@@ -125,13 +125,16 @@ if (isset($_COOKIE['correo'])) {
             var poder2 = document.getElementById("poder2").value;
             var poder3 = document.getElementById("poder3").value;
 
-            if (danio + energia + vida !== 100) {
-                alert("La suma de los campos de daño, energía y vida debe ser igual a 100.");
+            var errorMessage = document.getElementById("error-message");
+            errorMessage.textContent = "";
+
+            if (daño + energia + vida !== 100) {
+                errorMessage.textContent = "La suma de los campos de daño, energía y vida debe ser igual a 100.";
                 return false;
             }
 
             if (poder1 === poder2 || poder1 === poder3 || poder2 === poder3) {
-                alert("No puedes seleccionar el mismo poder en diferentes campos.");
+                errorMessage.textContent = "No puedes seleccionar el mismo poder en diferentes campos.";
                 return false;
             }
 
