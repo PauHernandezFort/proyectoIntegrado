@@ -30,6 +30,7 @@
                 $stmt->execute();
                 */
 
+                
                 $query = 'SELECT * From Person';
                 $result = mysqli_query($conn, $query);
 
