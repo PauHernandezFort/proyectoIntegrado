@@ -77,6 +77,9 @@ $energiaj2 = 50;
         #energia1, #energia2 {
             margin: 10px;
         }
+        .energia-container h5 {
+    color: white;
+}
     </style>
 </head>
 <body>
@@ -85,10 +88,11 @@ $energiaj2 = 50;
         <div id="barraBlanca" class="barra"></div>
         <div id="barraAzul" class="barra"></div>
     </div>
-    <div>
-        <h5>Energia Jugador 1: <span id="energia1"><?php echo $energiaj1; ?></span></h5>
-        <h5>Energia Jugador 2: <span id="energia2"><?php echo $energiaj2; ?></span></h5>
-    </div>
+    <div class="energia-container">
+    <h5>Energia Jugador 1: <span id="energia1"><?php echo $energiaj1; ?></span></h5>
+    <h5>Energia Jugador 2: <span id="energia2"><?php echo $energiaj2; ?></span></h5>
+</div>
+
     <h3 id="error"></h3>
     <h3 id="turno">Turno: <span id="numTurno">1</span></h3>
     <h3 id="pepe">Vida Jugador 2: <?php echo $vidaj2; ?></h3>
