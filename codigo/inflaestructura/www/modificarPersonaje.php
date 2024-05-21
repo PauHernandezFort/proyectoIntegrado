@@ -6,6 +6,7 @@ $array = $poderes->getAllPowers();
 
 if (isset($_COOKIE['correo'])) {
     $usuario = $_COOKIE['correo'];
+    
 } else {
     echo "Error inesperado, vuelve a iniciar sesión";
     exit();
@@ -87,18 +88,6 @@ if (isset($_COOKIE['correo'])) {
                 </div>
                 <div class="form-group">
                     <label for="poder1">Poder1:</label>
-<<<<<<< HEAD
-                    <select id="poder1" name="poder1" class="form-control" required></select>
-                </div>
-                <div class="form-group">
-                    <label for="poder2">Poder 2:</label>
-                    <select id="poder2" name="poder2" class="form-control" required></select>
-                </div>
-                <div class="form-group">
-                    <label for="poder3">Poder 3:</label>
-                    <select id="poder3" name="poder3" class="form-control" required></select>
-                </div>
-=======
                     <select id="poder1" name="poder1" class="form-control"></select>
                 </div>
                 <div class="form-group">
@@ -110,7 +99,6 @@ if (isset($_COOKIE['correo'])) {
                     <select id="poder3" name="poder3" class="form-control"></select>
                 </div>
                 <div id="error-message" class="error-message"></div>
->>>>>>> 8de443d1cb868c80eea119edb7e3fcce4e11eda0
                 <button type="submit" class="btn btn-primary btn-block">Update Character</button>
             </form>
         </div>
@@ -118,7 +106,6 @@ if (isset($_COOKIE['correo'])) {
     <script>
         var poderes = <?php echo json_encode($array); ?>;
         window.onload = agregarPoderes;
-
         function agregarPoderes() {
             for (var i = 0; i < poderes.length; i++) {
                 var option = document.createElement("option");
@@ -130,7 +117,6 @@ if (isset($_COOKIE['correo'])) {
                 document.getElementById("poder3").add(option.cloneNode(true));
             }
         }
-
         function validarFormulario() {
             var daño = parseInt(document.getElementById("daño").value);
             var energia = parseInt(document.getElementById("energia").value);
@@ -140,8 +126,6 @@ if (isset($_COOKIE['correo'])) {
             var poder2 = document.getElementById("poder2").value;
             var poder3 = document.getElementById("poder3").value;
 
-            if (daño + energia + vida !== 100) {
-                alert("La suma de los campos de daño, energía y vida debe ser igual a 100.");
             var errorMessage = document.getElementById("error-message");
             errorMessage.textContent = "";
 
