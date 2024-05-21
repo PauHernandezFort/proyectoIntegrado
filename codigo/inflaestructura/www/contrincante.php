@@ -77,6 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Verifica si la solicitud es POST
 
         .form_description {
             text-align: center;
+            font-size: 22px;
         }
 
         .element input {
@@ -95,14 +96,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Verifica si la solicitud es POST
 <!-- sorry not sorry bb pero me he copiado el estilo ya que soy una ameba para la creatividad. Los artistas mueren de hambre -->
 <body>
     <div id="form_container">
-        <h2 class="form_description">contrincante</h2>
+        <h2 class="form_description">Contrincante</h2>
         <form action="contrincante.php" method="post">
             <div class="form-group">
-                <label for="email">correo:</label>
+                <label for="email">Correo:</label>
                 <input name="email" type="text" class="form-control" maxlength="255" value="">
             </div>
             <div class="form-group">
-                <label for="userPassword">contraseña:</label>
+                <label for="userPassword">Contraseña:</label>
                 <input name="userPassword" type="password" class="form-control" maxlength="255" value="">
             </div>
             <button type="submit" name="submit" class="btn btn-primary btn-block">Iniciar Batalla</button>
