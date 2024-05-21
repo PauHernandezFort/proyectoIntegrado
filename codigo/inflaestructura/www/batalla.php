@@ -21,6 +21,7 @@ $energiaj2 = 50;
     <title>Batalla</title>
     <style>
          body {
+         background-image: url('escenariobatalla1.jpg');
      margin: 0;
      padding: 0;
      display: flex;
