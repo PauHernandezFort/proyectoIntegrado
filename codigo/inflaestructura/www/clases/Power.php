@@ -20,8 +20,7 @@ class Power extends Connection {
             $this->coste = $row['coste'];
             $this->descripcion = $row["descripcion"];
         } else {
-          
-          //  cho "No rows found for $nombrePoder";
+          //  echo "No rows found for $nombrePoder";
         }
     }
 

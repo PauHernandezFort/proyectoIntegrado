@@ -22,6 +22,11 @@ if (isset($_COOKIE['correo'])) {
     <title>Update Character</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="logo.jpeg" rel="icon" type="image/x-icon">
+    <link href="logo.jpeg" rel="icon" type="image/png">
+    <link href="logo.jpeg" rel="apple-touch-icon" sizes="180x180">
+    <meta name="theme-color" content="#343a40">
     <style>
         body {
             font-family: 'Press Start 2P', cursive;
@@ -136,5 +141,7 @@ if (isset($_COOKIE['correo'])) {
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <a href="home.php" class="fixed-button-left">
+        <button class="btn btn-primary">Return</button>
 </body>
 </html>

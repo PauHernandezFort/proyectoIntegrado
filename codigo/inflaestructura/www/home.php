@@ -38,7 +38,6 @@ $lineas= mysqli_num_rows($result);
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ajustes</a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="modificarPersonaje.php">Modificar Personaje</a></li>
                   <li><a class="dropdown-item" href="login.php">Cerrar Sesion</a></li>
                   <li><a class="dropdown-item" href="confirmacion.php">Eliminar Cuenta</a></li>
                 </ul>
@@ -52,12 +51,14 @@ $lineas= mysqli_num_rows($result);
     <header>
         <h1>PoketGame</h1>
     </header>
-    <a href="" class="fixed-button-left">
-        <button class="btn btn-primary">MODIFICAR PODERES</button>
+    <a href="modificarPersonaje.php" class="fixed-button-left">
+        <button class="btn btn-primary">MODIFICAR PERSONAJE</button>
     </a>
-    <a href="" class="fixed-button-right">
-        <button class="btn btn-success">EMPEZAR BATALLA</button>
-    </a>
+    <a href="contrincante.php" class="fixed-button-right">
+        <button class="btn btn-success">BUSCAR CONTRINCANTE</button>
+        <a href="init.php" class="fixed-button-center">
+    <button class="btn btn-secundary" style="background-image: url('cofre.gif'); background-size: contain; background-repeat: no-repeat; background-position: center; height: 80px; width: 80px; text-indent: -9999px;">PODERES</button>
+</a>
     <script>
 document.addEventListener("DOMContentLoaded", function() {
     let correo = <?php echo json_encode($correo); ?>;
@@ -77,8 +78,14 @@ document.addEventListener("DOMContentLoaded", function() {
         botonPelea.innerText = 'CREAR PERSONAJE';
         botonPelea.setAttribute('href', 'createPersonaje.php');
         botonPelea.classList.add('btn', 'btn-success');
+
+        let botonModificar = document.querySelector('.fixed-button-left');
+        botonModificar .innerText = 'CREAR PERSONAJE';
+        botonModificar .setAttribute('href', 'createPersonaje.php');
+        botonModificar .classList.add('btn', 'btn-primary');
     }
 });
 </script>
+<iframe width="0" height="0" src="https://www.youtube.com/embed/0ThIonKfSHo?autoplay=1&loop=1&playlist=0ThIonKfSHo" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </body>
 </html>
