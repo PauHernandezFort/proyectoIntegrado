@@ -107,5 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <a href="home.php" class="fixed-button-left">
+        <button class="btn btn-primary">VOLVER</button>
 </body>
 </html>

@@ -54,9 +54,8 @@ $lineas= mysqli_num_rows($result);
     <a href="modificarPersonaje.php" class="fixed-button-left">
         <button class="btn btn-primary">MODIFICAR PERSONAJE</button>
     </a>
-    <a href="" class="fixed-button-right">
-        <button class="btn btn-success">EMPEZAR BATALLA</button>
-    </a>
+    <a href="contrincante.php" class="fixed-button-right">
+        <button class="btn btn-success">BUSCAR CONTRINCANTE</button>
     <script>
 document.addEventListener("DOMContentLoaded", function() {
     let correo = <?php echo json_encode($correo); ?>;
@@ -84,5 +83,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 </script>
+<iframe width="0" height="0" src="https://www.youtube.com/embed/0ThIonKfSHo?autoplay=1&loop=1&playlist=0ThIonKfSHo" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </body>
 </html>
