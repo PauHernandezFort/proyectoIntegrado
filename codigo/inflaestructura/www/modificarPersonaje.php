@@ -33,7 +33,7 @@ if (isset($_COOKIE['correo'])) {
             background-position: center;
             background-attachment: fixed;
             margin: 0;
-            padding-top: 70px; /* Add padding to avoid content hiding behind the navbar */
+            padding-top: 70px;
         }
         .form-container {
             display: flex;
@@ -53,6 +53,11 @@ if (isset($_COOKIE['correo'])) {
             top: 0;
             width: 100%;
             z-index: 1000;
+        }
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -82,6 +87,7 @@ if (isset($_COOKIE['correo'])) {
                 </div>
                 <div class="form-group">
                     <label for="poder1">Poder1:</label>
+<<<<<<< HEAD
                     <select id="poder1" name="poder1" class="form-control" required></select>
                 </div>
                 <div class="form-group">
@@ -92,6 +98,19 @@ if (isset($_COOKIE['correo'])) {
                     <label for="poder3">Poder 3:</label>
                     <select id="poder3" name="poder3" class="form-control" required></select>
                 </div>
+=======
+                    <select id="poder1" name="poder1" class="form-control"></select>
+                </div>
+                <div class="form-group">
+                    <label for="poder2">Poder 2:</label>
+                    <select id="poder2" name="poder2" class="form-control"></select>
+                </div>
+                <div class="form-group">
+                    <label for="poder3">Poder 3:</label>
+                    <select id="poder3" name="poder3" class="form-control"></select>
+                </div>
+                <div id="error-message" class="error-message"></div>
+>>>>>>> 8de443d1cb868c80eea119edb7e3fcce4e11eda0
                 <button type="submit" class="btn btn-primary btn-block">Update Character</button>
             </form>
         </div>
@@ -106,13 +125,9 @@ if (isset($_COOKIE['correo'])) {
                 option.text = poderes[i];
                 option.value = poderes[i];
 
-                var selectPoder1 = document.getElementById("poder1");
-                var selectPoder2 = document.getElementById("poder2");
-                var selectPoder3 = document.getElementById("poder3");
-
-                selectPoder1.add(option.cloneNode(true));
-                selectPoder2.add(option.cloneNode(true));
-                selectPoder3.add(option.cloneNode(true));
+                document.getElementById("poder1").add(option.cloneNode(true));
+                document.getElementById("poder2").add(option.cloneNode(true));
+                document.getElementById("poder3").add(option.cloneNode(true));
             }
         }
 
@@ -127,11 +142,16 @@ if (isset($_COOKIE['correo'])) {
 
             if (daño + energia + vida !== 100) {
                 alert("La suma de los campos de daño, energía y vida debe ser igual a 100.");
+            var errorMessage = document.getElementById("error-message");
+            errorMessage.textContent = "";
+
+            if (daño + energia + vida !== 100) {
+                errorMessage.textContent = "La suma de los campos de daño, energía y vida debe ser igual a 100.";
                 return false;
             }
 
             if (poder1 === poder2 || poder1 === poder3 || poder2 === poder3) {
-                alert("No puedes seleccionar el mismo poder en diferentes campos.");
+                errorMessage.textContent = "No puedes seleccionar el mismo poder en diferentes campos.";
                 return false;
             }
 
