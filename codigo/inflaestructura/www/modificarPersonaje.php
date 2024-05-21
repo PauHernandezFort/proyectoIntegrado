@@ -1,8 +1,10 @@
 <?php
 require_once "autoloader.php";
 
-$character = new Character("polla");
-$array = $character->getAllCharacters();
+
+$poderes = new Power("Poder1");
+$array = $poderes->getAllPowers();
+
 
 if (isset($_COOKIE['correo'])) {
     $usuario = $_COOKIE['correo'];
@@ -11,16 +13,6 @@ if (isset($_COOKIE['correo'])) {
     exit();
 }
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $energia = $_POST["energia"];
-    $vida = $_POST["vida"];
-    $daño = $_POST["daño"];
-
-    $character->updateCharacter($energia, $vida, $daño);
-
-    header("Location: home.php");
-    exit();
-}
 ?>
 
 <!DOCTYPE html>
@@ -73,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <div class="container form-container">
         <div class="form-box">
             <h1 class="text-center">Update Character</h1>
-            <form action="" method="POST" onsubmit="return validarFormulario()">
+            <form action="modificarcreacion.php" method="POST" onsubmit="return validarFormulario()">
                 <div class="form-group">
                     <label for="energia">Energía:</label>
                     <input type="number" id="energia" name="energia" class="form-control" required>
@@ -86,18 +78,55 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <label for="daño">Daño:</label>
                     <input type="number" id="daño" name="daño" class="form-control" required>
                 </div>
+                <label for="poder1">Poder1:</label>
+            <select id="poder1" name="poder1">
+            </select><br><br>
+
+             <label for="poder2">Poder 2:</label>
+            <select id="poder2" name="poder2">
+             </select><br><br>
+
+                 <label for="poder3">Poder 3:</label>
+             <select id="poder3" name="poder3">
+                </select><br><br>
                 <button type="submit" class="btn btn-primary btn-block">Update Character</button>
             </form>
         </div>
     </div>
     <script>
+         var poderes = <?php echo json_encode($array); ?>;
+         window.onload = agregarPoderes;
+         function agregarPoderes() {
+            for (var i = 0; i < poderes.length; i++) {
+                var option = document.createElement("option");
+                option.text = poderes[i];
+                option.value = poderes[i];
+
+                var selectPoder1 = document.getElementById("poder1");
+                var selectPoder2 = document.getElementById("poder2");
+                var selectPoder3 = document.getElementById("poder3");
+
+                selectPoder1.add(option.cloneNode(true));
+                selectPoder2.add(option.cloneNode(true));
+                selectPoder3.add(option.cloneNode(true));
+            }
+        }
         function validarFormulario() {
             var daño = parseInt(document.getElementById("daño").value);
             var energia = parseInt(document.getElementById("energia").value);
             var vida = parseInt(document.getElementById("vida").value);
 
-            if (daño + energia + vida !== 100) {
+            var poder1 = document.getElementById("poder1").value;
+            var poder2 = document.getElementById("poder2").value;
+            var poder3 = document.getElementById("poder3").value;
+
+            if (danio + energia + vida !== 100) {
                 alert("La suma de los campos de daño, energía y vida debe ser igual a 100.");
+                return false;
+            }
+
+            if (poder1 === poder2 || poder1 === poder3 || poder2 === poder3) {
+                alert("No puedes seleccionar el mismo poder en diferentes campos.");
                 return false;
             }
 
