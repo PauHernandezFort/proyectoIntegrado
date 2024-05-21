@@ -1,38 +1,10 @@
 <?php
-
-require_once 'autoloader.php';
-
-$conexion = new Connection(); 
-$conn = $conexion->getConn(); 
-
-$query = "SELECT * FROM `PersonajePoder`"; 
-$result = mysqli_query($conn, $query); 
-
-
-$poderes = array(); 
-
-if ($result->num_rows > 0) { 
-    while ($row = mysqli_fetch_assoc($result)) {
-        $poderes[] = $row;
-    }
-}
-
-$arrayPoderes = []; 
-
-foreach($poderes as $poder){
-   array_push($arrayPoderes, $poder['nombrePoder']); 
-}
-
-
-
-
-$nombrePoder1j1 = $arrayPoderes[0];
-$nombrePoder2j1 = $arrayPoderes[1];
-$nombrePoder3j1 = $arrayPoderes[2];
-$nombrePoder1j2 = $arrayPoderes[3];
-$nombrePoder2j2 = $arrayPoderes[4];
-$nombrePoder3j2 = $arrayPoderes[5];
-
+$nombrePoder1j1 = "fumar";
+$nombrePoder2j1 = "morder";
+$nombrePoder3j1 = "golpear";
+$nombrePoder1j2 = "morder";
+$nombrePoder2j2 = "fumar";
+$nombrePoder3j2 = "aseaewqew";
 
 $vidaj1 = 100;
 $vidaj2 = 100;
@@ -48,60 +20,63 @@ $energiaj2 = 50;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Batalla</title>
     <style>
-       body {
-        background-image: url('escenariobatalla1.jpg');
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-       
-    }
-    #container {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .barra {
-        height: 10px;
-        margin-bottom:30px;
-    }
-    #barraVerde {
-        background-color: green;
-        width: 50%;
-        padding: 10px; 
-        
-       
-    }
-
-    #barraBlanca {
-        flex: 1;
-        background-color: white;
-    }
-    #barraAzul {
-        background-color: blue;
-        width: 50%;
-        padding: 10px; 
-      
-    }
-    #botones {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: 20px;
-    }
-    .boton {
-        padding: 10px 20px;
-        background-color: #ccc;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    h3 {
-    color: red; 
-    text-align: left;
+         body {
+         background-image: url('escenariobatalla1.jpg');
+     margin: 0;
+     padding: 0;
      display: flex;
-    }
+     flex-direction: column;
+    
+ }
+ #container {
+     flex: 1;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+ .barra {
+     height: 10px;
+     margin-bottom:30px;
+ }
+ #barraVerde {
+     background-color: green;
+     width: 49%;
+     padding: 10px; 
+     
+    
+ }
+ #barraBlanca {
+     flex: 1;
+     background-color: white;
+ }
+ #barraAzul {
+     background-color: blue;
+     width: 49%;
+     padding: 10px; 
+   
+ }
+ #botones {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     margin: 20px;
+ }
+ .boton {
+     padding: 10px 20px;
+     background-color: #ccc;
+     border: none;
+     border-radius: 5px;
+     cursor: pointer;
+ }
+ h3 {
+ color: red; 
+ text-align: left;
+  display: flex;
+     
+  }
+        #energia1, #energia2 {
+            margin: 10px;
+        }
     </style>
 </head>
 <body>
@@ -110,25 +85,32 @@ $energiaj2 = 50;
         <div id="barraBlanca" class="barra"></div>
         <div id="barraAzul" class="barra"></div>
     </div>
+    <div>
+        <h5>Energia Jugador 1: <span id="energia1"><?php echo $energiaj1; ?></span></h5>
+        <h5>Energia Jugador 2: <span id="energia2"><?php echo $energiaj2; ?></span></h5>
+    </div>
     <h3 id="error"></h3>
-    <h3 id="turno"></h3>
-    <h3 id="pepe"></h3> <br>
-    <h3 id="pepe2"></h3>
+    <h3 id="turno">Turno: <span id="numTurno">1</span></h3>
+    <h3 id="pepe">Vida Jugador 2: <?php echo $vidaj2; ?></h3>
+    <h3 id="pepe2">Vida Jugador 1: <?php echo $vidaj1; ?></h3>
 
     <div id="botones">
         <div>
             <button class="boton" onclick="botonClickeado('<?php echo $nombrePoder1j1; ?>', 1)"><?php echo $nombrePoder1j1; ?></button>
             <button class="boton" onclick="botonClickeado('<?php echo $nombrePoder2j1; ?>', 1)"><?php echo $nombrePoder2j1; ?></button>
             <button class="boton" onclick="botonClickeado('<?php echo $nombrePoder3j1; ?>', 1)"><?php echo $nombrePoder3j1; ?></button>
+            <button class="boton" onclick="botonClickeado('saltarTurno', 1)">Saltar turno</button>
         </div>
         <div>
             <button class="boton" onclick="botonClickeado('<?php echo $nombrePoder1j2; ?>', 2)"><?php echo $nombrePoder1j2; ?></button>
             <button class="boton" onclick="botonClickeado('<?php echo $nombrePoder2j2; ?>', 2)"><?php echo $nombrePoder2j2; ?></button>
             <button class="boton" onclick="botonClickeado('<?php echo $nombrePoder3j2; ?>', 2)"><?php echo $nombrePoder3j2; ?></button>
+            <button class="boton" onclick="botonClickeado( 'saltarTurno', 2)">Saltar turno</button>
         </div>
     </div>
 
     <script>
+        let array =[];
         let vidaj1 = <?php echo $vidaj1; ?>;
         let vidaj2 = <?php echo $vidaj2; ?>;
         let dañoj1 = <?php echo $dañoj1; ?>;
@@ -138,110 +120,185 @@ $energiaj2 = 50;
         let turno = 1;
 
         function botonClickeado(poder, jugador) {
-            if (poder.trim() === "<?php echo $arrayPoderes[0]; ?>") {
-                fumar(turno, jugador);
-                // Lógica para el poder 1
-            } else if (poder.trim() === "<?php echo $arrayPoderes[1]; ?>") {
-                fumar(turno, jugador);
-                // Lógica para el poder 2
-            } else if (poder.trim() === "<?php echo $arrayPoderes[2]; ?>") {
-                fumar(turno, jugador);
-                // Lógica para el poder 3
-            } else if (poder.trim() === "<?php echo $arrayPoderes[3]; ?>") {
-                morder(turno, jugador);
-                // Lógica para el poder 4
-            } else if (poder.trim() === "<?php echo $arrayPoderes[4]; ?>") {
-                morder(turno, jugador);
-                // Lógica para el poder 5
-            } else if (poder.trim() === "<?php echo $arrayPoderes[5]; ?>") {
-                morder(turno, jugador);
-                // Lógica para el poder 6
+            if (jugador === 1 && turno % 2 === 1) {
+                realizarAccion(poder, 1);
+            } else if (jugador === 2 && turno % 2 === 0) {
+                realizarAccion(poder, 2);
+            } else {
+                document.getElementById("error").innerText = "No es tu turno";
+            }
         }
+
+        function realizarAccion(poder, jugador) {
+            if (poder === "fumar") {
+                fumar(jugador);
+            } else if (poder === "saltar") {
+                // Lógica para el poder "saltar"
+            } else if (poder === "golpear") {
+                // Lógica para el poder "golpear"
+            } else if (poder === "morder") {
+                morder(jugador);
+            } else if (poder === "patear") {
+                // Lógica para el poder "patear"
+            } else if (poder === "empujar") {
+                // Lógica para el poder "empujar"
+            } else if (pdoer= "saltarTurno"){
+                saltarTurno(jugador)
+            }
+            document.getElementById("numTurno").innerText = turno;
+        }
+
+        function actualizarBarraVida(jugador) {
+            let porcentaje;
+            if (jugador === 1) {
+                porcentaje = ((vidaj1 * 100) / <?php echo $vidaj1; ?>)/2;
+                document.getElementById("barraVerde").style.width = porcentaje + "%";
+                document.getElementById("pepe2").innerText = "Vida Jugador 1: " + vidaj1;
+            } else {
+                porcentaje = ((vidaj2 * 100) / <?php echo $vidaj2; ?>)/2;
+                document.getElementById("barraAzul").style.width = porcentaje + "%";
+                document.getElementById("pepe").innerText = "Vida Jugador 2: " + vidaj2;
+            }
+            comprobar()
+        }
+
+        function fumar(jugador) {
+            let dañoPoder = 5;
+            let energiaPoder = 10;
+            let errorElement = document.getElementById("error");
+
+            if (jugador === 1) {
+                if (energiaj1 < energiaPoder) {
+                    errorElement.innerText = "No tienes suficiente energía";
+                    return;
+                }
+                let daño = dañoPoder + (dañoj1 + vidaj2) * 0.30;
+                let dañoRedondeado = Math.ceil(daño);
+                vidaj2 -= dañoRedondeado;
+
+                if (vidaj2 < 0) {
+                    vidaj2 = 0;
+                }
+
+                energiaj1 -= energiaPoder;
+                energiaj1 += 5;
+                let arrayTurno= ['fumar',1,dañoRedondeado,energiaPoder];
+                array.push(arrayTurno);
+                document.getElementById("energia1").innerText = energiaj1;
+                actualizarBarraVida(2);
+            } else {
+                if (energiaj2 < energiaPoder) {
+                    errorElement.innerText = "No tienes suficiente energía";
+                    return;
+                }
+                let daño = dañoPoder + (dañoj2 + vidaj1) * 0.30;
+                let dañoRedondeado = Math.ceil(daño);
+                vidaj1 -= dañoRedondeado;
+
+                if (vidaj1 < 0) {
+                    vidaj1 = 0;
+                }
+
+                energiaj2 -= energiaPoder;
+                energiaj2 += 5;
+                document.getElementById("energia2").innerText = energiaj2;
+                let arrayTurno= ['fumar',2,dañoRedondeado,energiaPoder];
+                array.push(arrayTurno);
+                actualizarBarraVida(1);
+            }
+
+            errorElement.innerText = "";
+            turno++;
+        }
+        function morder(jugador) {
+            let dañoPoder = 25;
+            let energiaPoder = 30;
+            let errorElement = document.getElementById("error");
+
+            if (jugador === 1) {
+                if (energiaj1 < energiaPoder) {
+                    errorElement.innerText = "No tienes suficiente energía";
+                    return;
+                }
+                let daño = (dañoPoder +(dañoj1/2)+(vidaj1/6));
+                let dañoRedondeado = Math.ceil(daño);
+                vidaj2 -= dañoRedondeado;
+
+                if (vidaj2 < 0) {
+                    vidaj2 = 0;
+                }
+                energiaj1 -= energiaPoder;
+                energiaj1 += 5;
+                let arrayTurno= ['morder',1,dañoRedondeado,energiaPoder];
+                array.push(arrayTurno);
+                document.getElementById("energia1").innerText = energiaj1;
+                actualizarBarraVida(2);
+            } else {
+                if (energiaj2 < energiaPoder) {
+                    errorElement.innerText = "No tienes suficiente energía";
+                    return;
+                }
+                let daño = (dañoPoder +(dañoj1/2)+(vidaj1/6));
+                let dañoRedondeado = Math.ceil(daño);
+                vidaj1 -= dañoRedondeado;
+
+                if (vidaj1 < 0) {
+                    vidaj1 = 0;
+                }
+
+                energiaj2 -= energiaPoder;
+                energiaj2 += 5;
+                document.getElementById("energia2").innerText = energiaj2;
+                let arrayTurno= ['morder',2,dañoRedondeado,energiaPoder];
+                array.push(arrayTurno);
+                actualizarBarraVida(1);
+            }
+
+            errorElement.innerText = "";
+            turno++;
+        }
+function saltarTurno(jugador) {
+    if (jugador === 1) {
+        energiaj1 += 5; 
+        document.getElementById("energia1").innerText = energiaj1; 
+    } else {
+        energiaj2 += 5; 
+        document.getElementById("energia2").innerText = energiaj2; 
     }
 
-        function cambiarTamaño(nuevo, jugador) {
-            turno += 1;
-            let barraVerde = document.getElementById("barraVerde");
-            let barraAzul = document.getElementById("barraAzul");
-            let nuevoPorcentaje = (nuevo / 2) + "%";
-            if (jugador === 1) {
-                barraAzul.style.width = nuevoPorcentaje;
-                document.getElementById("pepe").innerHTML = vidaj2;
-            } else {
-                barraVerde.style.width = nuevoPorcentaje;
-                document.getElementById("pepe2").innerHTML = vidaj1;
-            }
-        }
+    turno++; 
+    let arrayTurno= ['saltarTurno',jugador,0,0];
+    array.push(arrayTurno);
+    document.getElementById("numTurno").innerText = turno; 
+}   
+function comprobar() {
+    let botonesDiv = document.getElementById("botones");
 
-        function fumar(turno, jugador) {
-            let dañoPoder = 5;
-            if (jugador === 1) {
-                if (turno % 2 === 0) {
-                    document.getElementById("error").innerHTML = "No es tu turno";
-                } else {
-                    let daño = dañoPoder + (dañoj1 + vidaj2) * 0.30;
-                    let dañoRedondeado = Math.ceil(daño);
-                    vidaj2 -= dañoRedondeado;
-                    let porcentaje = (vidaj2 * 100) / <?php echo $vidaj2; ?>;
-                    if (vidaj2 < 0) {
-                        porcentaje = 0;
-                        vidaj2 = 0;
-                    }
-                    document.getElementById("error").innerHTML = "";
-                    cambiarTamaño(porcentaje, 1);
-                }
-            } else {
-                if (turno % 2 !== 0) {
-                    document.getElementById("error").innerHTML = "No es tu turno";
-                } else {
-                    let daño = dañoPoder + (dañoj2 + vidaj1) * 0.30;
-                    let dañoRedondeado = Math.ceil(daño);
-                    vidaj1 -= dañoRedondeado;
-                    let porcentaje = (vidaj1 * 100) / <?php echo $vidaj1; ?>;
-                    if (vidaj1 < 0) {
-                        porcentaje = 0;
-                        vidaj1 = 0;
-                    }
-                    document.getElementById("error").innerHTML = "";
-                    cambiarTamaño(porcentaje, 2);
-                }
-            }
-        }
+    if (vidaj1 <= 0) {
+        botonesDiv.innerHTML = "";
+        let nuevoBoton = document.createElement("button");
+        nuevoBoton.innerText = "¡Jugador 2 Gana!";
+        nuevoBoton.className = "boton";
+        nuevoBoton.onclick = function() {
+            let arrayJSON = encodeURIComponent(JSON.stringify(array));
+            window.location.href = "registrarBatalla.php?ganador=Jugador2&array=" + arrayJSON;
+        };
+        botonesDiv.appendChild(nuevoBoton);
+    }
 
-        function morder(turno, jugador) {
-            let dañoPoder = 5;
-            if (jugador === 1) {
-                if (turno % 2 === 0) {
-                    document.getElementById("error").innerHTML = "No es tu turno";
-                } else {
-                    let daño = dañoPoder + (dañoj1 + vidaj2) * 0.30;
-                    let dañoRedondeado = Math.ceil(daño);
-                    vidaj2 -= dañoRedondeado;
-                    let porcentaje = (vidaj2 * 100) / <?php echo $vidaj2; ?>;
-                    if (vidaj2 < 0) {
-                        porcentaje = 0;
-                        vidaj2 = 0;
-                    }
-                    document.getElementById("error").innerHTML = "";
-                    cambiarTamaño(porcentaje, 1);
-                }
-            } else {
-                if (turno % 2 !== 0) {
-                    document.getElementById("error").innerHTML = "No es tu turno";
-                } else {
-                    let daño = dañoPoder + (dañoj2 + vidaj1) * 0.30;
-                    let dañoRedondeado = Math.ceil(daño);
-                    vidaj1 -= dañoRedondeado;
-                    let porcentaje = (vidaj1 * 100) / <?php echo $vidaj1; ?>;
-                    if (vidaj1 < 0) {
-                        porcentaje = 0;
-                        vidaj1 = 0;
-                    }
-                    document.getElementById("error").innerHTML = "";
-                    cambiarTamaño(porcentaje, 2);
-                }
-            }
-        }
-    </script>
-</body>
-</html>
+    if (vidaj2 <= 0) {
+        botonesDiv.innerHTML = "";
+        let nuevoBoton = document.createElement("button");
+        nuevoBoton.innerText = "¡Jugador 1 Gana!";
+        nuevoBoton.className = "boton";
+        nuevoBoton.onclick = function() {
+            let arrayJSON = encodeURIComponent(JSON.stringify(array));
+            window.location.href = "registrarBatalla.php?ganador=Jugador1&array=" + arrayJSON;
+        };
+        botonesDiv.appendChild(nuevoBoton);
+    }
+}
+
+
+
+</script>
