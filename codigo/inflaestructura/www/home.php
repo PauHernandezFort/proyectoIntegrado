@@ -54,11 +54,12 @@ $lineas= mysqli_num_rows($result);
     <a href="modificarPersonaje.php" class="fixed-button-left">
         <button class="btn btn-primary">MODIFICAR PERSONAJE</button>
     </a>
+    <a href="init.php" class="fixed-button-center">
+    <button class="btn btn-secundary" style="background-image: url('cofre.gif'); background-size: contain; background-repeat: no-repeat; background-position: center; height: 80px; width: 80px; text-indent: -9999px;">PODERES</button>
+    </a>
     <a href="contrincante.php" class="fixed-button-right">
         <button class="btn btn-success">BUSCAR CONTRINCANTE</button>
-        <a href="init.php" class="fixed-button-center">
-    <button class="btn btn-secundary" style="background-image: url('cofre.gif'); background-size: contain; background-repeat: no-repeat; background-position: center; height: 80px; width: 80px; text-indent: -9999px;">PODERES</button>
-</a>
+    </a>
     <script>
 document.addEventListener("DOMContentLoaded", function() {
     let correo = <?php echo json_encode($correo); ?>;
