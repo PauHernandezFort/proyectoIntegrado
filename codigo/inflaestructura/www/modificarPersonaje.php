@@ -87,18 +87,6 @@ if (isset($_COOKIE['correo'])) {
                 </div>
                 <div class="form-group">
                     <label for="poder1">Poder1:</label>
-<<<<<<< HEAD
-                    <select id="poder1" name="poder1" class="form-control" required></select>
-                </div>
-                <div class="form-group">
-                    <label for="poder2">Poder 2:</label>
-                    <select id="poder2" name="poder2" class="form-control" required></select>
-                </div>
-                <div class="form-group">
-                    <label for="poder3">Poder 3:</label>
-                    <select id="poder3" name="poder3" class="form-control" required></select>
-                </div>
-=======
                     <select id="poder1" name="poder1" class="form-control"></select>
                 </div>
                 <div class="form-group">
@@ -110,7 +98,6 @@ if (isset($_COOKIE['correo'])) {
                     <select id="poder3" name="poder3" class="form-control"></select>
                 </div>
                 <div id="error-message" class="error-message"></div>
->>>>>>> 8de443d1cb868c80eea119edb7e3fcce4e11eda0
                 <button type="submit" class="btn btn-primary btn-block">Update Character</button>
             </form>
         </div>
