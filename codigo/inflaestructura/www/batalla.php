@@ -5,7 +5,11 @@ $nombrePoder3j1 = "golpear";
 $nombrePoder1j2 = "morder";
 $nombrePoder2j2 = "fumar";
 $nombrePoder3j2 = "aseaewqew";
-
+$jugador1= $_COOKIE['correo'];
+session_start();
+$jugador2 = $_SESSION['email'];
+echo $jugador1;
+echo $jugador2;
 $vidaj1 = 100;
 $vidaj2 = 100;
 $dañoj1 = 10;
@@ -47,7 +51,7 @@ $energiaj2 = 50;
  }
  #barraBlanca {
      flex: 1;
-     background-color: white;
+     background-color: transparent;
  }
  #barraAzul {
      background-color: blue;
