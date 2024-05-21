@@ -136,7 +136,6 @@ class Power extends Connection {
                         <p class='card-text'>Daño: " . $power['daño'] . "</p>
                         <p class='card-text'>Coste: " . $power['coste'] . "</p>
                         </div>
-                        <a href='#' class='btn btn-primary'>Go somewhere</a>
                         </div>
                         </div>";
         }
