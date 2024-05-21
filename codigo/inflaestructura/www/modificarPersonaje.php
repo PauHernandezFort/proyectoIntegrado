@@ -1,19 +1,15 @@
 <?php
 require_once "autoloader.php";
 
-
 $poderes = new Power("Poder1");
 $array = $poderes->getAllPowers();
 
-
 if (isset($_COOKIE['correo'])) {
     $usuario = $_COOKIE['correo'];
-    
 } else {
     echo "Error inesperado, vuelve a iniciar sesión";
     exit();
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -84,25 +80,27 @@ if (isset($_COOKIE['correo'])) {
                     <label for="daño">Daño:</label>
                     <input type="number" id="daño" name="daño" class="form-control" required>
                 </div>
-                <label for="poder1">Poder1:</label>
-            <select id="poder1" name="poder1">
-            </select><br><br>
-
-             <label for="poder2">Poder 2:</label>
-            <select id="poder2" name="poder2">
-             </select><br><br>
-
-                 <label for="poder3">Poder 3:</label>
-             <select id="poder3" name="poder3">
-                </select><br><br>
+                <div class="form-group">
+                    <label for="poder1">Poder1:</label>
+                    <select id="poder1" name="poder1" class="form-control" required></select>
+                </div>
+                <div class="form-group">
+                    <label for="poder2">Poder 2:</label>
+                    <select id="poder2" name="poder2" class="form-control" required></select>
+                </div>
+                <div class="form-group">
+                    <label for="poder3">Poder 3:</label>
+                    <select id="poder3" name="poder3" class="form-control" required></select>
+                </div>
                 <button type="submit" class="btn btn-primary btn-block">Update Character</button>
             </form>
         </div>
     </div>
     <script>
-         var poderes = <?php echo json_encode($array); ?>;
-         window.onload = agregarPoderes;
-         function agregarPoderes() {
+        var poderes = <?php echo json_encode($array); ?>;
+        window.onload = agregarPoderes;
+
+        function agregarPoderes() {
             for (var i = 0; i < poderes.length; i++) {
                 var option = document.createElement("option");
                 option.text = poderes[i];
@@ -117,6 +115,7 @@ if (isset($_COOKIE['correo'])) {
                 selectPoder3.add(option.cloneNode(true));
             }
         }
+
         function validarFormulario() {
             var daño = parseInt(document.getElementById("daño").value);
             var energia = parseInt(document.getElementById("energia").value);
@@ -126,7 +125,7 @@ if (isset($_COOKIE['correo'])) {
             var poder2 = document.getElementById("poder2").value;
             var poder3 = document.getElementById("poder3").value;
 
-            if (danio + energia + vida !== 100) {
+            if (daño + energia + vida !== 100) {
                 alert("La suma de los campos de daño, energía y vida debe ser igual a 100.");
                 return false;
             }
