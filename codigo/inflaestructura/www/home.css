@@ -11,7 +11,12 @@
     right: 20px;
     z-index: 1000;
 }
-
+.fixed-button-right {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
 h1 {
     font-family: 'Press Start 2P', cursive;
     font-size: 3em;
@@ -34,4 +39,17 @@ body {
     top: 0;
     width: 100%;
     z-index: 1000;
+}
+.text-center {
+    text-align: center;
+    
+
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+.text-white {
+    color: white;
 }
