@@ -1,21 +1,21 @@
 <?php
-$nombrePoder1j1 = "fumar";
-$nombrePoder2j1 = "morder";
-$nombrePoder3j1 = "golpear";
-$nombrePoder1j2 = "morder";
-$nombrePoder2j2 = "fumar";
-$nombrePoder3j2 = "aseaewqew";
-$jugador1= $_COOKIE['correo'];
-session_start();
-$jugador2 = $_SESSION['email'];
-echo $jugador1;
-echo $jugador2;
-$vidaj1 = 100;
-$vidaj2 = 100;
-$dañoj1 = 10;
-$dañoj2 = 10;
-$energiaj1 = 50;
-$energiaj2 = 50;
+$nombrePoder1j1 = "saco";
+$nombrePoder2j1 = "fumar";
+$nombrePoder3j1 = "curar";
+$nombrePoder1j2 = "fumar";
+$nombrePoder2j2 = "saco";
+$nombrePoder3j2 = "curar";
+//$jugador1= $_COOKIE['correo'];
+//session_start();
+//$jugador2 = $_SESSION['email'];
+//echo $jugador1;
+//echo $jugador2;
+$vidaj1 = 140;
+$vidaj2 = 160;
+$dañoj1 = 18;
+$dañoj2 = 14;
+$energiaj1 = 60;
+$energiaj2 = 60;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -38,12 +38,15 @@ $energiaj2 = 50;
      justify-content: center;
      align-items: center;
  }
- .barra {
-     height: 10px;
-     margin-bottom:30px;
- }
+ 
+    .barra {
+            height: 10px;
+            margin-bottom: 30px;
+            transition: width 0.5s ease;
+        }
+ 
  #barraVerde {
-     background-color: green;
+    background-color: #2E8B57;
      width: 49%;
      padding: 10px; 
      
@@ -54,7 +57,7 @@ $energiaj2 = 50;
      background-color: transparent;
  }
  #barraAzul {
-     background-color: blue;
+    background-color: #483D8B;
      width: 49%;
      padding: 10px; 
    
@@ -138,18 +141,18 @@ $energiaj2 = 50;
         }
 
         function realizarAccion(poder, jugador) {
-            if (poder === "fumar") {
-                fumar(jugador);
+            if (poder === "saco") {
+                saco(jugador);
             } else if (poder === "saltar") {
                 // Lógica para el poder "saltar"
-            } else if (poder === "golpear") {
-                // Lógica para el poder "golpear"
+            } else if (poder === "curar") {
+                curar(jugador);
             } else if (poder === "morder") {
                 morder(jugador);
             } else if (poder === "patear") {
                 // Lógica para el poder "patear"
-            } else if (poder === "empujar") {
-                // Lógica para el poder "empujar"
+            } else if (poder === "fumar") {
+                fumar(jugador);
             } else if (pdoer= "saltarTurno"){
                 saltarTurno(jugador)
             }
@@ -170,9 +173,9 @@ $energiaj2 = 50;
             comprobar()
         }
 
-        function fumar(jugador) {
+        function saco(jugador) { //este poder escla con la vida enemiga 
             let dañoPoder = 5;
-            let energiaPoder = 10;
+            let energiaPoder = 25;
             let errorElement = document.getElementById("error");
 
             if (jugador === 1) {
@@ -180,7 +183,7 @@ $energiaj2 = 50;
                     errorElement.innerText = "No tienes suficiente energía";
                     return;
                 }
-                let daño = dañoPoder + (dañoj1 + vidaj2) * 0.30;
+                let daño = dañoPoder + ( vidaj2 *0.3) +dañoj1/2
                 let dañoRedondeado = Math.ceil(daño);
                 vidaj2 -= dañoRedondeado;
 
@@ -190,7 +193,7 @@ $energiaj2 = 50;
 
                 energiaj1 -= energiaPoder;
                 energiaj1 += 5;
-                let arrayTurno= ['fumar',1,dañoRedondeado,energiaPoder];
+                let arrayTurno= ['saco',1,dañoRedondeado,energiaPoder];
                 array.push(arrayTurno);
                 document.getElementById("energia1").innerText = energiaj1;
                 actualizarBarraVida(2);
@@ -199,7 +202,7 @@ $energiaj2 = 50;
                     errorElement.innerText = "No tienes suficiente energía";
                     return;
                 }
-                let daño = dañoPoder + (dañoj2 + vidaj1) * 0.30;
+                let daño = dañoPoder + ( vidaj1 *0.3) +dañoj2/2
                 let dañoRedondeado = Math.ceil(daño);
                 vidaj1 -= dañoRedondeado;
 
@@ -210,7 +213,7 @@ $energiaj2 = 50;
                 energiaj2 -= energiaPoder;
                 energiaj2 += 5;
                 document.getElementById("energia2").innerText = energiaj2;
-                let arrayTurno= ['fumar',2,dañoRedondeado,energiaPoder];
+                let arrayTurno= ['saco',2,dañoRedondeado,energiaPoder];
                 array.push(arrayTurno);
                 actualizarBarraVida(1);
             }
@@ -218,7 +221,7 @@ $energiaj2 = 50;
             errorElement.innerText = "";
             turno++;
         }
-        function morder(jugador) {
+        function morder(jugador) { //este poder hace mucho daño que escala con tu daño y tu vida
             let dañoPoder = 25;
             let energiaPoder = 30;
             let errorElement = document.getElementById("error");
@@ -265,12 +268,105 @@ $energiaj2 = 50;
             errorElement.innerText = "";
             turno++;
         }
+    function curar(jugador) {  //este podcer te cura vida segun tu vida maxima
+    let energiaPoder = 30;
+    let errorElement = document.getElementById("error");
+
+    if (jugador === 1) {
+        if (energiaj1 < energiaPoder) {
+            errorElement.innerText = "No tienes suficiente energía";
+            return;
+        }
+        let cura = 15 + (vidaj1 * 0.16);
+        let curarRedondeado = Math.ceil(cura);
+        vidaj1 += curarRedondeado;
+        if(vidaj1 > <?php echo $vidaj1;?>){
+            vidaj1 = <?php echo $vidaj1;?>
+        }
+        energiaj1 -= energiaPoder;
+        energiaj1 += 5;
+        let arrayTurno = ['curar', 1, 0, energiaPoder];
+        array.push(arrayTurno);
+        document.getElementById("energia1").innerText = energiaj1;
+        actualizarBarraVida(1);
+    } else {
+        if (energiaj2 < energiaPoder) {
+            errorElement.innerText = "No tienes suficiente energía";
+            return;
+        }
+        let cura = 15 + (vidaj2 * 0.16);
+        let curarRedondeado = Math.ceil(cura);
+        vidaj2 += curarRedondeado;
+        if(vidaj2 > <?php echo $vidaj2;?>){
+            vidaj2 = <?php echo $vidaj2;?>
+        }
+        energiaj2 -= energiaPoder;
+        energiaj2 += 5;
+        let arrayTurno = ['curar', 2, 0, energiaPoder];
+        array.push(arrayTurno);
+        document.getElementById("energia2").innerText = energiaj2;
+        actualizarBarraVida(2);
+    }
+
+    errorElement.innerText = "";
+    turno++;
+}
+    function fumar(jugador) {  
+        let energiaPoder = 5;      
+        let dañoPoder = 10;
+        let errorElement = document.getElementById("error");
+
+        if (jugador === 1) {
+            if (energiaj1 < energiaPoder) {
+                errorElement.innerText = "No tienes suficiente energía";
+                return;
+            }
+            let sumaEnergia = (<?php echo $energiaj1; ?> * 0.25) + 5;
+            let vidaPerdida = <?php echo $vidaj1; ?> * 0.25; 
+            energiaj1 += sumaEnergia;
+            vidaj1 -= vidaPerdida;
+            vidaj2 -= dañoPoder;
+            energiaj1 -= energiaPoder;
+            energiaj1 += 5;
+
+            let arrayTurno = ['fumar', 1, dañoPoder, energiaPoder];
+            array.push(arrayTurno);
+
+            document.getElementById("energia1").innerText = energiaj1;
+            actualizarBarraVida(1);
+            actualizarBarraVida(2);
+        } else {
+            if (energiaj2 < energiaPoder) {
+                errorElement.innerText = "No tienes suficiente energía";
+                return;
+            }
+            let sumaEnergia = (<?php echo $energiaj2; ?> * 0.25) + 5;
+            let vidaPerdida = <?php echo $vidaj2; ?> * 0.25; 
+            energiaj2 += sumaEnergia;
+            vidaj2 -= vidaPerdida;
+            vidaj1 -= dañoPoder;
+            energiaj2 -= energiaPoder;
+            energiaj2 += 5;
+
+            let arrayTurno = ['fumar', 2, dañoPoder, energiaPoder];
+            array.push(arrayTurno);
+
+            document.getElementById("energia2").innerText = energiaj2;
+            actualizarBarraVida(2);
+            actualizarBarraVida(1);
+        }
+
+        errorElement.innerText = "";
+        turno++;
+    }
+
+
 function saltarTurno(jugador) {
     if (jugador === 1) {
-        energiaj1 += 5; 
+        energiaj1 += 10; 
         document.getElementById("energia1").innerText = energiaj1; 
     } else {
-        energiaj2 += 5; 
+        energiaj2 += 10; 
         document.getElementById("energia2").innerText = energiaj2; 
     }
 
