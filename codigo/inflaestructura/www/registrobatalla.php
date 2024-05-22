@@ -3,7 +3,7 @@
 require_once("autoloader.php");
 $connection = new Connection();
 
-function drawlist($conn, $nombrePersonaje) {
+function drawlist($conn, $nombrePersonaje, ) {
     $sql5 = "SELECT b.*
     FROM Batalla b
     JOIN BatallaPersonaje bp ON b.id = bp.idbatalla
