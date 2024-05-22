@@ -129,8 +129,8 @@ if (isset($_COOKIE['correo'])) {
             var errorMessage = document.getElementById("error-message");
             errorMessage.textContent = "";
 
-            if (daño + energia + vida !== 100) {
-                errorMessage.textContent = "La suma de los campos de daño, energía y vida debe ser igual a 100.";
+            if (daño + energia + vida !== 10) {
+                errorMessage.textContent = "La suma de los campos de daño, energía y vida debe ser igual a 10.";
                 return false;
             }
 
