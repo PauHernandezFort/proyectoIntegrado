@@ -43,6 +43,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmación</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="logo.jpeg" rel="icon" type="image/x-icon">
+    <link href="logo.jpeg" rel="apple-touch-icon" sizes="180x180">
+    <link href="logo.jpeg" rel="icon" type="image/png">
+    <meta name="theme-color" content="#343a40">
     <style>
 body {
     font-family: 'Press Start 2P', cursive;

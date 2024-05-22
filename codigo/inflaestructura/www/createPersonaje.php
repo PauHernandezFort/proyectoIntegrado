@@ -4,12 +4,11 @@ require_once 'autoloader.php';
 $poderes = new Power("Poder1");
 $array = $poderes->getAllPowers();
 
-
 if (isset($_COOKIE['correo'])) {
     $usuario = $_COOKIE['correo'];
 } else {
     echo "Error inesperado, vuelve a iniciar sesión";
-    //
+    exit();
 }
 ?>
 
@@ -39,7 +38,7 @@ if (isset($_COOKIE['correo'])) {
     <form action="procesarCreacion.php" method="POST" onsubmit="return validarFormulario()">
         <h2>Crear Personaje</h2>
         <h3> Puntos disponibles: </h3>
-        <h3 id="puntos">100</h3>
+        <h3 id="puntos">10</h3>
 
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required><br><br>
@@ -77,32 +76,40 @@ if (isset($_COOKIE['correo'])) {
     <script>
         var poderes = <?php echo json_encode($array); ?>;
 
-        window.onload = agregarPoderes;
+        window.onload = function() {
+            agregarPoderes();
+            bloquearEntradaManual();
+        };
 
         function incrementar(id) {
             var input = document.getElementById(id);
             var valor = parseInt(input.value);
-            if (valor >= 0) {
-                input.value = valor + 1;
+            var puntos = parseInt(document.getElementById("puntos").textContent);
 
-                var puntos = document.getElementById("puntos").textContent;
-                puntos = parseInt(puntos);
-                puntos = puntos - 1;
-                document.getElementById("puntos").textContent = puntos;
+            if (puntos > 0) {
+                input.value = valor + 1;
+                document.getElementById("puntos").textContent = puntos - 1;
             }
         }
 
         function decrementar(id) {
             var input = document.getElementById(id);
             var valor = parseInt(input.value);
+            var puntos = parseInt(document.getElementById("puntos").textContent);
+
             if (valor > 0) {
                 input.value = valor - 1;
-
-                var puntos = document.getElementById("puntos").textContent;
-                puntos = parseInt(puntos);
-                puntos = puntos + 1;
-                document.getElementById("puntos").textContent = puntos;
+                document.getElementById("puntos").textContent = puntos + 1;
             }
+        }
+
+        function bloquearEntradaManual() {
+            var inputs = document.querySelectorAll('input[type=number]');
+            inputs.forEach(input => {
+                input.addEventListener('keydown', function(event) {
+                    event.preventDefault();
+                });
+            });
         }
 
         function agregarPoderes() {
@@ -111,13 +118,9 @@ if (isset($_COOKIE['correo'])) {
                 option.text = poderes[i];
                 option.value = poderes[i];
 
-                var selectPoder1 = document.getElementById("poder1");
-                var selectPoder2 = document.getElementById("poder2");
-                var selectPoder3 = document.getElementById("poder3");
-
-                selectPoder1.add(option.cloneNode(true));
-                selectPoder2.add(option.cloneNode(true));
-                selectPoder3.add(option.cloneNode(true));
+                document.getElementById("poder1").add(option.cloneNode(true));
+                document.getElementById("poder2").add(option.cloneNode(true));
+                document.getElementById("poder3").add(option.cloneNode(true));
             }
         }
 
@@ -129,8 +132,10 @@ if (isset($_COOKIE['correo'])) {
             var poder2 = document.getElementById("poder2").value;
             var poder3 = document.getElementById("poder3").value;
 
-            if (danio + energia + vida !== 100) {
-                alert("La suma de los campos de daño, energía y vida debe ser igual a 100.");
+            var puntos = danio + energia + vida;
+
+            if (puntos !== 10) {
+                alert("La suma de los campos de daño, energía y vida debe ser igual a 10.");
                 return false;
             }
 

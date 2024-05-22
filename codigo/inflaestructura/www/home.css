@@ -35,3 +35,20 @@ body {
     width: 100%;
     z-index: 1000;
 }
+.text-center {
+    text-align: center;
+}
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+.text-white {
+    color: white;
+}
+.dropdown-divider {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid #dee2e6;
+}
+.dropdown-item-text {
+    text-align: center;
+}

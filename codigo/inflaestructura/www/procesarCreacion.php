@@ -9,8 +9,17 @@
    $poder2 = $_POST["poder2"];
    $poder3 = $_POST["poder3"];
    $correo = $usuario = $_COOKIE['correo'];
-   
-    $sql = "INSERT INTO `Personaje`(`nombre`, `energia`, `correocuenta`, `vida`, `daño`) VALUES ('$nombre','$energia','$correo','$vida','$daño')";
+
+   $dañoT=10;
+   $energiaT=50;
+   $vidaT = 100;
+
+   $dañoT+=$daño*3;
+   $energiaT+= $energia*5;
+   $vidaT+= $vida*10;
+
+
+    $sql = "INSERT INTO `Personaje`(`nombre`, `energia`, `correocuenta`, `vida`, `daño`) VALUES ('$nombre','$energiaT','$correo','$vidaT','$dañoT')";
     $conn = $conexion->getConn();
     $result = mysqli_query($conn, $sql);
     $sql2 = "INSERT INTO `PersonajePoder`(`nombrePersonaje`, `nombrePoder`) VALUES ('$nombre','$poder1')";
