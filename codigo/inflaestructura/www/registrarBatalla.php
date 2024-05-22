@@ -76,7 +76,7 @@ foreach ($acciones as $action) {
     }
     $i++;
 }
-
+header ("Location:");
 
  
 
