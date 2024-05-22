@@ -1,21 +1,43 @@
 <?php
-$nombrePoder1j1 = "saco";
-$nombrePoder2j1 = "fumar";
-$nombrePoder3j1 = "curar";
-$nombrePoder1j2 = "fumar";
-$nombrePoder2j2 = "saco";
-$nombrePoder3j2 = "curar";
-//$jugador1= $_COOKIE['correo'];
-//session_start();
-//$jugador2 = $_SESSION['email'];
-//echo $jugador1;
-//echo $jugador2;
-$vidaj1 = 140;
-$vidaj2 = 160;
-$dañoj1 = 18;
-$dañoj2 = 14;
-$energiaj1 = 60;
-$energiaj2 = 60;
+require_once "autoloader.php";
+$jugador1= $_COOKIE['correo'];
+session_start();
+$jugador2 = $_SESSION['email'];
+$conexion = new Connection;
+$conn = $conexion->getConn();
+$sql1 = "SELECT * FROM `Personaje` where `correocuenta` = '$jugador1'";
+$sql2 = "SELECT * FROM `Personaje` where `correocuenta` = '$jugador2'";
+$result = mysqli_query($conn, $sql1);
+$result1 = mysqli_query($conn, $sql2);
+$arrayj1 = $result->fetch_assoc();
+$arrayj2 = $result1->fetch_assoc();
+$nombrej1= $arrayj1['nombre'];
+$nombrej2= $arrayj2['nombre'];
+echo $nombrej1;
+
+$sql3 = "SELECT nombrePoder FROM `PersonajePoder` where `nombrePersonaje` = '$nombrej1'";
+$sql4 = "SELECT nombrePoder FROM `PersonajePoder` where `nombrePersonaje` = '$nombrej2'";
+$result3 = mysqli_query($conn, $sql3);
+$result4 = mysqli_query($conn, $sql4);
+
+while ($row = $result3->fetch_assoc()) {
+    $poderesj1[] = $row['nombrePoder'];
+}
+while ($row = $result4->fetch_assoc()) {
+    $poderesj2[] = $row['nombrePoder'];
+}
+$nombrePoder1j1 = $poderesj1[0];
+$nombrePoder2j1 = $poderesj1[1];
+$nombrePoder3j1 = $poderesj1[2];
+$nombrePoder1j2 = $poderesj2[0];
+$nombrePoder2j2 = $poderesj2[1];
+$nombrePoder3j2 = $poderesj2[2];
+$vidaj1= $arrayj1['vida'];
+$vidaj2 = $arrayj2['vida'];
+$dañoj1 = $arrayj1['daño'];
+$dañoj2 = $arrayj2['daño'];
+$energiaj1 =$arrayj1['energia'];
+$energiaj2 = $arrayj2['energia'];
 ?>
 <!DOCTYPE html>
 <html lang="es">
