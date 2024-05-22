@@ -102,7 +102,7 @@ class Power extends Connection {
 }
 
     public function deletepower($nombre){
-        $nombre = $this->conn = real_escape_string($nombre);
+        $nombre = $this->conn->real_escape_string($nombre);
         $query = "DELETE FROM Poder WHERE nombrePoder = '$nombre'";
         $resultado = $this->conn->query($query);
         if (!$resultado) {
