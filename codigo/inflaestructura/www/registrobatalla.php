@@ -4,17 +4,11 @@ require_once("autoloader.php");
 $connection = new Connection();
 
 function drawlist($conn, $nombrePersonaje) {
-    $sql5 = "
-        SELECT b.*
-        FROM Batalla b
-        JOIN BatallaPersonaje bp ON b.id = bp.idbatalla
-        WHERE bp.nombrePersonaje = ?";
-    
-    $stmt = $conn->prepare($sql5);
-    $stmt->bind_param("s", $nombrePersonaje);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
+    $sql5 = "SELECT b.*
+    FROM Batalla b
+    JOIN BatallaPersonaje bp ON b.id = bp.idbatalla
+    WHERE bp.nombrePersonaje = '$nombrePersonaje'";
+$result = $conn->query($sql5);
     $batallas = [];
     while ($row = $result->fetch_assoc()) {
         $batallas[] = [
@@ -24,11 +18,7 @@ function drawlist($conn, $nombrePersonaje) {
         ];
     }
 
-    foreach ($batallas as $batalla) {
-        echo "ID Batalla: " . $batalla['id'] . "<br>";
-        echo "Fecha: " . $batalla['Fecha'] . "<br>";
-        echo "Ganador: " . $batalla['Ganador'] . "<br><br>";
-    }
+ 
 
     return $batallas;
 }
@@ -40,19 +30,51 @@ $conn = $connection->getConn();
 $jugadorCorreo = $_COOKIE["correo"];
 
 
-$sql3 = "SELECT nombre FROM Personaje WHERE correoCuenta = ?";
-$stmt = $conn->prepare($sql3);
-$stmt->bind_param("s", $jugadorCorreo);
-$stmt->execute();
-$result = $stmt->get_result();
-$resultado = $result->fetch_assoc();
+$sql3 = "SELECT nombre FROM Personaje WHERE correoCuenta = '$jugadorCorreo'";
+$resultado = $conn->query($sql3);
 
-if ($resultado) {
-    $nombrePersonaje = $resultado['nombre'];
-    drawlist($conn, $nombrePersonaje);
-} else {
-    echo "No se encontró un personaje asociado con el correo: " . $jugadorCorreo;
-}
+$batallas = [];
+if ($resultado && $resultado->num_rows > 0) {
+    
+    $row = $resultado->fetch_assoc();
+    $nombrePersonaje = $row['nombre'];
+    $batallas = drawlist($conn, $nombrePersonaje);
+} 
 
 ?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Batallas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .batalla {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Historial de Batallas</h1>
+
+    <?php foreach ($batallas as $batalla): ?>
+        <div class="batalla">
+            <p><strong>ID Batalla:</strong> <?php echo $batalla['id']; ?></p>
+            <p><strong>Fecha:</strong> <?php echo $batalla['Fecha']; ?></p>
+            <p><strong>Ganador:</strong> <?php echo $batalla['Ganador']; ?></p>
+        </div>
+    <?php endforeach; ?>
+</body>
+</html>
 
