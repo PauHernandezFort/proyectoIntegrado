@@ -157,16 +157,16 @@ footer {
 
             }
             if (lineas === 0) {
-                let botonPelea = document.querySelector('.fixed-button-right');
-                botonPelea.innerText = 'CREAR PERSONAJE';
-                botonPelea.setAttribute('href', 'createPersonaje.php');
-                botonPelea.classList.add('btn', 'btn-success');
+          
+            let botonBuscarContrincante = document.querySelector('.btn-success');
+            botonBuscarContrincante.innerText = 'CREAR PERSONAJE';
+            botonBuscarContrincante.setAttribute('href', 'createPersonaje.php');
 
-                let botonModificar = document.querySelector('.fixed-button-left');
-                botonModificar .innerText = 'CREAR PERSONAJE';
-                botonModificar .setAttribute('href', 'createPersonaje.php');
-                botonModificar .classList.add('btn', 'btn-primary');
-            }
+        
+            let botonModificarPersonaje = document.querySelector('.btn-primary');
+            botonModificarPersonaje.innerText = 'CREAR PERSONAJE';
+            botonModificarPersonaje.setAttribute('href', 'createPersonaje.php');
+        }
         });
     </script>
     <iframe width="0" height="0" src="https://www.youtube.com/embed/0ThIonKfSHo?autoplay=1&loop=1&playlist=0ThIonKfSHo" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

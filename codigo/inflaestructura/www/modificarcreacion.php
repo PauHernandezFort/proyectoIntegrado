@@ -2,7 +2,7 @@
 require_once 'autoloader.php';
 $conexion = new Connection;
 
-$daño = $_POST["daño"];
+$daño = $_POST["danio"];
 $energia = $_POST["energia"];
 $vida = $_POST["vida"];
 $poder1 = $_POST["poder1"];
