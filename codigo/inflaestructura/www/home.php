@@ -18,9 +18,6 @@ $lineas= mysqli_num_rows($result);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     
     <title>Home</title>
-    <style>
-      
-    </style>
     <link href="logo.jpeg" rel="icon" type="image/x-icon">
     <link href="logo.jpeg" rel="apple-touch-icon" sizes="180x180">
     <link href="logo.jpeg" rel="icon" type="image/png">
@@ -36,8 +33,12 @@ $lineas= mysqli_num_rows($result);
             </a>
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ajustes</a>
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Ajustes
+                </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li class="dropdown-item-text"><?php echo $correo; ?></li>
+                  <li class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="login.php">Cerrar Sesion</a></li>
                   <li><a class="dropdown-item" href="confirmacion.php">Eliminar Cuenta</a></li>
                 </ul>
