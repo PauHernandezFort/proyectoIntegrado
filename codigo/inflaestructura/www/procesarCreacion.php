@@ -15,7 +15,7 @@
    $vidaT = 100;
 
    $dañoT+=$daño*3;
-   $energiaT+= $daño*5;
+   $energiaT+= $energia*5;
    $vidaT+= $vida*10;
 
 
