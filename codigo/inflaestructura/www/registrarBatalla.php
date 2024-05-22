@@ -76,8 +76,12 @@ foreach ($acciones as $action) {
     }
     $i++;
 }
-header ("Location:");
 
+$sql4 = "INSERT INTO `BatallaPersonaje`(`idbatalla`, `nombrePersonaje`) VALUES ('$idBatalla','$nombrePersonaje1')";
+    $resultado2 = mysqli_query($conn, $sql4);
+  
+    $sql4 = "INSERT INTO `BatallaPersonaje`(`idbatalla`, `nombrePersonaje`) VALUES ('$idBatalla','$nombrePersonaje2')";
+    $resultado2 = mysqli_query($conn, $sql4);
  
 
     
