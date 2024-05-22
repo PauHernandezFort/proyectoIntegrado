@@ -40,9 +40,11 @@ $conn = $connection->getConn();
 $jugadorCorreo = $_COOKIE["correo"];
 
 
-$sql3 = "SELECT nombre FROM Personaje WHERE correoCuenta =$jugadorCorreo";
+$sql3 = "SELECT nombre FROM Personaje WHERE correoCuenta = ?";
 $stmt = $conn->prepare($sql3);
-
+$stmt->bind_param("s", $jugadorCorreo);
+$stmt->execute();
+$result = $stmt->get_result();
 $resultado = $result->fetch_assoc();
 
 if ($resultado) {
