@@ -11,12 +11,7 @@
     right: 20px;
     z-index: 1000;
 }
-.fixed-button-right {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-}
+
 h1 {
     font-family: 'Press Start 2P', cursive;
     font-size: 3em;
