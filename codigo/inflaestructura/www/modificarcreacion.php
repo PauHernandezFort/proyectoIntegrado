@@ -25,12 +25,11 @@
         $poderes[] = $fila['nombrePoder'];
     }
     
-    foreach($poderes as $poder){
         $poder1old = $poderes[0];
         $poder2old = $poderes[1];
         $poder3old = $poderes[2];
         
-    }
+    
 
     if($poder1 == $poder2 || $poder1 == $poder3 || $poder2 == $poder3 ){
         echo "error no se puede poner iguales";
