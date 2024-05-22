@@ -38,12 +38,15 @@ $energiaj2 = 60;
      justify-content: center;
      align-items: center;
  }
- .barra {
-     height: 10px;
-     margin-bottom:30px;
- }
+ 
+    .barra {
+            height: 10px;
+            margin-bottom: 30px;
+            transition: width 0.5s ease;
+        }
+ 
  #barraVerde {
-     background-color: green;
+    background-color: #2E8B57;
      width: 49%;
      padding: 10px; 
      
@@ -54,7 +57,7 @@ $energiaj2 = 60;
      background-color: transparent;
  }
  #barraAzul {
-     background-color: blue;
+    background-color: #483D8B;
      width: 49%;
      padding: 10px; 
    
