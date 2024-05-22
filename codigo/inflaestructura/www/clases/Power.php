@@ -126,18 +126,25 @@ class Power extends Connection {
         
         
         $output = "";
+
+        $contador = 1;
         
         foreach ($powers as $power){
-            $output .= "<div class='card' style='width: 18rem;'>
-                        <div class='card-body'>
-                        <h5 class='card-title'>" . $power['nombrePoder'] . "</h5>
-                        <p class='card-text'>" . $power['descripcion'] . "</p>
-                        <div class='card-footer text-body-secondary'>
+            $output .= "<div class ='card'> 
+            <div class='card$contador'>
+            <div class='card-body>
+                        <h5 class='card-title'><strong>" . $power['nombrePoder'] . "</strong></h5>
                         <p class='card-text'>Daño: " . $power['daño'] . "</p>
                         <p class='card-text'>Coste: " . $power['coste'] . "</p>
+                       
+                        <div class='card-footer text-body-secondary'>
+                        <p class='card-text'>" . $power['descripcion'] . "</p>
+                        </div>
                         </div>
                         </div>
                         </div>";
+
+                        $contador ++; 
         }
         return $output;
        
