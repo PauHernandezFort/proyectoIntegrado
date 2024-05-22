@@ -4,14 +4,25 @@ require_once "autoloader.php";
 $poderes = new Power("Poder1");
 $array = $poderes->getAllPowers();
 
-if (isset($_COOKIE['correo'])) {
-    $usuario = $_COOKIE['correo'];
-    
-} else {
-    echo "Error inesperado, vuelve a iniciar sesión";
-    exit();
-}
+$correo = $_GET['jugadorGanador'];
+$conexion = new Connection;
+$conn = $conexion->getConn();
+$sql1 = "SELECT * FROM `Personaje` where `correocuenta` = '$correo'";
+$result = mysqli_query($conn, $sql1);
+$arrayj1 = $result->fetch_assoc();
 
+$vida= $arrayj1['vida'];
+$energia = $arrayj1['energia'];
+$daño= $arrayj1['daño'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $vida += ($_POST['vida'] * 10);
+    $energia += $_POST['energia'] *5;
+    $daño += $_POST['danio'] *3;
+
+    $sql2 = "UPDATE `Personaje` SET `energia` = '$energia', `vida` = '$vida', `daño` = '$daño' WHERE `correocuenta` = '$correo'";
+    $result = mysqli_query($conn, $sql2);
+    header("Location: home.php");
+ }
 ?>
 
 <!DOCTYPE html>
@@ -73,80 +84,73 @@ if (isset($_COOKIE['correo'])) {
     </nav>
     <div class="container form-container">
         <div class="form-box">
-            <h1 class="text-center">Update Character</h1>
-            <form action="modificarcreacion.php" method="POST" onsubmit="return validarFormulario()">
-                <div class="form-group">
-                    <label for="energia">Energía:</label>
-                    <input type="number" id="energia" name="energia" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="vida">Vida:</label>
-                    <input type="number" id="vida" name="vida" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="daño">Daño:</label>
-                    <input type="number" id="daño" name="daño" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="poder1">Poder1:</label>
-                    <select id="poder1" name="poder1" class="form-control"></select>
-                </div>
-                <div class="form-group">
-                    <label for="poder2">Poder 2:</label>
-                    <select id="poder2" name="poder2" class="form-control"></select>
-                </div>
-                <div class="form-group">
-                    <label for="poder3">Poder 3:</label>
-                    <select id="poder3" name="poder3" class="form-control"></select>
-                </div>
+            <h1 class="text-center">add points</h1>
+            <h3>Puntos disponibles:</h3>
+            <h3 id="puntos">3</h3>
+            <form action="" method="POST" onsubmit="return validarFormulario()">
+                <label for="danio">Daño:</label>
+                <input type="number" id="danio" name="danio" value="0" min="0" step="1">
+                <button type="button" onclick="incrementar('danio')">+</button>
+                <button type="button" onclick="decrementar('danio')">-</button><br><br>
+
+                <label for="energia">Energía:</label>
+                <input type="number" id="energia" name="energia" value="0" min="0" step="1">
+                <button type="button" onclick="incrementar('energia')">+</button>
+                <button type="button" onclick="decrementar('energia')">-</button><br><br>
+
+                <label for="vida">Vida:</label>
+                <input type="number" id="vida" name="vida" value="0" min="0" step="1">
+                <button type="button" onclick="incrementar('vida')">+</button>
+                <button type="button" onclick="decrementar('vida')">-</button><br><br>
                 <div id="error-message" class="error-message"></div>
                 <button type="submit" class="btn btn-primary btn-block">Update Character</button>
             </form>
         </div>
     </div>
     <script>
-        var poderes = <?php echo json_encode($array); ?>;
-        window.onload = agregarPoderes;
-        function agregarPoderes() {
-            for (var i = 0; i < poderes.length; i++) {
-                var option = document.createElement("option");
-                option.text = poderes[i];
-                option.value = poderes[i];
+   
+    function incrementar(id) {
+        var input = document.getElementById(id);
+        var valor = parseInt(input.value);
+        let puntos = parseInt(document.getElementById("puntos").textContent);
 
-                document.getElementById("poder1").add(option.cloneNode(true));
-                document.getElementById("poder2").add(option.cloneNode(true));
-                document.getElementById("poder3").add(option.cloneNode(true));
-            }
+        if (puntos > 0) {
+            input.value = valor + 1;
+            document.getElementById("puntos").textContent = puntos - 1;
         }
-        function validarFormulario() {
-            var daño = parseInt(document.getElementById("daño").value);
-            var energia = parseInt(document.getElementById("energia").value);
-            var vida = parseInt(document.getElementById("vida").value);
+    }
 
-            var poder1 = document.getElementById("poder1").value;
-            var poder2 = document.getElementById("poder2").value;
-            var poder3 = document.getElementById("poder3").value;
+    function decrementar(id) {
+        var input = document.getElementById(id);
+        var valor = parseInt(input.value);
+        var puntos = parseInt(document.getElementById("puntos").textContent);
 
-            var errorMessage = document.getElementById("error-message");
-            errorMessage.textContent = "";
-
-            if (daño + energia + vida !== 100) {
-                errorMessage.textContent = "La suma de los campos de daño, energía y vida debe ser igual a 100.";
-                return false;
-            }
-
-            if (poder1 === poder2 || poder1 === poder3 || poder2 === poder3) {
-                errorMessage.textContent = "No puedes seleccionar el mismo poder en diferentes campos.";
-                return false;
-            }
-
-            return true;
+        if (valor > 0) {
+            input.value = valor - 1;
+            document.getElementById("puntos").textContent = puntos + 1;
         }
-    </script>
+    }
+
+    function validarFormulario() {
+        var errorMessage = document.getElementById("error-message");
+        errorMessage.textContent = "";
+
+        var danio = parseInt(document.getElementById("danio").value);
+        var energia = parseInt(document.getElementById("energia").value);
+        var vida = parseInt(document.getElementById("vida").value);
+        var puntosDisponibles = parseInt(document.getElementById("puntos").textContent);
+
+        if (danio + energia + vida !== 3) {
+            errorMessage.textContent = `La suma de los campos de daño, energía y vida debe ser igual a 3.`;
+            return false;
+        }
+
+        return true;
+    }
+</script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <a href="home.php" class="fixed-button-left">
-        <button class="btn btn-primary">Return</button>
 </body>
 </html>

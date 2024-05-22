@@ -130,6 +130,9 @@ class Power extends Connection {
         $contador = 1;
         
         foreach ($powers as $power){
+            if($power['nombrePoder'] == 'saltarTurno'){
+
+            }else{
             $output .= "<div class ='card'> 
             <div class='card$contador'>
             <div class='card-body>
@@ -145,6 +148,7 @@ class Power extends Connection {
                         </div>";
 
                         $contador ++; 
+        }
         }
         return $output;
        
