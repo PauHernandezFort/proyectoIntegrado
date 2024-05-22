@@ -114,6 +114,7 @@ footer {
                         <li class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="login.php">Cerrar Sesión</a></li>
                         <li><a class="dropdown-item" href="confirmacion.php">Eliminar Cuenta</a></li>
+                        <li><a class="dropdown-item" href="registroBatalla.php">Registro Batalla</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">

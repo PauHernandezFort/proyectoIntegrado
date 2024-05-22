@@ -84,5 +84,6 @@ $sql4 = "INSERT INTO `BatallaPersonaje`(`idbatalla`, `nombrePersonaje`) VALUES (
     $resultado2 = mysqli_query($conn, $sql4);
  
 
+   
     
 ?>
