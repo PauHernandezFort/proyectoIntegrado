@@ -14,12 +14,14 @@ $power = new Power("");
     <link href="logo.jpeg" rel="apple-touch-icon" sizes="180x180">
     <link href="logo.jpeg" rel="icon" type="image/png">
     <meta name="theme-color" content="#343a40">
-    <link href="home.css" rel="stylesheet">
+    <link href="drawList.css" rel="stylesheet">
     <title>Cartas de Poder</title>
     <style>
-        /*Estos estilos son para las cards y el posicionamiento ya que las cards las cojo del drawList de Power.*/
+      
+s
         .card {
             margin: 15px;
+          
         }
         .fixed-button-left {
             position: fixed;
