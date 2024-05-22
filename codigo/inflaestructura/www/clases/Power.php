@@ -59,22 +59,24 @@ class Power extends Connection {
     function getAllPowers(){
         $query = "SELECT nombrePoder FROM Poder";
         $result = $this->conn->query($query);
-
+    
         $poderes = array();
-
+    
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                $poderes[] = $row;
+                $poderes[] = $row['nombrePoder'];
             }
         }
-        $array=[];
-       
-         for ($i=0; $i < count($poderes) ; $i++) { 
-            $array[$i]= $poderes[$i]['nombrePoder'];
-         }
         
-        return $array;
         
+        $index = array_search('saltarTurno', $poderes);
+        
+      
+        if ($index !== false) {
+            array_splice($poderes, $index, 1);
+        }
+    
+        return $poderes;
     }
     
     
