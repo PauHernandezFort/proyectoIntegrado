@@ -124,18 +124,6 @@ if ($resultado && $resultado->num_rows > 0) {
         <h1 id="titulo" class="text-center">Historial de Batallas</h1>
         <br>
         <div class="row">
-<<<<<<< HEAD
-            <?php foreach ($batallas as $batalla): ?>
-                <div class="col-sm-3"> 
-                    <div class="batalla">
-                        <p><strong>ID Batalla:</strong> <?php echo $batalla['id']; ?></p>
-                        <p><strong>Fecha:</strong> <?php echo $batalla['fecha']; ?></p>
-                        <p><strong>Ganador:</strong> <?php echo $batalla['ganador']; ?></p>
-                        <a href='infoBatalla.php?id=<?php echo $batalla['id']; ?>' class='btn btn-primary'>Info</a>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-=======
     <?php foreach ($batallas as $batalla): ?>
         <div class="col-sm-4"> 
             <div class="batalla">
@@ -147,7 +135,6 @@ if ($resultado && $resultado->num_rows > 0) {
     <?php endforeach; ?>
 </div>
 
->>>>>>> fc583fc55b79bd9107d228683f07fb9afdf4b414
         </div>
     </div>
 </body>
