@@ -1,5 +1,5 @@
 body {
-    background-image: url('cartasfondo.jpg');
+    background-image: url('/img/cartasfondo.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top center;

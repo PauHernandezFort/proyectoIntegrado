@@ -7,7 +7,6 @@ if (!isset($_COOKIE['correo'])) {
     echo "No estás autenticado.";
     exit;
 }
-//
 
 $correo = $_COOKIE['correo'];
 $conexion = new Connection;
@@ -47,77 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="logo.jpeg" rel="apple-touch-icon" sizes="180x180">
     <link href="logo.jpeg" rel="icon" type="image/png">
     <meta name="theme-color" content="#343a40">
-    <style>
-body {
-    font-family: 'Press Start 2P', cursive;
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-
-.container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 350px;
-    text-align: center;
-}
-
-h2 {
-    margin-bottom: 20px;
-    font-size: 1.2rem;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-label {
-    font-weight: bold;
-    margin-bottom: 10px;
-    font-size: 1rem;
-}
-
-input[type="password"] {
-    padding: 10px;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    width: 100%;
-    margin-bottom: 20px;
-    box-sizing: border-box;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 0.8rem;
-}
-
-input[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 0.8rem;
-}
-
-input[type="submit"]:hover {
-    background-color: #45a049;
-}
-
-.error {
-    color: red;
-    font-weight: bold;
-    font-size: 0.8rem;
-    margin-top: 10px;
-}
-
-    </style>
+    <link rel="stylesheet" href="css/confirmacion.css">
 </head>
 <body>
     <div class="container">
