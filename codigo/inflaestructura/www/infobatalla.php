@@ -143,4 +143,3 @@ if ($resultado && $resultado->num_rows > 0) {
     </div>
 </body>
 </html>
-
