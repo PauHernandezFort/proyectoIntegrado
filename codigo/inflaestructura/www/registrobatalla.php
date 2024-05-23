@@ -69,17 +69,17 @@ if ($resultado && $resultado->num_rows > 0) {
     <meta name="theme-color" content="#343a40">
 
     <style>
-        body {
-            font-family: 'Press Start 2P', cursive;
-            margin: 20px;
-            background-color: #1c1c1c;
-            color: #fff;
-            background-image: url('/img/bosquejapones.png');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: top center;
-            padding-top: 56px; 
-        }
+     body {
+    font-family: 'Press Start 2P', cursive;
+    margin: 20px;
+    background-color: #1c1c1c;
+    color: #fff;
+    background-image: url('/img/temploJapones.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 56px;
+}
+
 
         h1 {
             color: red;
