@@ -35,42 +35,7 @@ $daño= $arrayj1['daño'];
     <link href="logo.jpeg" rel="icon" type="image/png">
     <link href="logo.jpeg" rel="apple-touch-icon" sizes="180x180">
     <meta name="theme-color" content="#343a40">
-    <style>
-        body {
-            font-family: 'Press Start 2P', cursive;
-            background-image: url('fondoModPersonaje.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            margin: 0;
-            padding-top: 70px;
-        }
-        .form-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .form-box {
-            border: 1px solid #ccc;
-            padding: 20px;
-            border-radius: 8px;
-            background-color: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-        .error-message {
-            color: red;
-            font-size: 14px;
-            margin-top: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/modificarP.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
