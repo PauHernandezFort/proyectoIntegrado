@@ -65,39 +65,27 @@ if ($resultado && $resultado->num_rows > 0) {
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
-             body {
-            font-family: 'Press Start 2P', cursive;
-            margin: 20px;
-            background-color: #1c1c1c;
-            color: #fff;
-            background-image: url('escenarioRegistro.png');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: top center;
-            padding-top: 56px; 
-        }
+            body {
+    font-family: 'Press Start 2P', cursive;
+    margin: 20px;
+    background-color: #1c1c1c;
+    color: #fff;
+    background-image: url('escenarioRegistro.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    padding-top: 56px; 
+}
 
-       
-
-        #titulo {
-            color: #00bfff;
-        }
-
-        .batalla {
-            .batalla {
+.batalla {
     font-size: 14px; 
     width: 180px;
     margin: 0 10px 15px 0;
     padding: 10px;
     border: 1px solid #333;
     border-radius: 5px;
-    background-color: #007bff; 
-    color: #fff; 
+    color: #fff;
     float: left;
-    box-sizing: border-box;
-  
-}
-
 }
 
 
@@ -107,6 +95,7 @@ if ($resultado && $resultado->num_rows > 0) {
     color: #fff;
     font-size: 12px; 
 }
+
     </style>
 </head>
 <body>
