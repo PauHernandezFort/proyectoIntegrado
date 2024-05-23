@@ -4,23 +4,25 @@ require_once "autoloader.php";
 $poderes = new Power("Poder1");
 $array = $poderes->getAllPowers();
 
-if (isset($_COOKIE['correo'])) {
-    $usuario = $_COOKIE['correo'];
-    
-} else {
-    echo "Error inesperado, vuelve a iniciar sesión";
-    exit();
-}
-
+$correo = $_GET['jugadorGanador'];
 $conexion = new Connection;
 $conn = $conexion->getConn();
-$sql1 = "SELECT * FROM `Personaje` where `correocuenta` = '$usuario'";
+$sql1 = "SELECT * FROM `Personaje` where `correocuenta` = '$correo'";
 $result = mysqli_query($conn, $sql1);
 $arrayj1 = $result->fetch_assoc();
 
 $vida= $arrayj1['vida'];
 $energia = $arrayj1['energia'];
 $daño= $arrayj1['daño'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $vida += ($_POST['vida'] * 10);
+    $energia += $_POST['energia'] *5;
+    $daño += $_POST['danio'] *3;
+
+    $sql2 = "UPDATE `Personaje` SET `energia` = '$energia', `vida` = '$vida', `daño` = '$daño' WHERE `correocuenta` = '$correo'";
+    $result = mysqli_query($conn, $sql2);
+    header("Location: home.php");
+ }
 ?>
 
 <!DOCTYPE html>
@@ -82,10 +84,10 @@ $daño= $arrayj1['daño'];
     </nav>
     <div class="container form-container">
         <div class="form-box">
-            <h1 class="text-center">Update Character</h1>
+            <h1 class="text-center">add points</h1>
             <h3>Puntos disponibles:</h3>
-            <h3 id="puntos"></h3>
-            <form action="modificarcreacion.php" method="POST" onsubmit="return validarFormulario()">
+            <h3 id="puntos">3</h3>
+            <form action="" method="POST" onsubmit="return validarFormulario()">
                 <label for="danio">Daño:</label>
                 <input type="number" id="danio" name="danio" value="0" min="0" step="1">
                 <button type="button" onclick="incrementar('danio')">+</button>
@@ -100,46 +102,13 @@ $daño= $arrayj1['daño'];
                 <input type="number" id="vida" name="vida" value="0" min="0" step="1">
                 <button type="button" onclick="incrementar('vida')">+</button>
                 <button type="button" onclick="decrementar('vida')">-</button><br><br>
-
-                <div class="form-group">
-                    <label for="poder1">Poder1:</label>
-                    <select id="poder1" name="poder1" class="form-control"></select>
-                </div>
-                <div class="form-group">
-                    <label for="poder2">Poder 2:</label>
-                    <select id="poder2" name="poder2" class="form-control"></select>
-                </div>
-                <div class="form-group">
-                    <label for="poder3">Poder 3:</label>
-                    <select id="poder3" name="poder3" class="form-control"></select>
-                </div>
                 <div id="error-message" class="error-message"></div>
                 <button type="submit" class="btn btn-primary btn-block">Update Character</button>
             </form>
         </div>
     </div>
     <script>
-    var poderes = <?php echo json_encode($array); ?>;
-    var dañoP = <?php echo $daño;?>;
-    var vidaP = <?php echo $vida;?>;
-    var energiaP = <?php echo $energia;?>;
-    var puntosI;
-
-    window.onload = function() {
-        dañoP -= 10;
-        vidaP -= 100;
-        energiaP -= 50;
-
-        let dañoE = dañoP / 3;
-        let vidaE = vidaP / 10;
-        let energiaE = energiaP / 5;
-
-        puntosI = Math.round(dañoE + vidaE + energiaE);
-        document.getElementById("puntos").textContent = puntosI;
-
-        agregarPoderes();
-    }
-
+   
     function incrementar(id) {
         var input = document.getElementById(id);
         var valor = parseInt(input.value);
@@ -162,18 +131,6 @@ $daño= $arrayj1['daño'];
         }
     }
 
-    function agregarPoderes() {
-        for (var i = 0; i < poderes.length; i++) {
-            var option = document.createElement("option");
-            option.text = poderes[i];
-            option.value = poderes[i];
-
-            document.getElementById("poder1").add(option.cloneNode(true));
-            document.getElementById("poder2").add(option.cloneNode(true));
-            document.getElementById("poder3").add(option.cloneNode(true));
-        }
-    }
-
     function validarFormulario() {
         var errorMessage = document.getElementById("error-message");
         errorMessage.textContent = "";
@@ -183,8 +140,8 @@ $daño= $arrayj1['daño'];
         var vida = parseInt(document.getElementById("vida").value);
         var puntosDisponibles = parseInt(document.getElementById("puntos").textContent);
 
-        if (danio + energia + vida !== puntosI) {
-            errorMessage.textContent = `La suma de los campos de daño, energía y vida debe ser igual a ${puntosI}.`;
+        if (danio + energia + vida !== 3) {
+            errorMessage.textContent = `La suma de los campos de daño, energía y vida debe ser igual a 3.`;
             return false;
         }
 

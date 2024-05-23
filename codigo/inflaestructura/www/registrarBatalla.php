@@ -5,9 +5,8 @@ $conn = $conexion->getConn();
 
 session_start();
     $acciones = json_decode(urldecode($_GET['array']), true);
-   
     $ganador=$_GET['ganador'];
-    echo $ganador,
+ 
    
    $jugador1 = $_COOKIE["correo"];
    $jugador2 = $_SESSION["email"];
@@ -55,6 +54,7 @@ $nombrePersonaje2 = $resultado['nombre'];
 
 
 $i=0;
+$id=0;
 foreach ($acciones as $action) {
     $nombrePoder = mysqli_real_escape_string($conn, $action[0]);
    
@@ -84,5 +84,5 @@ $sql4 = "INSERT INTO `BatallaPersonaje`(`idbatalla`, `nombrePersonaje`) VALUES (
     $resultado2 = mysqli_query($conn, $sql4);
  
 
-    
+    header("Location: sumarPuntos.php?jugadorGanador=$jugaganador");
 ?>
