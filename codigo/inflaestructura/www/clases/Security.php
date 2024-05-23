@@ -73,7 +73,7 @@ class Security extends Connection
             return false;
         }
     }
-    //e
+    //ee
 
     private function checkPassword($securePassword, $userPassword)
     {
