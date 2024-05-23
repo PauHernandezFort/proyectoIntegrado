@@ -58,13 +58,14 @@ $energiaj2 = $arrayj2['energia'];
     <meta name="theme-color" content="#343a40">
     <style>
         body {
-            background-image: url('/img/temploregistro.jpg');
+            background-image: url('/img/escenarioBatalla.jpg');
+            background-size: cover;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
             font-family: 'Press Start 2P', cursive;
+
         }
 
         #container {
