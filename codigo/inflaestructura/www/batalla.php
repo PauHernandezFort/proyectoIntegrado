@@ -54,69 +54,74 @@ $energiaj2 = $arrayj2['energia'];
     <link href="logo.jpeg" rel="icon" type="image/png">
     <meta name="theme-color" content="#343a40">
     <style>
-         body {
-         background-image: url('escenariobatalla1.jpg');
-     margin: 0;
-     padding: 0;
-     display: flex;
-     flex-direction: column;
-    
- }
- #container {
-     flex: 1;
-     display: flex;
-     justify-content: center;
-     align-items: center;
- }
+    body {
+        background-image: url('escenariobatalla1.jpg');
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        font-family: 'Press Start 2P', cursive;
+    }
+
+    #container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
  
     .barra {
-            height: 10px;
-            margin-bottom: 30px;
-            transition: width 0.5s ease;
-        }
- 
- #barraVerde {
-    background-color: #2E8B57;
-     width: 49%;
-     padding: 10px; 
-     
-    
- }
- #barraBlanca {
-     flex: 1;
-     background-color: transparent;
- }
- #barraAzul {
-    background-color: #483D8B;
-     width: 49%;
-     padding: 10px; 
-   
- }
- #botones {
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
-     margin: 20px;
- }
- .boton {
-     padding: 10px 20px;
-     background-color: #ccc;
-     border: none;
-     border-radius: 5px;
-     cursor: pointer;
- }
- h3 {
- color: red; 
- text-align: left;
-  display: flex;
-     
-  }
-        #energia1, #energia2 {
-            margin: 10px;
-        }
-        .energia-container h5 {
-    color: white;
-}
+        height: 10px;
+        margin-bottom: 30px;
+        transition: width 0.5s ease;
+    }
+
+    #barraVerde {
+        background-color: #2E8B57;
+        width: 49%;
+        padding: 10px;   
+    }
+
+    #barraBlanca {
+        flex: 1;
+        background-color: transparent;
+    }
+
+    #barraAzul {
+        background-color: #483D8B;
+        width: 49%;
+        padding: 10px;  
+    }
+
+    #botones {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 20px;
+    }
+
+    .boton {
+        padding: 10px 20px;
+        background-color: #ccc;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    h3 {
+        color: red; 
+        text-align: left;
+        display: flex;
+    }
+
+    #energia1, #energia2 {
+        margin: 10px;
+    }
+
+    .energia-container h5 {
+        color: white;
+    }
     </style>
 </head>
 <body>
@@ -125,15 +130,6 @@ $energiaj2 = $arrayj2['energia'];
         <div id="barraBlanca" class="barra"></div>
         <div id="barraAzul" class="barra"></div>
     </div>
-    <div class="energia-container">
-    <h5>Energia Jugador 1: <span id="energia1"><?php echo $energiaj1; ?></span></h5>
-    <h5>Energia Jugador 2: <span id="energia2"><?php echo $energiaj2; ?></span></h5>
-</div>
-
-    <h3 id="error"></h3>
-    <h3 id="turno">Turno: <span id="numTurno">1</span></h3>
-    <h3 id="pepe">Vida Jugador 2: <?php echo $vidaj2; ?></h3>
-    <h3 id="pepe2">Vida Jugador 1: <?php echo $vidaj1; ?></h3>
 
     <div id="botones">
         <div>
@@ -146,9 +142,21 @@ $energiaj2 = $arrayj2['energia'];
             <button class="boton" onclick="botonClickeado('<?php echo $nombrePoder1j2; ?>', 2)"><?php echo $nombrePoder1j2; ?></button>
             <button class="boton" onclick="botonClickeado('<?php echo $nombrePoder2j2; ?>', 2)"><?php echo $nombrePoder2j2; ?></button>
             <button class="boton" onclick="botonClickeado('<?php echo $nombrePoder3j2; ?>', 2)"><?php echo $nombrePoder3j2; ?></button>
-            <button class="boton" onclick="botonClickeado( 'saltarTurno', 2)">Saltar turno</button>
+            <button class="boton" onclick="botonClickeado('saltarTurno', 2)">Saltar turno</button>
         </div>
     </div>
+    <br>
+        <h3 id="error"></h3>
+        <h3 id="turno">Turno: <span id="numTurno">1</span></h3>
+        <h3 id="pepe">Vida Jugador 2: <?php echo $vidaj2; ?></h3>
+        <h3 id="pepe2">Vida Jugador 1: <?php echo $vidaj1; ?></h3>
+        <div class="energia-container">
+            <h5>Energia Jugador 1: <span id="energia1"><?php echo $energiaj1; ?></span></h5>
+            <h5>Energia Jugador 2: <span id="energia2"><?php echo $energiaj2; ?></span></h5>
+        </div>
+</body>
+</html>
+
 
     <script>
         let array =[];
