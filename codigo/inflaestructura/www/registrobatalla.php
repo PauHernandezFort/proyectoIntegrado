@@ -88,22 +88,20 @@ if ($resultado && $resultado->num_rows > 0) {
             color: #00bfff;
         }
 
-        .batalla {+
+        .batalla {
             margin-bottom: 20px;
         }
 
         .card {
-    width: 180px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    margin: 10px; /* Añadido margen de 10px en todas las direcciones */
-}
-
-
+            width: 180px; /* 25% para que se ajuste a 4 tarjetas por fila con Bootstrap */
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            margin:10px;
+        }
 
         .card:hover {
             transform: scale(1.05);
@@ -130,26 +128,19 @@ if ($resultado && $resultado->num_rows > 0) {
         <a class="navbar-brand" href="home.php">
             <img src="logo.jpeg" alt="Avatar Logo" class="d-inline-block align-top" style="height: 40px;">
         </a>
-        <a class="navbar-brand" href="#">PoketGame</a>
+        <a style="text-align: center; width: 100%;"><h1>PoketGame</h1></a>
     </div>
 </nav>
+
 <br>
 <div class="container">
     <h1 id="titulo" class="text-center">Historial de Batallas</h1>
     <br>
     <div class="row">
-        <div class="col-sm-3"> 
-            <div class="batalla">
-                <div class="card">
-                <div class="row">
-            <?php echo drawlist($conn, $nombrePersonaje); ?>
-                        </div>
-
-                </div>
-            </div>
-        </div>
+        <?php echo drawlist($conn, $nombrePersonaje); ?>
     </div>
 </div>
 
 </body>
 </html>
+
