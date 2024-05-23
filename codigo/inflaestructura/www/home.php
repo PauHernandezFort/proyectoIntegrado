@@ -22,79 +22,7 @@ $lineas= mysqli_num_rows($result);
     <link href="logo.jpeg" rel="apple-touch-icon" sizes="180x180">
     <link href="logo.jpeg" rel="icon" type="image/png">
     <meta name="theme-color" content="#343a40">
-    <style>
-.fixed-button-left {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    z-index: 1000;
-}
-
-.fixed-button-right {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-}
-
-h1 {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 3em;
-    text-align: center;
-    margin-top: 20px;
-    color: white;
-}
-
-body {
-    background-image: url('fondo.jpeg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top center;
-    margin: 0; 
-    padding-top: 56px; 
-}
-
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-}
-
-.text-center {
-    text-align: center;
-}
-
-.mb-4 {
-    margin-bottom: 1.5rem;
-}
-
-.text-white {
-    color: white;
-}
-
-.dropdown-divider {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    border: 1px solid #dee2e6;
-}
-.container-full-height {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    min-height: 100vh;
-}
-.container-full-height .btn {
-    margin-bottom: 10px;
-}
-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
-
-</style>
+    <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -134,7 +62,7 @@ footer {
                         <a href="modificarPersonaje.php" class="btn btn-primary">MODIFICAR PERSONAJE</a>
                     </div>
                     <div class="col-md-4 text-center">
-                        <a href="init.php" class="btn btn-secundary" style="background-image: url('cofre.gif'); background-size: contain; background-repeat: no-repeat; background-position: right; height: 100px; width: 100px;"></a>
+                        <a href="init.php" class="btn btn-secundary" style="background-image: url('/img/cofre.gif'); background-size: contain; background-repeat: no-repeat; background-position: right; height: 100px; width: 100px;"></a>
                     </div>
                     <div class="col-md-4 text-center">
                         <a href="contrincante.php" class="btn btn-success">BUSCAR CONTRINCANTE</a>

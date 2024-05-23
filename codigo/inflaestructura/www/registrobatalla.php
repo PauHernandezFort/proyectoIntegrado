@@ -1,5 +1,4 @@
 <?php
-
 require_once("autoloader.php");
 $connection = new Connection();
 
@@ -11,16 +10,26 @@ function drawlist($conn, $nombrePersonaje) {
     $result = $conn->query($sql5);
 
     $batallas = [];
+
+    $i = 1;
+   
     while ($row = $result->fetch_assoc()) {
-        $batallas[] = [
-            'id' => $row['id'],
-            'Fecha' => $row['fecha'],
-            'Ganador' => $row['ganador']
-        ];
+        echo "
+            <div>
+               
+                <h1>Fecha: {$row['fecha']}</h1>
+                <h4>Ganador: {$row['ganador']}</h4>
+                <a href='infoBatalla.php?id={$row['id']}&NBatalla=$i' class='btn btn-primary'>Info</a>
+            </div>";
+        $i++;
+    }
+    
+    
+return $batallas;
     }
 
-    return $batallas;
-}
+
+
 
 $conn = $connection->getConn();
 
@@ -35,7 +44,6 @@ if ($resultado && $resultado->num_rows > 0) {
     $nombrePersonaje = $row['nombre'];
     $batallas = drawlist($conn, $nombrePersonaje);
 } 
-
 ?>
 
 <!DOCTYPE html>
@@ -46,6 +54,11 @@ if ($resultado && $resultado->num_rows > 0) {
     <title>Historial de Batallas</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="logo.jpeg" rel="icon" type="image/x-icon">
+    <link href="logo.jpeg" rel="apple-touch-icon" sizes="180x180">
+    <link href="logo.jpeg" rel="icon" type="image/png">
+    <meta name="theme-color" content="#343a40">
     <style>
         body {
             font-family: 'Press Start 2P', cursive;
@@ -68,28 +81,32 @@ if ($resultado && $resultado->num_rows > 0) {
         }
 
         .batalla {
-            width: 180px;
-            margin: 0 10px 15px 0;
-            padding: 10px;
-            border: 1px solid #333;
-            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .batalla .card {
             background-color: #333;
-            float: left;
-            box-sizing: border-box;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
         }
 
-        .batalla:hover {
-            transform: scale(1.35);
+        .batalla .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .batalla .card-body {
+            padding: 20px;
         }
 
         .batalla p {
-            margin: 5px 0;
-            color: #fff;
+            margin-bottom: 10px;
         }
 
         .batalla strong {
-            font-weight: bold;
             color: #00bfff;
         }
     </style>
@@ -109,14 +126,17 @@ if ($resultado && $resultado->num_rows > 0) {
         <br>
         <div class="row">
             <?php foreach ($batallas as $batalla): ?>
-                <div class="col-sm-2">
+                <div class="col-sm-3"> 
                     <div class="batalla">
                         <p><strong>ID Batalla:</strong> <?php echo $batalla['id']; ?></p>
-                        <p><strong>Fecha:</strong> <?php echo $batalla['Fecha']; ?></p>
-                        <p><strong>Ganador:</strong> <?php echo $batalla['Ganador']; ?></p>
+                        <p><strong>Fecha:</strong> <?php echo $batalla['fecha']; ?></p>
+                        <p><strong>Ganador:</strong> <?php echo $batalla['ganador']; ?></p>
+                        <a href='infoBatalla.php?id=<?php echo $batalla['id']; ?>' class='btn btn-primary'>Info</a>
                     </div>
                 </div>
             <?php endforeach; ?>
+</div>
+
         </div>
     </div>
 </body>
