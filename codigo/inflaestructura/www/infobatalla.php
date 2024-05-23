@@ -9,20 +9,29 @@ function drawlist($conn, $idBatalla, $NBatalla) {
     $result = $conn->query($sql5);
 
     $batallas = [];
+    $count = 0;
     while ($row = $result->fetch_assoc()) {
+        
+        if($count %2 ==0){
+            $colorClass= 'bg-secondary';
+        }else{
+            $colorClass = 'bg-success';
+        }
         echo "
-            <div>
-                <h1> turno: {$row['id']}</h1>
-                <h1>Número de Batalla: $NBatalla</h1>
-                <h1>Nombre del Poder: {$row['nombrePoder']}</h1>
-                <h1>Nombre del Personaje: {$row['nombrePersonaje']}</h1>
-                <h1>Daño: {$row['daño']}</h1>
-                <h1>Energía: {$row['energia']}</h1>
+            <div class='col-sm-4 mb-3'> <!-- Añadido mb-3 para evitar que las tarjetas se muevan -->
+                <div class='batalla card $colorClass text-white'>
+                    <div class='card-body'>
+                        <h2 class='card-title'>Turno: {$row['id']}</h2>
+                        <p class='card-text'>Número de Batalla: $NBatalla</p>
+                        <p class='card-text'>Nombre del Poder: {$row['nombrePoder']}</p>
+                        <p class='card-text'>Nombre del Personaje: {$row['nombrePersonaje']}</p>
+                        <p class='card-text'>Daño: {$row['daño']}</p>
+                        <p class='card-text'>Energía: {$row['energia']}</p>
+                    </div>
+                </div>
             </div>";
-       
+            $count++;
     }
-
-    
 
     return $batallas;
 }
@@ -43,6 +52,10 @@ if ($resultado && $resultado->num_rows > 0) {
 } 
 
 ?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -52,7 +65,7 @@ if ($resultado && $resultado->num_rows > 0) {
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
-        body {
+                body {
             font-family: 'Press Start 2P', cursive;
             margin: 20px;
             background-color: #1c1c1c;
@@ -64,39 +77,37 @@ if ($resultado && $resultado->num_rows > 0) {
             padding-top: 56px; 
         }
 
-        h1 {
-            color: red;
-        }
+
+       
 
         #titulo {
             color: #00bfff;
         }
 
         .batalla {
-            width: 180px;
-            margin: 0 10px 15px 0;
-            padding: 10px;
-            border: 1px solid #333;
-            border-radius: 5px;
-            background-color: #333;
-            float: left;
-            box-sizing: border-box;
-            transition: transform 0.3s ease;
-        }
+            .batalla {
+    font-size: 14px; 
+    width: 180px;
+    margin: 0 10px 15px 0;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #007bff; 
+    color: #fff; 
+    float: left;
+    box-sizing: border-box;
+  
+}
 
-        .batalla:hover {
-            transform: scale(1.35);
-        }
+}
 
-        .batalla p {
-            margin: 5px 0;
-            color: #fff;
-        }
 
-        .batalla strong {
-            font-weight: bold;
-            color: #00bfff;
-        }
+
+.batalla p {
+    margin: 5px 0;
+    color: #fff;
+    font-size: 12px; 
+}
     </style>
 </head>
 <body>
@@ -110,7 +121,7 @@ if ($resultado && $resultado->num_rows > 0) {
     </nav>
     <br>
     <div class="container">
-        <h1 id="titulo" class="text-center">Historial de Batallas</h1>
+       
         <br>
         <div class="row">
     <?php foreach ($batallas as $batalla): ?>
