@@ -74,7 +74,7 @@ if ($resultado && $resultado->num_rows > 0) {
             margin: 20px;
             background-color: #1c1c1c;
             color: #fff;
-            background-image: url('/img/temploregistro.jpg');
+            background-image: url('/img/bosquejapones.png');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: top center;
@@ -94,7 +94,7 @@ if ($resultado && $resultado->num_rows > 0) {
         }
 
         .card {
-            width: 180px; /* 25% para que se ajuste a 4 tarjetas por fila con Bootstrap */
+            width: 180px;
             background-color: #333;
             color: #fff;
             border: none;
