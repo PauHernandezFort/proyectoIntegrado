@@ -24,7 +24,7 @@ function drawlist($conn, $nombrePersonaje) {
                             <p><strong>ID Batalla:</strong> {$row['id']}</p>
                             <p><strong>Fecha:</strong> {$row['fecha']}</p>
                             <p><strong>Ganador:</strong> {$row['ganador']}</p>
-                            <a href='infoBatalla.php?id={$row['id']}' class='btn btn-primary'>Info</a>
+                            <a href='infoBatalla.php?id={$row['id']}&NBatalla=$i' class='btn btn-primary'>Info</a>
                         </div>
                     </div>
                 </div>
@@ -88,7 +88,7 @@ if ($resultado && $resultado->num_rows > 0) {
             color: #00bfff;
         }
 
-        .batalla {
+        .batalla {+
             margin-bottom: 20px;
         }
 

@@ -65,7 +65,7 @@ if ($resultado && $resultado->num_rows > 0) {
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
-                body {
+             body {
             font-family: 'Press Start 2P', cursive;
             margin: 20px;
             background-color: #1c1c1c;
@@ -76,7 +76,6 @@ if ($resultado && $resultado->num_rows > 0) {
             background-position: top center;
             padding-top: 56px; 
         }
-
 
        
 
