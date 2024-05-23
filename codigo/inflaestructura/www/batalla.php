@@ -13,7 +13,7 @@ $arrayj1 = $result->fetch_assoc();
 $arrayj2 = $result1->fetch_assoc();
 $nombrej1= $arrayj1['nombre'];
 $nombrej2= $arrayj2['nombre'];
-echo $nombrej1;
+
 
 $sql3 = "SELECT nombrePoder FROM `PersonajePoder` where `nombrePersonaje` = '$nombrej1'";
 $sql4 = "SELECT nombrePoder FROM `PersonajePoder` where `nombrePersonaje` = '$nombrej2'";
@@ -122,9 +122,27 @@ $energiaj2 = $arrayj2['energia'];
     .energia-container h5 {
         color: white;
     }
+
+    #nombres {
+        display: flex;
+        justify-content: space-between;
+        border: 2px solid #000;
+        padding: 10px;
+        color:white;
+    }
+
+    #nom1, #nom2 {
+        width: 45%;
+        text-align: center;
+    }
     </style>
 </head>
 <body>
+    <div id="nombres">
+        <div id="nom1"><?php echo $nombrej1; ?></div>
+        <div id="nom2"><?php echo $nombrej2; ?></div>
+    </div>
+
     <div id="container">
         <div id="barraVerde" class="barra"></div>
         <div id="barraBlanca" class="barra"></div>
