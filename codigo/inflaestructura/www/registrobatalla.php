@@ -128,7 +128,6 @@ if ($resultado && $resultado->num_rows > 0) {
             <?php foreach ($batallas as $batalla): ?>
                 <div class="col-sm-3"> 
                     <div class="batalla">
-<<<<<<< HEAD
                         <p><strong>ID Batalla:</strong> <?php echo $batalla['id']; ?></p>
                         <p><strong>Fecha:</strong> <?php echo $batalla['fecha']; ?></p>
                         <p><strong>Ganador:</strong> <?php echo $batalla['ganador']; ?></p>
@@ -138,19 +137,6 @@ if ($resultado && $resultado->num_rows > 0) {
             <?php endforeach; ?>
 </div>
 
-=======
-                        <div class="card">
-                            <div class="card-body">
-                                <p><strong>ID Batalla:</strong> <?php echo $batalla['id']; ?></p>
-                                <p><strong>Fecha:</strong> <?php echo $batalla['fecha']; ?></p>
-                                <p><strong>Ganador:</strong> <?php echo $batalla['ganador']; ?></p>
-                                <a href='infoBatalla.php?id=<?php echo $batalla['id']; ?>' class='btn btn-primary'>Info</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
->>>>>>> 3135ad9311763077e00005ae0fbc4b36666f1de2
         </div>
     </div>
 </body>
