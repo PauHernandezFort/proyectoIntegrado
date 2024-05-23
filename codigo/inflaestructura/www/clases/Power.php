@@ -135,19 +135,19 @@ class Power extends Connection {
             if($power['nombrePoder'] == 'saltarTurno'){
 
             }else{
-            $output .= "<div class ='card'> 
-            <div class='card$contador'>
-            <div class='card-body>
+            $output .=
+            "<div class ='card'> 
+                <div class='card$contador'>
+                    <div class='card-body>
                         <h5 class='card-title'><strong>" . $power['nombrePoder'] . "</strong></h5>
-                        <p class='card-text'>Daño: " . $power['daño'] . "</p>
-                        <p class='card-text'>Coste: " . $power['coste'] . "</p>
-                       
                         <div class='card-footer text-body-secondary'>
-                        <p class='card-text'>" . $power['descripcion'] . "</p>
+                            <p class='card-text'>Daño: " . $power['daño'] . "</p>
+                            <p class='card-text'>Coste: " . $power['coste'] . "</p>
+                            <p class='card-text'><em>" . $power['descripcion'] . "</em></p>
                         </div>
-                        </div>
-                        </div>
-                        </div>";
+                    </div>
+                </div>
+            </div>";
 
                         $contador ++; 
         }
