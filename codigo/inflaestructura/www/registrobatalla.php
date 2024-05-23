@@ -94,7 +94,7 @@ if ($resultado && $resultado->num_rows > 0) {
         }
 
         .card {
-            width: 180px; /* 25% para que se ajuste a 4 tarjetas por fila con Bootstrap */
+            width: 180px;
             background-color: #333;
             color: #fff;
             border: none;
