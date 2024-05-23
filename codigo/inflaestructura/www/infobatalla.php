@@ -62,8 +62,8 @@ if ($resultado && $resultado->num_rows > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Historial de Batallas</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <link href="logo.jpeg" rel="icon" type="image/x-icon">
@@ -86,7 +86,7 @@ if ($resultado && $resultado->num_rows > 0) {
 
         .batalla {
             font-size: 14px; 
-            width: 180px;
+            width: 300px;
             margin: 0 10px 15px 0;
             padding: 10px;
             border: 1px solid #333;
@@ -123,15 +123,14 @@ if ($resultado && $resultado->num_rows > 0) {
         <div class="row">
     <?php foreach ($batallas as $batalla): ?>
         <div class="col-sm-4"> 
-
-            <div class="batalla">
-                <p>ID : <?php echo $batalla['id']; ?></p>
-                <p>Numero Batalla <?php echo $batalla['NBatalla']; ?></p>
-                <p>nombre Poder:<?php echo $batalla['nombrePoder']; ?></p>
-                <p>nombre Jugador: <?php echo $batalla['nombrePersonaje']; ?></p>
-                <p>Daño: <?php echo $batalla['Daño']; ?></p>
-                <p>Energia: <?php echo $batalla['Energia']; ?></p>
-            </div>
+                <div class="batalla">
+                    <p>ID : <?php echo $batalla['id']; ?></p>
+                    <p>Numero Batalla <?php echo $batalla['NBatalla']; ?></p>
+                    <p>nombre Poder:<?php echo $batalla['nombrePoder']; ?></p>
+                    <p>nombre Jugador: <?php echo $batalla['nombrePersonaje']; ?></p>
+                    <p>Daño: <?php echo $batalla['Daño']; ?></p>
+                    <p>Energia: <?php echo $batalla['Energia']; ?></p>
+                </div>
         </div>
     <?php endforeach; ?>
 </div>
