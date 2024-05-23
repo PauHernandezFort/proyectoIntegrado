@@ -24,10 +24,16 @@ class Security extends Connection
             $mail = $_POST["email"];
             $password = $_POST["userPassword"];
             $nombre = $_POST["userName"];
+            if (empty($mail) || empty($password) || empty($nombre)) {
+                die('Todos los campos son obligatorios.');
+            }
             $securePassword = password_hash($password, PASSWORD_DEFAULT);
             $sql = "INSERT INTO Cuenta(correo, contraseña, nombre) VALUES ('$mail','$securePassword','$nombre')";
             $result = $this->conn->query($sql);
             header("Location: login.php ");
+        }
+        else{
+         
         }
     }
 
@@ -73,7 +79,7 @@ class Security extends Connection
             return false;
         }
     }
-    //e
+    //
 
     private function checkPassword($securePassword, $userPassword)
     {
