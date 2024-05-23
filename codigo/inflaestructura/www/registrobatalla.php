@@ -74,7 +74,7 @@ if ($resultado && $resultado->num_rows > 0) {
             margin: 20px;
             background-color: #1c1c1c;
             color: #fff;
-            background-image: url('/img/bosquejapones.jpg');
+            background-image: url('/img/bosquejapones.png');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: top center;
