@@ -68,7 +68,7 @@ if ($resultado && $resultado->num_rows > 0) {
         }
 
         .batalla {
-            width: 150px;
+            width: 180px;
             margin: 0 10px 15px 0;
             padding: 10px;
             border: 1px solid #333;
