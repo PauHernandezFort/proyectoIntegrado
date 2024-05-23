@@ -22,6 +22,7 @@ function drawlist($conn, $idBatalla, $NBatalla) {
        
     }
 
+    
 
     return $batallas;
 }
