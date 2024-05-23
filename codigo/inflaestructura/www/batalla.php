@@ -177,6 +177,13 @@ $energiaj2 = $arrayj2['energia'];
             position: absolute;
             color: blue;
         }
+        #error {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: red;
+        }
 
     </style>
 </head>
@@ -225,9 +232,12 @@ $energiaj2 = $arrayj2['energia'];
     </div>
 
     <div class="energia-container">
-        <h5 id="energiaJ1">Energia Jugador 1: <span id="energia1"><?php echo $energiaj1; ?></span></h5>
-        <h5 id="energiaJ2">Energia Jugador 2: <span id="energia2"><?php echo $energiaj2; ?></span></h5>
-    </div>
+    <h5 id="energiaJ1">Energia Jugador 1: <span id="energia1"><?php echo $energiaj1; ?></span></h5>
+    <img src="img/j1.png" alt="Imagen Jugador 1" style="float: left; margin-right: 10px;">
+    <h5 id="energiaJ2">Energia Jugador 2: <span id="energia2"><?php echo $energiaj2; ?></span></h5>
+    <img src="img/j2.png" alt="Imagen Jugador 2" style="float: right; margin-left: 10px;">
+</div>
+
 </body>
 
 </html>
