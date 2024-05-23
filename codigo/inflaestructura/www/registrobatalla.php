@@ -10,8 +10,7 @@ function drawlist($conn, $nombrePersonaje) {
     $result = $conn->query($sql5);
 
     $batallas = [];
-    while ($row = $result->fetch_assoc()) {
-        $batallas[] = $row; // Agregar la fila al array de batallas
+
     $i = 1;
    
     while ($row = $result->fetch_assoc()) {
@@ -29,8 +28,8 @@ function drawlist($conn, $nombrePersonaje) {
 return $batallas;
     }
 
-    return $batallas;
-}
+
+
 
 $conn = $connection->getConn();
 
@@ -124,15 +123,16 @@ if ($resultado && $resultado->num_rows > 0) {
         <h1 id="titulo" class="text-center">Historial de Batallas</h1>
         <br>
         <div class="row">
-    <?php foreach ($batallas as $batalla): ?>
-        <div class="col-sm-4"> 
-            <div class="batalla">
-                
-                <p><strong>Fecha:</strong> <?php echo $batalla['Fecha']; ?></p>
-                <p><strong>Ganador:</strong> <?php echo $batalla['Ganador']; ?></p>
-            </div>
-        </div>
-    <?php endforeach; ?>
+            <?php foreach ($batallas as $batalla): ?>
+                <div class="col-sm-3"> 
+                    <div class="batalla">
+                        <p><strong>ID Batalla:</strong> <?php echo $batalla['id']; ?></p>
+                        <p><strong>Fecha:</strong> <?php echo $batalla['fecha']; ?></p>
+                        <p><strong>Ganador:</strong> <?php echo $batalla['ganador']; ?></p>
+                        <a href='infoBatalla.php?id=<?php echo $batalla['id']; ?>' class='btn btn-primary'>Info</a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
 </div>
 
         </div>
