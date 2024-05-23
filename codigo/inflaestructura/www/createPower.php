@@ -5,42 +5,7 @@
 <title>Nuevo Poder</title>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-<style>
-    body {
-        background-image: url('fondo.jpeg');
-        background-color: #000;
-        color: #00FF00;
-        font-family: 'Press Start 2P', cursive;
-    }
-    #form_container {
-        background-color: #a07474;
-        padding: 20px;
-        border-radius: 5px;
-        margin: 50px auto;
-        max-width: 400px;
-        border: 1px solid #444;
-    }
-    h1 {
-        text-align: center;
-        color: #FFD700;
-    }
-    .form-description {
-        margin-bottom: 20px;
-    }
- 
-    label[for="nombrePoder"] {
-        color: #FF6347; 
-    }
-    label[for="daño"] {
-        color: #00CED1; 
-    }
-    label[for="coste"] {
-        color: #FFD700; 
-    }
-    label[for="descripcion"] {
-        color: #00FF7F;
-    }
-</style>
+<link rel="stylesheet" href="/css/createPower.css">
 </head>
 <body id="main_body">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
