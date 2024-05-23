@@ -17,40 +17,7 @@ $security->singUp();
     <link href="logo.jpeg" rel="icon" type="image/png">
     <meta name="theme-color" content="#343a40">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <style>
-      
-        body {
-            font-family: 'Press Start 2P', cursive;
-            background-image: url('singUp.png');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: top center;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-family: 'Press Start 2P', cursive;
-        }
-        #form_container {
-            width: 300px;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 10px;
-        }
-        .form_description {
-            text-align: center;
-        }
-        .element input {
-            width: 100%;
-        }
-        .buttons {
-            text-align: center;
-        }
-        .button_text {
-            margin: 10px auto;
-        }
-    </style>
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body id="main_body">
     <div id="form_container" class="container">

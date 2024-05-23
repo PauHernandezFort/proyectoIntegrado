@@ -10,10 +10,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Verifica si la solicitud es POST
     } else {
         $conexion = new Connection(); // Crear una instancia de la clase Connection
         $conn = $conexion->getConn(); // Obtener la conexión a la base de datos
- // Crea una nueva instancia de la clase Connection para conectar con la base de datos
 
-        $query = "SELECT * FROM Cuenta WHERE correo = '$email'";
-        $result = mysqli_query($conn, $query); // Obtiene el resultado de la consulta
+        if ($conn->connect_error) {
+            die("Error de conexión: " . $conn->connect_error); // Manejar el error de conexión
+        }
+
+        // Preparar la consulta SQL para evitar inyecciones SQL
+        $stmt = $conn->prepare("SELECT * FROM Cuenta WHERE correo = ?");
+        $stmt->bind_param('s', $email); // 's' indica que el parámetro es una cadena
+
+        $stmt->execute(); // Ejecutar la consulta
+        $result = $stmt->get_result(); // Obtener el resultado de la consulta
 
         if ($result->num_rows > 0) { // Verifica si la consulta devolvió al menos una fila
             $user2 = $result->fetch_assoc(); // Obtiene los datos del usuario como un array asociativo
@@ -32,8 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Verifica si la solicitud es POST
         } else {
             echo "Correo electrónico o contraseña incorrectos."; // Muestra un mensaje de error si no se encuentra el correo electrónico
         }
-
-        $conn->conn->close(); // Cierra la conexión a la base de datos
+ // Cierra la conexión a la base de datos
     }
 }
 ?>
@@ -52,46 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Verifica si la solicitud es POST
     <link href="logo.jpeg" rel="icon" type="image/png">
     <meta name="theme-color" content="#343a40">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <style>
-       
-        body {
-            font-family: 'Press Start 2P', cursive;
-            background-image: url('fondobuscarbatalla.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: top center;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-family: 'Press Start 2P', cursive;
-        }
-
-        #form_container {
-            width: 300px;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 10px;
-        }
-
-        .form_description {
-            text-align: center;
-            font-size: 22px;
-        }
-
-        .element input {
-            width: 100%;
-        }
-
-        .buttons {
-            text-align: center;
-        }
-
-        .button_text {
-            margin: 10px auto;
-        }
-    </style>
+    <link rel="stylesheet" href="css/contrincante.css">
 </head>
 <!-- sorry not sorry bb pero me he copiado el estilo ya que soy una ameba para la creatividad. Los artistas mueren de hambre -->
 <body>

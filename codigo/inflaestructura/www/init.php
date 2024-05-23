@@ -15,30 +15,9 @@ $power = new Power("");
     <link href="logo.jpeg" rel="apple-touch-icon" sizes="180x180">
     <link href="logo.jpeg" rel="icon" type="image/png">
     <meta name="theme-color" content="#343a40">
-    <link href="drawList.css" rel="stylesheet">
+    <link href="css/drawList.css" rel="stylesheet">
     <title>Cartas de Poder</title>
-    <style>
-        .card {
-            margin: 15px;
-          
-        }
-        .fixed-button-left {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 1000;
-        }
-        .text-white {
-            color: white;
-        }
-        h1 {
-        font-family: 'Press Start 2P', cursive;
-        font-size: 3em;
-        text-align: center;
-        margin-top: 20px;
-        color: white;
-}
-    </style>
+    
 </head>
 <body>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
