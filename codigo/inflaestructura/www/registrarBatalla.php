@@ -2,7 +2,9 @@
 require_once "autoloader.php";
 $conexion = new Connection;
 $conn = $conexion->getConn();
-
+date_default_timezone_set('Europe/Madrid');
+$fechaFormat= new DateTime();
+$fecha=$fechaFormat->format('Y-m-d H:i:s');
 session_start();
     $acciones = json_decode(urldecode($_GET['array']), true);
     $ganador=$_GET['ganador'];
@@ -17,7 +19,7 @@ session_start();
         $jugaganador = $jugador2;
     }
  
-$query =  "INSERT INTO Batalla( ganador) VALUES ('$jugaganador')";
+$query =  "INSERT INTO Batalla( `fecha`,`ganador`) VALUES ('$fecha','$jugaganador')";
 $resultado = mysqli_query($conn, $query);
 
 
@@ -51,8 +53,6 @@ $sql3 = "SELECT nombre FROM Personaje WHERE correoCuenta = '$jugador2'";
 $result = mysqli_query($conn, $sql3);
 $resultado = mysqli_fetch_assoc($result);
 $nombrePersonaje2 = $resultado['nombre'];
-
-
 $i=0;
 $id=0;
 foreach ($acciones as $action) {
