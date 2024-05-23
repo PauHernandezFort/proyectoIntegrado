@@ -12,12 +12,12 @@ function drawlist($conn, $idBatalla, $NBatalla) {
     while ($row = $result->fetch_assoc()) {
         echo "
             <div>
-                <h1>Id: {$row['id']}</h1>
+                <h1> turno: {$row['id']}</h1>
                 <h1>Número de Batalla: $NBatalla</h1>
                 <h1>Nombre del Poder: {$row['nombrePoder']}</h1>
                 <h1>Nombre del Personaje: {$row['nombrePersonaje']}</h1>
-        <h1>Daño: {$row['daño']}</h1>
-        <h1>Energía: {$row['energia']}</h1>
+                <h1>Daño: {$row['daño']}</h1>
+                <h1>Energía: {$row['energia']}</h1>
             </div>";
        
     }
@@ -114,14 +114,14 @@ if ($resultado && $resultado->num_rows > 0) {
         <div class="row">
     <?php foreach ($batallas as $batalla): ?>
         <div class="col-sm-4"> 
-            
+
             <div class="batalla">
-                <p><strong>ID :</strong> <?php echo $batalla['id']; ?></p>
-                <p><strong>Numero Batalla</strong> <?php echo $batalla['NBatalla']; ?></p>
-                <p><strong>nombre Poder:</strong> <?php echo $batalla['nombrePoder']; ?></p>
-                <p><strong>nombre Jugador:</strong> <?php echo $batalla['nombrePersonaje']; ?></p>
-                <p><strong>Daño:</strong> <?php echo $batalla['Daño']; ?></p>
-                <p><strong>Energia:</strong> <?php echo $batalla['Energia']; ?></p>
+                <p>ID : <?php echo $batalla['id']; ?></p>
+                <p>Numero Batalla <?php echo $batalla['NBatalla']; ?></p>
+                <p>nombre Poder:<?php echo $batalla['nombrePoder']; ?></p>
+                <p>nombre Jugador: <?php echo $batalla['nombrePersonaje']; ?></p>
+                <p>Daño: <?php echo $batalla['Daño']; ?></p>
+                <p>Energia: <?php echo $batalla['Energia']; ?></p>
             </div>
         </div>
     <?php endforeach; ?>
