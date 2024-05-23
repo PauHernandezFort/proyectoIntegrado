@@ -114,6 +114,7 @@ if ($resultado && $resultado->num_rows > 0) {
         <div class="row">
     <?php foreach ($batallas as $batalla): ?>
         <div class="col-sm-4"> 
+            
             <div class="batalla">
                 <p><strong>ID :</strong> <?php echo $batalla['id']; ?></p>
                 <p><strong>Numero Batalla</strong> <?php echo $batalla['NBatalla']; ?></p>
