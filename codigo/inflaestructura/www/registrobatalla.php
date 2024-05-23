@@ -74,7 +74,7 @@ if ($resultado && $resultado->num_rows > 0) {
             margin: 20px;
             background-color: #1c1c1c;
             color: #fff;
-            background-image: url('escenarioRegistro.png');
+            background-image: url('/img/temploregistro.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: top center;
