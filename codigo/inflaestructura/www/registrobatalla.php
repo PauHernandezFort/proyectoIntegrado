@@ -3,31 +3,44 @@ require_once("autoloader.php");
 $connection = new Connection();
 
 function drawlist($conn, $nombrePersonaje) {
-    $sql = "SELECT b.*
+    $sql5 = "SELECT b.*
     FROM Batalla b
     JOIN BatallaPersonaje bp ON b.id = bp.idbatalla
     WHERE bp.nombrePersonaje = '$nombrePersonaje'";
-    $result = $conn->query($sql);
+    $result = $conn->query($sql5);
 
     $batallas = [];
 
+    $i = 1;
+   
     while ($row = $result->fetch_assoc()) {
-        $batallas[] = $row;
+        echo "
+            <div>
+               
+                <h1>Fecha: {$row['fecha']}</h1>
+                <h4>Ganador: {$row['ganador']}</h4>
+                <a href='infoBatalla.php?id={$row['id']}&NBatalla=$i' class='btn btn-primary'>Info</a>
+            </div>";
+        $i++;
+    }
+    
+    
+return $batallas;
     }
 
-    return $batallas;
-}
+
+
 
 $conn = $connection->getConn();
 
 $jugadorCorreo = $_COOKIE["correo"];
 
-$sql = "SELECT nombre FROM Personaje WHERE correoCuenta = '$jugadorCorreo'";
-$result = $conn->query($sql);
+$sql3 = "SELECT nombre FROM Personaje WHERE correoCuenta = '$jugadorCorreo'";
+$resultado = $conn->query($sql3);
 
 $batallas = [];
-if ($result && $result->num_rows > 0) {
-    $row = $result->fetch_assoc();
+if ($resultado && $resultado->num_rows > 0) {
+    $row = $resultado->fetch_assoc();
     $nombrePersonaje = $row['nombre'];
     $batallas = drawlist($conn, $nombrePersonaje);
 } 
@@ -115,17 +128,15 @@ if ($result && $result->num_rows > 0) {
             <?php foreach ($batallas as $batalla): ?>
                 <div class="col-sm-3"> 
                     <div class="batalla">
-                        <div class="card">
-                            <div class="card-body">
-                                <p><strong>ID Batalla:</strong> <?php echo $batalla['id']; ?></p>
-                                <p><strong>Fecha:</strong> <?php echo $batalla['fecha']; ?></p>
-                                <p><strong>Ganador:</strong> <?php echo $batalla['ganador']; ?></p>
-                                <a href='infoBatalla.php?id=<?php echo $batalla['id']; ?>' class='btn btn-primary'>Info</a>
-                            </div>
-                        </div>
+                        <p><strong>ID Batalla:</strong> <?php echo $batalla['id']; ?></p>
+                        <p><strong>Fecha:</strong> <?php echo $batalla['fecha']; ?></p>
+                        <p><strong>Ganador:</strong> <?php echo $batalla['ganador']; ?></p>
+                        <a href='infoBatalla.php?id=<?php echo $batalla['id']; ?>' class='btn btn-primary'>Info</a>
                     </div>
                 </div>
             <?php endforeach; ?>
+</div>
+
         </div>
     </div>
 </body>
