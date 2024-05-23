@@ -101,7 +101,7 @@ if ($resultado && $resultado->num_rows > 0) {
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
-            margin:10px;
+            margin:5px;
         }
 
         .card:hover {
