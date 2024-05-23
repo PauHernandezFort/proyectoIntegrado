@@ -11,7 +11,7 @@ function drawlist($conn, $nombrePersonaje) {
 
     $batallas = [];
     while ($row = $result->fetch_assoc()) {
-        $batallas[] = $row; // Agregar la fila al array de batallas
+        $batallas[] = $row; 
     $i = 1;
    
     while ($row = $result->fetch_assoc()) {
@@ -60,7 +60,7 @@ if ($resultado && $resultado->num_rows > 0) {
     <link href="logo.jpeg" rel="icon" type="image/png">
     <meta name="theme-color" content="#343a40">
     <style>
-        body {
+       body {
         font-family: 'Press Start 2P', cursive;
         margin: 20px;
         background-color: #1c1c1c;
@@ -124,7 +124,6 @@ if ($resultado && $resultado->num_rows > 0) {
         <h1 id="titulo" class="text-center">Historial de Batallas</h1>
         <br>
         <div class="row">
-<<<<<<< HEAD
             <?php foreach ($batallas as $batalla): ?>
                 <div class="col-sm-3"> 
                     <div class="batalla">
@@ -135,19 +134,8 @@ if ($resultado && $resultado->num_rows > 0) {
                     </div>
                 </div>
             <?php endforeach; ?>
-=======
-    <?php foreach ($batallas as $batalla): ?>
-        <div class="col-sm-4"> 
-            <div class="batalla">
-                <p><strong>Batalla:</strong> <?php echo $batalla['Batalla']; ?></p>
-                <p><strong>Fecha:</strong> <?php echo $batalla['Fecha']; ?></p>
-                <p><strong>Ganador:</strong> <?php echo $batalla['Ganador']; ?></p>
-            </div>
-        </div>
-    <?php endforeach; ?>
 </div>
 
->>>>>>> fc583fc55b79bd9107d228683f07fb9afdf4b414
         </div>
     </div>
 </body>
