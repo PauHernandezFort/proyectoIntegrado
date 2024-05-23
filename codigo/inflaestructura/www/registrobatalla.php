@@ -17,7 +17,7 @@ function drawlist($conn, $nombrePersonaje) {
     while ($row = $result->fetch_assoc()) {
         echo "
             <div>
-                <h1>Id: {$row['id']}</h1>
+               
                 <h1>Fecha: {$row['fecha']}</h1>
                 <h4>Ganador: {$row['ganador']}</h4>
                 <a href='infoBatalla.php?id={$row['id']}&NBatalla=$i' class='btn btn-primary'>Info</a>
@@ -124,6 +124,7 @@ if ($resultado && $resultado->num_rows > 0) {
         <h1 id="titulo" class="text-center">Historial de Batallas</h1>
         <br>
         <div class="row">
+<<<<<<< HEAD
             <?php foreach ($batallas as $batalla): ?>
                 <div class="col-sm-3"> 
                     <div class="batalla">
@@ -134,6 +135,17 @@ if ($resultado && $resultado->num_rows > 0) {
                     </div>
                 </div>
             <?php endforeach; ?>
+=======
+    <?php foreach ($batallas as $batalla): ?>
+        <div class="col-sm-4"> 
+            <div class="batalla">
+                
+                <p><strong>Fecha:</strong> <?php echo $batalla['Fecha']; ?></p>
+                <p><strong>Ganador:</strong> <?php echo $batalla['Ganador']; ?></p>
+            </div>
+        </div>
+    <?php endforeach; ?>
+>>>>>>> ff440bdb6ec10f498d09ae28291f09276b87fd45
 </div>
 
         </div>
