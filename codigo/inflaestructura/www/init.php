@@ -19,7 +19,7 @@ $power = new Power("");
     <title>Cartas de Poder</title>
     <style>
         .card {
-            margin: 15px;
+    
           
         }
         .fixed-button-left {
