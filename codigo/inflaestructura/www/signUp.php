@@ -12,9 +12,9 @@ $security->singUp();
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Sign Up</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link href="logo.jpeg" rel="icon" type="image/x-icon">
-    <link href="logo.jpeg" rel="apple-touch-icon" sizes="180x180">
-    <link href="logo.jpeg" rel="icon" type="image/png">
+    <link href="img/logo.jpeg" rel="icon" type="image/x-icon">
+    <link href="img/logo.jpeg" rel="apple-touch-icon" sizes="180x180">
+    <link href="img/logo.jpeg" rel="icon" type="image/png">
     <meta name="theme-color" content="#343a40">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/login.css">
