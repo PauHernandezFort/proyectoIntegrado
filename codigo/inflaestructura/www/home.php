@@ -18,9 +18,9 @@ $lineas= mysqli_num_rows($result);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     
     <title>Home</title>
-    <link href="logo.jpeg" rel="icon" type="image/x-icon">
-    <link href="logo.jpeg" rel="apple-touch-icon" sizes="180x180">
-    <link href="logo.jpeg" rel="icon" type="image/png">
+    <link href="img/logo.jpeg" rel="icon" type="image/x-icon">
+    <link href="img/logo.jpeg" rel="apple-touch-icon" sizes="180x180">
+    <link href="img/logo.jpeg" rel="icon" type="image/png">
     <meta name="theme-color" content="#343a40">
     <link rel="stylesheet" href="css/home.css">
 </head>
@@ -28,7 +28,7 @@ $lineas= mysqli_num_rows($result);
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="home.php">
-                <img src="logo.jpeg" alt="Avatar Logo" style="width:40px;" class="rounded-pill" > 
+                <img src="img/logo.jpeg" alt="Avatar Logo" style="width:40px;" class="rounded-pill" > 
             </a>
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
