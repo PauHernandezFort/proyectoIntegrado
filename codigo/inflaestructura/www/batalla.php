@@ -104,9 +104,9 @@ $energiaj2 = $arrayj2['energia'];
 
     <div class="energia-container">
     <h5 id="energiaJ1">Energia Jugador 1: <span id="energia1"><?php echo $energiaj1; ?></span></h5>
-    <img src="img/j1.png" alt="Imagen Jugador 1" style="float: left; margin-right: 10px;">
+    <img id="fp1" src="img/j1.png" alt="Imagen Jugador 1" style="float: left; margin-right: 10px;">
     <h5 id="energiaJ2">Energia Jugador 2: <span id="energia2"><?php echo $energiaj2; ?></span></h5>
-    <img src="img/j2.png" alt="Imagen Jugador 2" style="float: right; margin-left: 10px;">
+    <img id="fp2" src="img/j2.png" alt="Imagen Jugador 2" style="float: right; margin-left: 10px;">
 </div>
 
 </body>
@@ -135,6 +135,11 @@ $energiaj2 = $arrayj2['energia'];
     }
 
     function realizarAccion(poder, jugador) {
+        if (jugador === 1){
+            moverP1()
+        }else{
+            moverP2()
+        }
         if (poder === "saco") {
             saco(jugador);
         } else if (poder === "transfusion") {
@@ -165,11 +170,13 @@ $energiaj2 = $arrayj2['energia'];
             porcentaje = ((vidaj1 * 100) / <?php echo $vidaj1; ?>)/2;
             document.getElementById("barraVerde").style.width = porcentaje + "%";
             document.getElementById("pepe2").innerText = "Vida Jugador 1: " + vidaj1;
+            
         } else {
             porcentaje = ((vidaj2 * 100) / <?php echo $vidaj2; ?>)/2;
             document.getElementById("barraAzul").style.width = porcentaje + "%";
             document.getElementById("pepe").innerText = "Vida Jugador 2: " + vidaj2;
         }
+       
         comprobar()
     }
 
@@ -633,5 +640,25 @@ function explosion(jugador) {
 
     errorElement.innerText = "";
     turno++;
+}
+function moverP1() {
+    let foto = document.getElementById("fp1");
+
+    foto.style.transition = "transform 1s ease-in-out"; 
+    foto.style.transform = "translateX(100px)"; 
+    setTimeout(function() {
+        foto.style.transition = "transform 1s ease-in-out";
+        foto.style.transform = "translateX(0)"; 
+    }, 1000);
+}
+function moverP2() {
+    let foto = document.getElementById("fp2");
+
+    foto.style.transition = "transform 1s ease-in-out"; 
+    foto.style.transform = "translateX(-100px)"; 
+    setTimeout(function() {
+        foto.style.transition = "transform 1s ease-in-out";
+        foto.style.transform = "translateX(0)"; 
+    }, 1000);
 }
 </script>
