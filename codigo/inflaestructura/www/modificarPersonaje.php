@@ -31,9 +31,9 @@ $daño= $arrayj1['daño'];
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="logo.jpeg" rel="icon" type="image/x-icon">
-    <link href="logo.jpeg" rel="icon" type="image/png">
-    <link href="logo.jpeg" rel="apple-touch-icon" sizes="180x180">
+    <link href="img/logo.jpeg" rel="icon" type="image/x-icon">
+    <link href="img/logo.jpeg" rel="icon" type="image/png">
+    <link href="img/logo.jpeg" rel="apple-touch-icon" sizes="180x180">
     <meta name="theme-color" content="#343a40">
     <link rel="stylesheet" href="css/modificarP.css">
 </head>
@@ -41,7 +41,7 @@ $daño= $arrayj1['daño'];
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="home.php">
-                <img src="logo.jpeg" alt="Avatar Logo" class="d-inline-block align-top" style="height: 40px;">
+                <img src="img/logo.jpeg" alt="Avatar Logo" class="d-inline-block align-top" style="height: 40px;">
             </a>
         </div>
     </nav>

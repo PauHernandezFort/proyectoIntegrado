@@ -66,9 +66,9 @@ if ($resultado && $resultado->num_rows > 0) {
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-    <link href="logo.jpeg" rel="icon" type="image/x-icon">
-    <link href="logo.jpeg" rel="apple-touch-icon" sizes="180x180">
-    <link href="logo.jpeg" rel="icon" type="image/png">
+    <link href="img/logo.jpeg" rel="icon" type="image/x-icon">
+    <link href="img/logo.jpeg" rel="apple-touch-icon" sizes="180x180">
+    <link href="img/logo.jpeg" rel="icon" type="image/png">
     <meta name="theme-color" content="#343a40">
     <link rel="stylesheet" href="css/infobatalla.css">
 
@@ -78,7 +78,7 @@ if ($resultado && $resultado->num_rows > 0) {
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="home.php">
-                <img src="logo.jpeg" alt="Avatar Logo" class="d-inline-block align-top" style="height: 40px;">
+                <img src="img/logo.jpeg" alt="Avatar Logo" class="d-inline-block align-top" style="height: 40px;">
             </a>
             <a style="text-align: center; width: 100%;"><h1>PoketGame</h1></a>
         </div>
