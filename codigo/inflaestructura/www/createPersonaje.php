@@ -23,7 +23,7 @@ if (isset($_COOKIE['correo'])) {
     <link href="logo.jpeg" rel="icon" type="image/png">
     <link href="logo.jpeg" rel="apple-touch-icon" sizes="180x180">
     <meta name="theme-color" content="#343a40">
-    <link href="createPersonaje.css" rel="stylesheet">
+    <link href="css/createPersonaje.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 

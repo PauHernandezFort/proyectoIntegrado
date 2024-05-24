@@ -70,42 +70,9 @@ if ($resultado && $resultado->num_rows > 0) {
     <link href="logo.jpeg" rel="apple-touch-icon" sizes="180x180">
     <link href="logo.jpeg" rel="icon" type="image/png">
     <meta name="theme-color" content="#343a40">
+    <link rel="stylesheet" href="css/infobatalla.css">
 
-    <style>
-            body {
-            font-family: 'Press Start 2P', cursive;
-            margin: 20px;
-            background-color: #1c1c1c;
-            color: #fff;
-            background-image: url('/img/bosquejapones.png');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: top center;
-            padding-top: 56px; 
-        }
-
-        .batalla {
-            font-size: 14px; 
-            width: 300px;
-            margin: 0 10px 15px 0;
-            padding: 10px;
-            border: 1px solid #333;
-            border-radius: 5px;
-            color: #fff;
-            float: left;
-        }
-
-        .batalla p {
-            margin: 5px 0;
-            color: #fff;
-            font-size: 12px; 
-        }
-
-        h1{
-            color:red;
-        }
-
-    </style>
+   
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
