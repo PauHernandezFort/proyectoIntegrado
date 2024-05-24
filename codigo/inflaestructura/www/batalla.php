@@ -56,137 +56,7 @@ $energiaj2 = $arrayj2['energia'];
     <link href="logo.jpeg" rel="apple-touch-icon" sizes="180x180">
     <link href="logo.jpeg" rel="icon" type="image/png">
     <meta name="theme-color" content="#343a40">
-    <style>
-        body {
-            background-image: url('/img/escenarioBatalla.jpg');
-            background-size: cover;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            font-family: 'Press Start 2P', cursive;
-
-        }
-
-        #container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            padding: 10px;
-            background-color: #222;
-        }
-
-        .barra {
-            height: 20px;
-            transition: width 0.5s ease;
-        }
-
-        #barraVerde {
-            background-color: #2E8B57;
-            width: 49%;
-        }
-
-        #barraBlanca {
-            flex: 1;
-            background-color: transparent;
-        }
-
-        #barraAzul {
-            background-color: #483D8B;
-            width: 49%;
-        }
-
-        #botones {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            margin-left: -45%;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 90%;
-
-
-        }
-
-        .boton {
-            padding: 10px 20px;
-            background-color: #ccc;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        h3 {
-            color: red;
-            text-align: left;
-            display: flex;
-        }
-
-
-        #energia1,
-        #energia2 {
-            margin: 10px;
-        }
-
-        .energia-container h5 {
-            color: white;
-        }
-
-        .turno-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 50px;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
-            margin: 10px 0;
-        }
-
-        .turno-text {
-            color: white;
-            font-size: 18px;
-        }
-
-        #nombres {
-            display: flex;
-            justify-content: space-between;
-            border: 2px solid #000;
-            padding: 10px;
-            color: white;
-        }
-
-        #nom1,#nom2 {
-            width: 45%;
-            text-align: center;
-        }
-
-        #pepe {
-            position: absolute;
-            right: 20px;
-        }
-        #energiaJ2{
-            right: 20px;
-            position: absolute;
-            color: blue;
-
-        }
-        #energiaJ1{
-            left: 20px;
-            position: absolute;
-            color: blue;
-        }
-        #error {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: red;
-        }
-
-    </style>
+    <link rel="stylesheet" href="css/batalla.css">
 </head>
 
 <body>
@@ -267,18 +137,24 @@ $energiaj2 = $arrayj2['energia'];
     function realizarAccion(poder, jugador) {
         if (poder === "saco") {
             saco(jugador);
-        } else if (poder === "saltar") {
-            // Lógica para el poder "saltar"
+        } else if (poder === "transfusion") {
+            transfusion(jugador)
         } else if (poder === "curar") {
             curar(jugador);
         } else if (poder === "morder") {
             morder(jugador);
-        } else if (poder === "patear") {
-            // Lógica para el poder "patear"
+        } else if (poder === "embestida") {
+            embestida(jugador);
         } else if (poder === "fumar") {
             fumar(jugador);
-        } else if (pdoer = "saltarTurno") {
+        } else if (poder === "saltarTurno") {
             saltarTurno(jugador)
+        } else if (poder === "calambre"){
+            calambre(jugador);
+        }else if(poder === "puñetazo"){
+            puñetazo(jugador)
+        } else if(poder === "explosion"){
+            explosion(jugador)
         }
         document.getElementById("numTurno").innerText = turno;
     }
@@ -529,188 +405,235 @@ $energiaj2 = $arrayj2['energia'];
         }
     }
     
-        function calambre(jugador) { // este poder quita mas vida cuando mas energia tengas
-        let energiaPoder = 45;
-        let dañoPoder = 20;
-        let errorElement = document.getElementById("error");
+    function calambre(jugador) {
+    let energiaPoder = 45;
+    let dañoPoder = 20;
+    let errorElement = document.getElementById("error");
 
-        if (jugador === 1) {
-            if (energiaj1 < energiaPoder) {
-                errorElement.innerText = "No tienes suficiente energía";
-                return;
-            }
-            let daño = <?php echo $energiaj1; ?> * 0.58; + dañoPoder 
-            let dañoRedondeado= Math.ceil(daño);
-            let arrayTurno = ['calambre', 1, daño, energiaPoder];
-            array.push(arrayTurno);
-
-            document.getElementById("energia1").innerText = energiaj1;
-            actualizarBarraVida(2);
-        } else {
-            if (energiaj2 < energiaPoder) {
-                errorElement.innerText = "No tienes suficiente energía";
-                return;
-            }
-            let daño = <?php echo $energiaj2; ?> * 0.58; + dañoPoder 
-            let dañoRedondeado= Math.ceil(daño);
-            let arrayTurno = ['calambre', 1, daño, energiaPoder];
-            array.push(arrayTurno);
-
-
-            let arrayTurno = ['calambre', 2, dañoPoder, energiaPoder];
-            array.push(arrayTurno);
-
-            document.getElementById("energia2").innerText = energiaj2;
-            actualizarBarraVida(1);
+    if (jugador === 1) {
+        if (energiaj1 < energiaPoder) {
+            errorElement.innerText = "No tienes suficiente energía";
+            return;
         }
+        let daño = energiaj1 * 0.58 + dañoPoder;
+        let dañoRedondeado = Math.ceil(daño);
+        vidaj2 -= dañoRedondeado;
+        energiaj1 -= energiaPoder;
+        let arrayTurno = ['calambre', 1, dañoRedondeado, energiaPoder];
+        array.push(arrayTurno);
 
-        errorElement.innerText = "";
-        turno++;
+        document.getElementById("energia1").innerText = energiaj1;
+        actualizarBarraVida(2);
+    } else {
+        if (energiaj2 < energiaPoder) {
+            errorElement.innerText = "No tienes suficiente energía";
+            return;
+        }
+        let daño = energiaj2 * 0.58 + dañoPoder;
+        let dañoRedondeado = Math.ceil(daño);
+        vidaj1 -= dañoRedondeado;
+        energiaj2 -= energiaPoder;
+        let arrayTurno = ['calambre', 2, dañoRedondeado, energiaPoder];
+        array.push(arrayTurno);
+        
+        document.getElementById("energia2").innerText = energiaj2;
+        actualizarBarraVida(1);
     }
 
-    function transfusion(jugador) { // este poder roba vida
-        let energiaPoder = 25;
-        let dañoPoder = 15;
-        let errorElement = document.getElementById("error");
+    errorElement.innerText = "";
+    turno++;
+}
 
-        if (jugador === 1) {
-            if (energiaj1 < energiaPoder) {
-                errorElement.innerText = "No tienes suficiente energía";
-                return;
-            }
-            let daño =  (dañoj1 *1.25 + dañoPoder ) *0.80;
-            let vidaRobada = daño * 0.90; 
-            let roboRedondeado=Math.ceil(vidaRobada)
-            let dañoRedondeado=Math.ceil(daño)
-            energiaj1-energiaPoder;
-            vidaj1 += roboRedondeado;
-            vidaj2 -= dañoRedondeado;
-            energiaj1 += 5;
+function puñetazo(jugador) {
+    let energiaPoder = 15;
+    let dañoPoder = 5;
+    let errorElement = document.getElementById("error");
 
-            let arrayTurno = ['transfusion', 1, dañoPoder, energiaPoder];
-            array.push(arrayTurno);
-
-            document.getElementById("energia1").innerText = energiaj1;
-            actualizarBarraVida(1);
-            actualizarBarraVida(2);
-        } else {
-            if (energiaj2 < energiaPoder) {
-                errorElement.innerText = "No tienes suficiente energía";
-                return;
-            }
-            let daño =  (dañoj2 *1.25 + dañoPoder ) *0.80;
-            let vidaRobada = daño * 0.90; 
-            let roboRedondeado=Math.ceil(vidaRobada)
-            let dañoRedondeado=Math.ceil(daño)
-            energiaj2-energiaPoder;
-            vidaj2 += roboRedondeado;
-            vidaj1 -= dañoRedondeado;
-            energiaj2 += 5;
-
-            let arrayTurno = ['transfusion', 2, dañoPoder, energiaPoder];
-            array.push(arrayTurno);
-
-            document.getElementById("energia2").innerText = energiaj2;
-            actualizarBarraVida(2);
-            actualizarBarraVida(1);
+    if (jugador === 1) {
+        if (energiaj1 < energiaPoder) {
+            errorElement.innerText = "No tienes suficiente energía";
+            return;
         }
+        let daño = (dañoj1 * 0.25) + energiaj2 + dañoPoder;
+        let dañoRedondeado = Math.ceil(daño);
 
-        errorElement.innerText = "";
-        turno++;
+        vidaj2 -= dañoRedondeado;
+        energiaj1 -= energiaPoder;
+        energiaj1 += 5;
+
+        let arrayTurno = ['puñetazo', 1, dañoRedondeado, energiaPoder];
+        array.push(arrayTurno);
+
+        document.getElementById("energia1").innerText = energiaj1;
+        actualizarBarraVida(2);
+    } else {
+        if (energiaj2 < energiaPoder) {
+            errorElement.innerText = "No tienes suficiente energía";
+            return;
+        }
+        let daño = (dañoj2 * 0.25) + energiaj1 + dañoPoder;
+        let dañoRedondeado = Math.ceil(daño);
+
+        vidaj1 -= dañoRedondeado;
+        energiaj2 -= energiaPoder;
+        energiaj2 += 5;
+
+        let arrayTurno = ['puñetazo', 2, dañoRedondeado, energiaPoder];
+        array.push(arrayTurno);
+
+        document.getElementById("energia2").innerText = energiaj2;
+        actualizarBarraVida(1);
     }
 
-    function puñetazo(jugador) { //este poder quita mas vida si el enemigo actualmente tiene mucha energia
-        let energiaPoder = 15;
-        let dañoPoder = 5;
-        let errorElement = document.getElementById("error");
-
-        if (jugador === 1) {
-            if (energiaj1 < energiaPoder) {
-                errorElement.innerText = "No tienes suficiente energía";
-                return;
-            }
-            let daño =  (dañoj1 *0.25 )+ energiaj2
-            let dañoRedondeado=Math.ceil(daño)
-          
-            vidaj2 -= dañoRedondeado;
-            energiaj1-=energiaPoder;
-            energiaj1 += 5;
-
-            let arrayTurno = ['puñetazo', 1, dañoPoder, energiaPoder];
-            array.push(arrayTurno);
-
-            document.getElementById("energia1").innerText = energiaj1;
-            actualizarBarraVida(2);
-        } else {
-            if (energiaj2 < energiaPoder) {
-                errorElement.innerText = "No tienes suficiente energía";
-                return;
-            }
-            let daño =  (dañoj2 *0.25 )+ energiaj2
-            let dañoRedondeado=Math.ceil(daño)
-          
-            vidaj2 -= dañoRedondeado;
-            energiaj2-=energiaPoder
-            energiaj2 += 5;
+    errorElement.innerText = "";
+    turno++;
+}
 
 
-            let arrayTurno = ['puñetazo', 2, dañoPoder, energiaPoder];
-            array.push(arrayTurno);
 
-            document.getElementById("energia2").innerText = energiaj2;
-            actualizarBarraVida(1);
+function transfusion(jugador) { 
+    let energiaPoder = 25;
+    let dañoPoder = 15;
+    let errorElement = document.getElementById("error");
+
+    if (jugador === 1) {
+        if (energiaj1 < energiaPoder) {
+            errorElement.innerText = "No tienes suficiente energía";
+            return;
         }
-        errorElement.innerText = "";
-        turno++;
+        let daño = (dañoj1 * 1.25 + dañoPoder) * 0.80;
+        let vidaRobada = daño * 0.90;
+        let roboRedondeado = Math.ceil(vidaRobada);
+        let dañoRedondeado = Math.ceil(daño);
+
+        energiaj1 -= energiaPoder;
+        vidaj1 += roboRedondeado;
+        vidaj2 -= dañoRedondeado;
+        energiaj1 += 5;
+
+        let arrayTurno = ['transfusion', 1, dañoRedondeado, energiaPoder];
+        array.push(arrayTurno);
+
+        document.getElementById("energia1").innerText = energiaj1;
+        actualizarBarraVida(1);
+        actualizarBarraVida(2);
+    } else {
+        if (energiaj2 < energiaPoder) {
+            errorElement.innerText = "No tienes suficiente energía";
+            return;
+        }
+        let daño = (dañoj2 * 1.25 + dañoPoder) * 0.80;
+        let vidaRobada = daño * 0.90;
+        let roboRedondeado = Math.ceil(vidaRobada);
+        let dañoRedondeado = Math.ceil(daño);
+
+        energiaj2 -= energiaPoder;
+        vidaj2 += roboRedondeado;
+        vidaj1 -= dañoRedondeado;
+        energiaj2 += 5;
+
+        let arrayTurno = ['transfusion', 2, dañoRedondeado, energiaPoder];
+        array.push(arrayTurno);
+
+        document.getElementById("energia2").innerText = energiaj2;
+        actualizarBarraVida(2);
+        actualizarBarraVida(1);
     }
 
-    function (jugador) { //este poder quita mas vida si el enemigo actualmente tiene mucha energia
-        let energiaPoder = 15;
-        let dañoPoder = 5;
-        let errorElement = document.getElementById("error");
+    errorElement.innerText = "";
+    turno++;
+}
 
-        if (jugador === 1) {
-            if (energiaj1 < energiaPoder) {
-                errorElement.innerText = "No tienes suficiente energía";
-                return;
-            }
-            let daño =  (dañoj1 *0.25 )+ energiaj2
-            let dañoRedondeado=Math.ceil(daño)
-          
-            vidaj2 -= dañoRedondeado;
-            energiaj1-=energiaPoder;
-            energiaj1 += 5;
+function embestida(jugador) { 
+    let energiaPoder = 15;
+    let dañoPoder = 15;
+    let errorElement = document.getElementById("error");
 
-            let arrayTurno = ['puñetazo', 1, dañoPoder, energiaPoder];
-            array.push(arrayTurno);
-
-            document.getElementById("energia1").innerText = energiaj1;
-            actualizarBarraVida(2);
-        } else {
-            if (energiaj2 < energiaPoder) {
-                errorElement.innerText = "No tienes suficiente energía";
-                return;
-            }
-            let daño =  (dañoj2 *0.25 )+ energiaj2
-            let dañoRedondeado=Math.ceil(daño)
-          
-            vidaj2 -= dañoRedondeado;
-            energiaj2-=energiaPoder
-            energiaj2 += 5;
-
-
-            let arrayTurno = ['puñetazo', 2, dañoPoder, energiaPoder];
-            array.push(arrayTurno);
-
-            document.getElementById("energia2").innerText = energiaj2;
-            actualizarBarraVida(1);
+    if (jugador === 1) {
+        if (energiaj1 < energiaPoder) {
+            errorElement.innerText = "No tienes suficiente energía";
+            return;
         }
-        errorElement.innerText = "";
-        turno++;
+        let daño = vidaj1 * 0.5;
+        let dañoRedondeado = Math.ceil(daño);
+
+        vidaj2 -= dañoRedondeado;
+        energiaj1 -= energiaPoder;
+        energiaj1 += 5;
+
+        let arrayTurno = ['embestida', 1, dañoRedondeado, energiaPoder];
+        array.push(arrayTurno);
+
+        document.getElementById("energia1").innerText = energiaj1;
+        actualizarBarraVida(2);
+    } else {
+        if (energiaj2 < energiaPoder) {
+            errorElement.innerText = "No tienes suficiente energía";
+            return;
+        }
+        let daño = vidaj2 * 0.5;
+        let dañoRedondeado = Math.ceil(daño);
+
+        vidaj1 -= dañoRedondeado;
+        energiaj2 -= energiaPoder;
+        energiaj2 += 5;
+
+        let arrayTurno = ['embestida', 2, dañoRedondeado, energiaPoder];
+        array.push(arrayTurno);
+
+        document.getElementById("energia2").innerText = energiaj2;
+        actualizarBarraVida(1);
     }
 
+    errorElement.innerText = "";
+    turno++;
+}
+function explosion(jugador) { 
+    let energiaPoder = 115;
+    let dañoPoder = 45;
+    let errorElement = document.getElementById("error");
 
+    if (jugador === 1) {
+        if (energiaj1 < energiaPoder) {
+            errorElement.innerText = "No tienes suficiente energía";
+            return;
+        }
+        let daño = dañoPoder + dañoj1 + (<?php echo $vidaj2;?> *0.40);
+        let dañoRedondeado = Math.ceil(daño);
 
+        vidaj2 -= dañoRedondeado;
+        energiaj1 -= energiaPoder;
+        energiaj1 += 5;
 
+        let arrayTurno = ['explosion', 1, dañoRedondeado, energiaPoder];
+        array.push(arrayTurno);
 
+        document.getElementById("energia1").innerText = energiaj1;
+        actualizarBarraVida(2);
+    } else {
+        if (energiaj2 < energiaPoder) {
+            errorElement.innerText = "No tienes suficiente energía";
+            return;
+        }
+        let daño = dañoPoder + dañoj1 + (<?php echo $vidaj2;?>) * 0.40;
+        let dañoRedondeado = Math.ceil(daño);
+
+        vidaj2 -= dañoRedondeado;
+        energiaj1 -= energiaPoder;
+        energiaj1 += 5;
+
+        vidaj1 -= dañoRedondeado;
+        energiaj2 -= energiaPoder;
+        energiaj2 += 5;
+
+        let arrayTurno = ['explosion', 2, dañoRedondeado, energiaPoder];
+        array.push(arrayTurno);
+
+        document.getElementById("energia2").innerText = energiaj2;
+        actualizarBarraVida(1);
+    }
+
+    errorElement.innerText = "";
+    turno++;
+}
 </script>
