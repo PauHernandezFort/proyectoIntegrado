@@ -263,7 +263,7 @@ $energiaj2 = $arrayj2['energia'];
                 errorElement.innerText = "No tienes suficiente energía";
                 return;
             }
-            let daño = (dañoPoder + (dañoj1 / 2) + (vidaj1 / 6));
+            let daño = (dañoPoder + (dañoj1 / 2) + (vidaj2 *0.25));
             let dañoRedondeado = Math.ceil(daño);
             vidaj1 -= dañoRedondeado;
 
@@ -610,7 +610,7 @@ function explosion(jugador) {
             errorElement.innerText = "No tienes suficiente energía";
             return;
         }
-        let daño = dañoPoder + dañoj1 + (<?php echo $vidaj2;?> *0.40);
+        let daño = dañoPoder + dañoj1 + ((<?php echo $vidaj1;?> *0.40) + vidaj2*0.35);
         let dañoRedondeado = Math.ceil(daño);
 
         vidaj2 -= dañoRedondeado;
@@ -627,12 +627,8 @@ function explosion(jugador) {
             errorElement.innerText = "No tienes suficiente energía";
             return;
         }
-        let daño = dañoPoder + dañoj1 + (<?php echo $vidaj2;?>) * 0.40;
+        let daño = dañoPoder + dañoj1 + ((<?php echo $vidaj2;?>) * 0.40 ) + vidaj1 *0.35;
         let dañoRedondeado = Math.ceil(daño);
-
-        vidaj2 -= dañoRedondeado;
-        energiaj1 -= energiaPoder;
-        energiaj1 += 5;
 
         vidaj1 -= dañoRedondeado;
         energiaj2 -= energiaPoder;

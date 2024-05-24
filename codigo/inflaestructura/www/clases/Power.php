@@ -136,13 +136,15 @@ class Power extends Connection {
 
             }else{
             $output .=
-            "<div class ='card'> 
+            "<div class = 'containder'>
+            <div class ='card'> 
                 <div class='card$contador'>
                         <div class='card-title'><strong>" . $power['nombrePoder'] . "</strong></h5></div>
                         <div class='card-footer text-body-secondary'>
                             <p class='card-text'>Daño: " . $power['daño'] . "</p>
                             <p class='card-text'>Coste: " . $power['coste'] . "</p>
                             <p class='card-text'><em>" . $power['descripcion'] . "</em></p>
+                </div>
                     </div>
                 </div>
             </div>";
