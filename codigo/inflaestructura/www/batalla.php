@@ -185,6 +185,15 @@ $energiaj2 = $arrayj2['energia'];
             transform: translate(-50%, -50%);
             color: red;
         }
+        
+        .move-animation {
+            animation: moveRightAndBack 1s ease-in-out;
+        }
+
+
+        .player-attack {
+            animation: playerAttack 1s ease-in-out;
+        }
 
     </style>
 </head>
@@ -255,14 +264,25 @@ $energiaj2 = $arrayj2['energia'];
     let turno = 1;
 
     function botonClickeado(poder, jugador) {
-        if (jugador === 1 && turno % 2 === 1) {
-            realizarAccion(poder, 1);
-        } else if (jugador === 2 && turno % 2 === 0) {
-            realizarAccion(poder, 2);
-        } else {
-            document.getElementById("error").innerText = "No es tu turno";
-        }
+    if (jugador === 1 && turno % 2 === 1) {
+        realizarAccion(poder, 1);
+        animarAtaque(1);
+    } else if (jugador === 2 && turno % 2 === 0) {
+        realizarAccion(poder, 2);
+        animarAtaque(2);
+    } else {
+        document.getElementById("error").innerText = "No es tu turno";
     }
+}
+
+function animarAtaque(jugador) {
+    const img = document.getElementById(jugador === 1 ? 'j1' : 'j2');
+    img.classList.add('player-attack');
+    setTimeout(() => {
+        img.classList.remove('player-attack');
+    }, 1000);
+}
+
 
     function realizarAccion(poder, jugador) {
         if (poder === "saco") {
@@ -483,7 +503,7 @@ $energiaj2 = $arrayj2['energia'];
         errorElement.innerText = "";
         turno++;
     }
-
+ 
 
     function saltarTurno(jugador) {
         if (jugador === 1) {
