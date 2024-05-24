@@ -44,7 +44,7 @@ $power = new Power("");
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="home.php">
-                <img src="logo.jpeg" alt="Avatar Logo" style="width:40px;" class="rounded-pill" > 
+                <img src="img/logo.jpeg" alt="Avatar Logo" style="width:40px;" class="rounded-pill" > 
             </a>
         </div>
 </nav>
