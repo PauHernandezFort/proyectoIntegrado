@@ -291,7 +291,7 @@ $energiaj2 = $arrayj2['energia'];
                 errorElement.innerText = "No tienes suficiente energía";
                 return;
             }
-            let cura = 15 + (vidaj1 * 0.16);
+            let cura = 15 + (vidaj1 * 0.98);
             let curarRedondeado = Math.ceil(cura);
             vidaj1 += curarRedondeado;
             if (vidaj1 > <?php echo $vidaj1; ?>){
@@ -308,7 +308,7 @@ $energiaj2 = $arrayj2['energia'];
                 errorElement.innerText = "No tienes suficiente energía";
                 return;
             }
-            let cura = 15 + (vidaj2 * 0.16);
+            let cura = 15 + (vidaj2 * 0.98);
             let curarRedondeado = Math.ceil(cura);
             vidaj2 += curarRedondeado;
             if (vidaj2 > <?php echo $vidaj2; ?>){
@@ -466,7 +466,7 @@ function puñetazo(jugador) {
             errorElement.innerText = "No tienes suficiente energía";
             return;
         }
-        let daño = (dañoj1 * 0.25) + energiaj2 + dañoPoder;
+        let daño = (dañoj1 * 0.25) + (energiaj2 * 0.73) + dañoPoder;
         let dañoRedondeado = Math.ceil(daño);
 
         vidaj2 -= dañoRedondeado;
@@ -483,7 +483,7 @@ function puñetazo(jugador) {
             errorElement.innerText = "No tienes suficiente energía";
             return;
         }
-        let daño = (dañoj2 * 0.25) + energiaj1 + dañoPoder;
+        let daño = (dañoj2 * 0.25) + (energiaj1 * 0.73) + dañoPoder;
         let dañoRedondeado = Math.ceil(daño);
 
         vidaj1 -= dañoRedondeado;
