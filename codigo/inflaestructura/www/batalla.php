@@ -104,9 +104,9 @@ $energiaj2 = $arrayj2['energia'];
 
     <div class="energia-container">
     <h5 id="energiaJ1">Energia Jugador 1: <span id="energia1"><?php echo $energiaj1; ?></span></h5>
-    <img id="j1" src="img/j1.png" alt="Imagen Jugador 1" style="float: left; margin-right: 10px;">
+    <img src="img/j1.png" alt="Imagen Jugador 1" style="float: left; margin-right: 10px;">
     <h5 id="energiaJ2">Energia Jugador 2: <span id="energia2"><?php echo $energiaj2; ?></span></h5>
-    <img id="j2" src="img/j2.png" alt="Imagen Jugador 2" style="float: right; margin-left: 10px;">
+    <img src="img/j2.png" alt="Imagen Jugador 2" style="float: right; margin-left: 10px;">
 </div>
 
 </body>
@@ -379,7 +379,6 @@ $energiaj2 = $arrayj2['energia'];
         let botonesDiv = document.getElementById("botones");
 
         if (vidaj1 <= 0) {
-            vidaj1 =0
             botonesDiv.innerHTML = "";
             let nuevoBoton = document.createElement("button");
             nuevoBoton.innerText = "¡Jugador 2 Gana!";
@@ -392,7 +391,6 @@ $energiaj2 = $arrayj2['energia'];
         }
 
         if (vidaj2 <= 0) {
-            vidaj2=0
             botonesDiv.innerHTML = "";
             let nuevoBoton = document.createElement("button");
             nuevoBoton.innerText = "¡Jugador 1 Gana!";
