@@ -1,11 +1,12 @@
 <?php
-
+/*
 class Repoblar extends Connection{
 
     public function importarCuentas(){
         $cuentas = fopen("cuenta.csv", "r") or die("Unable to open file!"); 
         while (($data = fgetcsv($cuentas)) !== false) {
-            $query = "INSERT INTO Cuenta (correo, contraseña, nombre) VALUES ('$data[0]', '$data[1]', '$data[2]')";
+            $contraseñaEncriptada = password_hash($data[1], PASSWORD_DEFAULT);
+            $query = "INSERT INTO Cuenta (correo, contraseña, nombre) VALUES ('$data[0]', '$contraseñaEncriptada', '$data[2]')";
             $result = mysqli_query($this->conn, $query);
             if ($result) {
                 echo "Cuenta importada: $data[0], $data[1], $data[2]<br>";
