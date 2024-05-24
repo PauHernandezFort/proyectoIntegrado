@@ -78,8 +78,11 @@ $energiaj2 = $arrayj2['energia'];
                 onclick="botonClickeado('<?php echo $nombrePoder2j1; ?>', 1)"><?php echo $nombrePoder2j1; ?></button>
             <button class="boton"
                 onclick="botonClickeado('<?php echo $nombrePoder3j1; ?>', 1)"><?php echo $nombrePoder3j1; ?></button>
+                <br>
+                <br>
             <button class="boton" onclick="botonClickeado('saltarTurno', 1)">Saltar turno</button>
         </div>
+        
         <div>
             <button class="boton"
                 onclick="botonClickeado('<?php echo $nombrePoder1j2; ?>', 2)"><?php echo $nombrePoder1j2; ?></button>
@@ -87,6 +90,10 @@ $energiaj2 = $arrayj2['energia'];
                 onclick="botonClickeado('<?php echo $nombrePoder2j2; ?>', 2)"><?php echo $nombrePoder2j2; ?></button>
             <button class="boton"
                 onclick="botonClickeado('<?php echo $nombrePoder3j2; ?>', 2)"><?php echo $nombrePoder3j2; ?></button>
+                <br>
+                <br>
+
+
             <button class="boton" onclick="botonClickeado('saltarTurno', 2)">Saltar turno</button>
         </div>
     </div>
