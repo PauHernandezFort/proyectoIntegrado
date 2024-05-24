@@ -1,6 +1,6 @@
 body {
     font-family: 'Press Start 2P', cursive;
-    background: url('prueba.jpg') #000;
+    background: url('/img/prueba.jpg') #000;
     color: #0f0;
     margin: 0;
     padding: 20px;

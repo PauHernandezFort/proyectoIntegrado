@@ -11,7 +11,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">      
             <a class="navbar-brand" href="home.php">
-                <img src="logo.jpeg" alt="Avatar Logo" class="d-inline-block align-top" style="height: 40px;">
+                <img src="img/logo.jpeg" alt="Avatar Logo" class="d-inline-block align-top" style="height: 40px;">
             </a>
         </div>
     </nav>

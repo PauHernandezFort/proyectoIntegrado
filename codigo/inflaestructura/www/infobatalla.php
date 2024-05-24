@@ -66,52 +66,19 @@ if ($resultado && $resultado->num_rows > 0) {
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-    <link href="logo.jpeg" rel="icon" type="image/x-icon">
-    <link href="logo.jpeg" rel="apple-touch-icon" sizes="180x180">
-    <link href="logo.jpeg" rel="icon" type="image/png">
+    <link href="img/logo.jpeg" rel="icon" type="image/x-icon">
+    <link href="img/logo.jpeg" rel="apple-touch-icon" sizes="180x180">
+    <link href="img/logo.jpeg" rel="icon" type="image/png">
     <meta name="theme-color" content="#343a40">
+    <link rel="stylesheet" href="css/infobatalla.css">
 
-    <style>
-            body {
-            font-family: 'Press Start 2P', cursive;
-            margin: 20px;
-            background-color: #1c1c1c;
-            color: #fff;
-            background-image: url('/img/bosquejapones.png');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: top center;
-            padding-top: 56px; 
-        }
-
-        .batalla {
-            font-size: 14px; 
-            width: 300px;
-            margin: 0 10px 15px 0;
-            padding: 10px;
-            border: 1px solid #333;
-            border-radius: 5px;
-            color: #fff;
-            float: left;
-        }
-
-        .batalla p {
-            margin: 5px 0;
-            color: #fff;
-            font-size: 12px; 
-        }
-
-        h1{
-            color:red;
-        }
-
-    </style>
+   
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="home.php">
-                <img src="logo.jpeg" alt="Avatar Logo" class="d-inline-block align-top" style="height: 40px;">
+                <img src="img/logo.jpeg" alt="Avatar Logo" class="d-inline-block align-top" style="height: 40px;">
             </a>
             <a style="text-align: center; width: 100%;"><h1>PoketGame</h1></a>
         </div>
