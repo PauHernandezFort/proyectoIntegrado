@@ -47,7 +47,7 @@ body {
 }
 .card1 {
     margin-top: 20px;
-    background-image: url('/img/aguastermales.png');
+    background-image: url('/img/refuerzos1.png');
     height: 220px;
     background-size: cover; 
     background-position: center; 
@@ -60,7 +60,7 @@ body {
 }
 .card2 {
     margin-top: 20px;
-    background-image: url('/img/refuerzos1.png');
+    background-image: url('/img/aguastermales.png');
     height: 220px;
     background-size: cover; 
     background-position: center; 
@@ -125,7 +125,7 @@ body {
 }
 .card7 {
     margin-top: 20px;
-    background-image: url('/img/samurai.png');
+    background-image: url('/img/puñetazo.png');
     height: 220px;
     background-size: cover; 
     background-position: center; 
