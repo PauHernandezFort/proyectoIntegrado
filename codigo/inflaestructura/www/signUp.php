@@ -28,8 +28,8 @@ $security->singUp();
                 <input name="userName" class="form-control" type="text" maxlength="255" value="" />
             </div>
             <div class="form-group">
-                <label for="email">Email</label>
-                <input name="email" class="form-control" type="text" maxlength="255" value="" />
+            <label for="email" class="form-label">Correo Electrónico:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
             </div>
             <div class="form-group">
                 <label for="userPassword">User Password</label>

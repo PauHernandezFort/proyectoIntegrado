@@ -23,8 +23,8 @@ $loginMessage = $security->doLogin();
         <h2 class="form_description">Iniciar sesión</h2>
         <form action="" method="post">
             <div class="form-group">
-                <label for="email">Email:</label>
-                <input name="email" type="text" class="form-control" maxlength="255" value="">
+            <label for="email" class="form-label">Correo Electrónico:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
             </div>
             <div class="form-group">
                 <label for="userPassword">Contraseña:</label>

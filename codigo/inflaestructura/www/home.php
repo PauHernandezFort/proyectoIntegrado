@@ -43,10 +43,12 @@ $lineas= mysqli_num_rows($result);
                         <li><a class="dropdown-item" href="login.php">Cerrar Sesión</a></li>
                         <li><a class="dropdown-item" href="confirmacion.php">Eliminar Cuenta</a></li>
                         <li><a class="dropdown-item" href="registroBatalla.php">Registro Batalla</a></li>
+                        <li><a class="dropdown-item" href="derechos.html">Derechos imagenes</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contacto.html">Contacto</a>
+                   
                 </li>
             </ul>
         </div>
