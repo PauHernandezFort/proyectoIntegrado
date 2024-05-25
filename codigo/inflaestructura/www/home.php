@@ -77,7 +77,7 @@ $lineas= mysqli_num_rows($result);
         document.addEventListener("DOMContentLoaded", function() {
             let correo = <?php echo json_encode($correo); ?>;
             let lineas = <?php echo json_encode($lineas); ?>;
-            if (correo === 'admin.com') {
+            if (correo === 'admin@gmail.com') {
                 let dropdownMenu = document.querySelector('.dropdown-menu');
                 let createPowerItem = document.createElement('li');
                 createPowerItem.innerHTML = '<a class="dropdown-item" href="createPower.php">Crear Poderes</a>';
