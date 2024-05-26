@@ -35,7 +35,6 @@ $loginMessage = $security->doLogin();
             <button type="button" name="submit" class="btn btn-primary btn-block" onclick="window.location.href='signUp.php'">Registrarse</button>
         </form>
     </div>
-    <iframe id="youtube-player" width="1" height="1" src="https://www.youtube.com/embed/kKyPO7RHmdw?si=62gcqj-PgIjPiIUs&autoplay=1&loop=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </body>
 <script>    
    let error = <?php echo json_encode($loginMessage); ?>;

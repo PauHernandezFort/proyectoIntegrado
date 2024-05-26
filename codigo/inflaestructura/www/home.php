@@ -64,7 +64,7 @@ $lineas= mysqli_num_rows($result);
                         <a href="modificarPersonaje.php" class="btn btn-primary">MODIFICAR PERSONAJE</a>
                     </div>
                     <div class="col-md-4 text-center">
-                        <a href="init.php" class="btn btn-secundary" style="background-image: url('/img/cofre.gif'); background-size: contain; background-repeat: no-repeat; background-position: right; height: 100px; width: 100px;"></a>
+                        <a href="init.php" class="btn btn-secundary" style="background-image: url('/img/cofre.png'); background-size: contain; background-repeat: no-repeat; background-position: right; height: 100px; width: 100px;"></a>
                     </div>
                     <div class="col-md-4 text-center">
                         <a href="contrincante.php" class="btn btn-success">BUSCAR CONTRINCANTE</a>
@@ -100,6 +100,5 @@ $lineas= mysqli_num_rows($result);
         }
         });
     </script>
-    <iframe width="0" height="0" src="https://www.youtube.com/embed/0ThIonKfSHo?autoplay=1&loop=1&playlist=0ThIonKfSHo" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </body>
 </html>
