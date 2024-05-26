@@ -1,48 +1,54 @@
 <?php
-require_once "autoloader.php"; // Asegúrate de que tu autoloader incluya la clase Connection
+require_once "autoloader.php"; 
+session_start();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") { // Verifica si la solicitud es POST
-    $email = $_POST['email']; // Obtiene el correo electrónico del formulario
-    $password = $_POST['userPassword']; // Obtiene la contraseña del formulario
+$jugador1 = $_COOKIE['correo'];
+$jugador2 = isset($_SESSION['email']) ? $_SESSION['email'] : null;
 
-    if (empty($email) || empty($password)) { // Verifica si el correo electrónico o la contraseña están vacíos
-        echo "El correo electrónico o la contraseña no fueron proporcionados."; // Muestra un mensaje de error si algún campo está vacío
+if ($_SERVER["REQUEST_METHOD"] == "POST") { 
+    $emailJugador2 = $_POST['email']; 
+    $passwordJugador2 = $_POST['userPassword']; 
+
+    if (empty($emailJugador2) || empty($passwordJugador2)) { 
+        echo "El correo electrónico o la contraseña no fueron proporcionados."; 
     } else {
-        $conexion = new Connection(); // Crear una instancia de la clase Connection
-        $conn = $conexion->getConn(); // Obtener la conexión a la base de datos
+        $conexion = new Connection(); 
+        $conn = $conexion->getConn(); 
 
         if ($conn->connect_error) {
-            die("Error de conexión: " . $conn->connect_error); // Manejar el error de conexión
+            die("Error de conexión: " . $conn->connect_error); 
         }
 
-        // Preparar la consulta SQL para evitar inyecciones SQL
         $stmt = $conn->prepare("SELECT * FROM Cuenta WHERE correo = ?");
-        $stmt->bind_param('s', $email); // 's' indica que el parámetro es una cadena
+        $stmt->bind_param('s', $emailJugador2); 
 
-        $stmt->execute(); // Ejecutar la consulta
-        $result = $stmt->get_result(); // Obtener el resultado de la consulta
+        $stmt->execute(); 
+        $result = $stmt->get_result(); 
 
-        if ($result->num_rows > 0) { // Verifica si la consulta devolvió al menos una fila
-            $user2 = $result->fetch_assoc(); // Obtiene los datos del usuario como un array asociativo
+        if ($result->num_rows > 0) { 
+            $user2 = $result->fetch_assoc();
 
-            if (password_verify($password, $user2['contraseña'])) { // Verifica si la contraseña proporcionada coincide con la almacenada en la base de datos
-                session_start(); // Inicia una nueva sesión o reanuda la existente
-                $_SESSION['loggedIn'] = true; // Establece la sesión como iniciada
-                $_SESSION['email'] = $user2['correo']; // Almacena el correo electrónico del usuario en la sesión
-
-                // Redirigir a la página de batalla
-                header("Location: batalla.php"); // Redirige al usuario a la página de batalla
-                exit(); // Asegura que no se ejecute más código después de la redirección
+            if ($jugador1 == $emailJugador2) {
+                echo "No es válido poner las mismas credenciales"; 
             } else {
-                echo "Correo electrónico o contraseña incorrectos."; // Muestra un mensaje de error si la contraseña es incorrecta
+                if (password_verify($passwordJugador2, $user2['contraseña'])) { 
+                    $_SESSION['loggedIn'] = true;
+                    $_SESSION['email'] = $user2['correo']; 
+
+                    header("Location: batalla.php"); 
+                    exit(); 
+                } else {
+                    echo "Correo electrónico o contraseña incorrectos."; 
+                }
             }
         } else {
-            echo "Correo electrónico o contraseña incorrectos."; // Muestra un mensaje de error si no se encuentra el correo electrónico
+            echo "Correo electrónico o contraseña incorrectos."; 
         }
- // Cierra la conexión a la base de datos
     }
 }
 ?>
+
+
 
 
 
@@ -60,7 +66,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Verifica si la solicitud es POST
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/contrincante.css">
 </head>
-<!-- sorry not sorry bb pero me he copiado el estilo ya que soy una ameba para la creatividad. Los artistas mueren de hambre -->
 <body>
     <div id="form_container">
         <h2 class="form_description">Contrincante</h2>
